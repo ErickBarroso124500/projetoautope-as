@@ -643,6 +643,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- JavaScript Logic -->
     <script>
+        const supabaseUrl = 'https://seu-projeto.supabase.co';  // ← SUBSTITUA
+        const supabaseKey = 'sua-chave-anon-aqui';              // ← SUBSTITUA
+        const supabase = Supabase.createClient(supabaseUrl, supabaseKey);
+
+        const whatsappNumber = "5585987004279";
+        const geminiApiKey = "AIzaSyCO22vM99hmTcsUB6RwEqgDXcsO-UrO1VQ";
         // Products data with stock
         let products = [];
         // Prices (hidden)
@@ -1100,3 +1106,4 @@
     </script>
 </body>
 </html>
+
