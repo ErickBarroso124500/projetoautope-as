@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Arthur Auto Peças - A evolução da sua experiência automotiva.">
     <title>Arthur Auto Peças | Ultimate Edition</title>
+
     <!-- EXTENSIONS & FONTS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -12,6 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
+    <!-- CORE STYLE SYSTEM -->
     <style>
         :root {
             --primary: #2563eb;
@@ -187,6 +190,13 @@
             background: #0f172a;
         }
 
+        .chat-input {
+            padding: 15px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 10px;
+        }
+
         .msg {
             padding: 8px 12px;
             border-radius: 15px;
@@ -235,7 +245,6 @@
 
 <body class="fade-in-up">
 
-    <!-- CONFIG -->
     <script>
         const App = {
             config: {
@@ -245,71 +254,96 @@
                 whatsapp: '5585991815434',
                 pixKey: '00.000.000/0001-00'
             },
-            state: { user: JSON.parse(localStorage.getItem('user')) || null, cart: JSON.parse(localStorage.getItem('cart')) || [] }
+            state: {
+                user: JSON.parse(localStorage.getItem('user')) || null,
+                cart: JSON.parse(localStorage.getItem('cart')) || [],
+                loading: false
+            }
         };
     </script>
 
-    <!-- NAV -->
+    <!-- NAVIGATION -->
     <nav class="navbar navbar-expand-lg navbar-blur fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="#">
                 <img src="public/logo.png" style="height: 48px;"
                     onerror="this.src='https://placehold.co/48x48?text=AAP'">
-                <div><span class="fw-black d-block fs-5 text-primary">ARTHUR</span><small
-                        class="text-uppercase text-muted" style="font-size:0.65rem;">Auto Peças</small></div>
+                <div style="line-height:1.1">
+                    <span class="fw-black d-block fs-5 text-primary">ARTHUR</span>
+                    <small class="text-uppercase text-muted" style="font-size:0.65rem; letter-spacing: 2px;">Auto
+                        Peças</small>
+                </div>
             </a>
+
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarMain"><i class="bi bi-list fs-1 text-primary"></i></button>
+                data-bs-target="#navbarMain">
+                <i class="bi bi-list fs-1 text-primary"></i>
+            </button>
+
             <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-center">
-                    <li class="nav-item"><a class="nav-link active" href="#">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#shop">Loja</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#" onclick="UI.showHome()">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#shop" onclick="UI.showHome()">Loja</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" onclick="Chatbot.toggle()">IA Mechanic</a></li>
-                    <li class="nav-item d-none" id="nav-admin-link"><a class="nav-link text-warning fw-bold"
-                            href="#admin-dashboard" onclick="UI.showAdmin()"><i class="bi bi-shield-lock-fill"></i>
-                            Admin</a></li>
+                    <li class="nav-item d-none" id="nav-admin-link">
+                        <a class="nav-link text-warning fw-bold" href="#" onclick="UI.showAdmin()"><i
+                                class="bi bi-shield-lock-fill"></i> Admin</a>
+                    </li>
                 </ul>
+
                 <div class="d-flex align-items-center gap-3">
-                    <button class="btn btn-outline-secondary rounded-circle border-0" onclick="UI.toggleTheme()"><i
-                            class="bi bi-moon-stars-fill"></i></button>
+                    <button class="btn btn-outline-secondary rounded-circle border-0" onclick="UI.toggleTheme()">
+                        <i class="bi bi-moon-stars-fill"></i>
+                    </button>
+
                     <button class="btn btn-outline-primary rounded-circle position-relative border-0"
-                        onclick="Cart.open()"><i class="bi bi-bag-fill fs-5"></i><span
-                            class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"
-                            id="cart-badge">0</span></button>
+                        onclick="Cart.open()">
+                        <i class="bi bi-bag-fill fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            id="cart-badge">0</span>
+                    </button>
+
+                    <!-- User Account -->
                     <div id="auth-container"></div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO SECTION -->
     <section id="home" class="hero-section">
         <div class="hero-bg-accent"></div>
         <div class="container position-relative z-index-1">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-5 mb-lg-0 animate__animated animate__fadeInLeft">
-                    <span
-                        class="badge bg-white text-primary mb-3 px-3 py-2 rounded-pill fw-bold shadow-sm">Oficial</span>
+                    <span class="badge bg-white text-primary mb-3 px-3 py-2 rounded-pill fw-bold shadow-sm">
+                        <i class="bi bi-award-fill me-1"></i> A Melhor da Região
+                    </span>
                     <h1 class="display-3 fw-bolder mb-3">Sua Oficina <br><span class="text-primary">Inteligente</span>
                     </h1>
-                    <p class="lead mb-4 text-white-50">Peças, Serviços e Consultoria com IA em um só lugar.</p>
-                    <div class="d-flex gap-3"><a href="#shop" class="btn btn-gradient btn-lg">Ver Produtos</a></div>
+                    <p class="lead mb-4 text-white-50">Peças originais, consultoria com IA e atendimento premium.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#shop" class="btn btn-gradient btn-lg">Explorar Catálogo</a>
+                        <button onclick="Chatbot.toggle()"
+                            class="btn btn-outline-light btn-lg border-2 fw-bold">Mecânico Virtual</button>
+                    </div>
                 </div>
-                <div class="col-lg-6 animate__animated animate__fadeInRight"><img
-                        src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80"
-                        class="img-fluid rounded-4 shadow-lg border border-3 border-dark"></div>
+                <div class="col-lg-6 position-relative animate__animated animate__fadeInRight">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80"
+                        class="img-fluid rounded-4 shadow-lg border border-3 border-dark" alt="Super Car">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SHOP -->
+    <!-- SHOP SECTION -->
     <section id="shop" class="py-5">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-                <h2 class="fw-bold mb-0">Catálogo</h2>
+                <h2 class="fw-bold mb-0">Catálogo <span class="text-primary">Premium</span></h2>
                 <div class="input-group" style="max-width: 300px;">
                     <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
-                    <input type="text" class="form-control border-start-0 ps-0" placeholder="Buscar..."
+                    <input type="text" class="form-control border-start-0 ps-0" placeholder="Buscar peça..."
                         oninput="Shop.search(this.value)">
                 </div>
             </div>
@@ -318,20 +352,26 @@
     </section>
 
     <!-- ADMIN DASHBOARD -->
-    <section id="admin-dashboard" class="d-none py-5 bg-light">
+    <section id="admin-dashboard" class="d-none py-5 bg-light" style="min-height: 100vh; padding-top: 100px;">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="fw-bold"><i class="bi bi-shield-lock"></i> Gestão</h2>
-                <button class="btn btn-outline-dark" onclick="location.reload()">Sair do Admin</button>
+                <h2 class="fw-bold"><i class="bi bi-speedometer2"></i> Painel do Administrador</h2>
+                <button class="btn btn-outline-dark" onclick="UI.showHome()">Voltar ao Site</button>
             </div>
 
             <div class="row g-4">
-                <div class="col-md-12">
+                <!-- Orders Manager -->
+                <div class="col-12">
                     <div class="card border-0 shadow-sm">
-                        <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0 fw-bold">Pedidos</h5>
-                            <input type="text" id="admin-search-order" class="form-control w-25"
-                                placeholder="Buscar Pedido #" oninput="Admin.load()">
+                        <div
+                            class="card-header bg-white border-0 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <h5 class="mb-0 fw-bold">Gerenciar Pedidos</h5>
+                            <div class="d-flex gap-2">
+                                <input type="text" class="form-control form-control-sm" id="admin-search-id"
+                                    placeholder="Buscar ID (ex: 12)" style="width: 150px;">
+                                <button class="btn btn-sm btn-primary" onclick="Admin.load()"><i
+                                        class="bi bi-search"></i></button>
+                            </div>
                         </div>
                         <div class="card-body p-0">
                             <div class="table-responsive">
@@ -343,7 +383,7 @@
                                             <th>Total</th>
                                             <th>Status</th>
                                             <th>Pagamento</th>
-                                            <th>Ações</th>
+                                            <th>Ação</th>
                                         </tr>
                                     </thead>
                                     <tbody id="admin-order-list"></tbody>
@@ -352,19 +392,46 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Product Manager -->
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 fw-bold">Produtos</h5>
+                            <button class="btn btn-sm btn-success" onclick="UI.modal('prod-modal')">+ Novo</button>
+                        </div>
+                        <div class="card-body p-0">
+                            <table class="table align-middle mb-0 table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th>Preço</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-prod-list"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- CHATBOT -->
+    <!-- CHATBOT WIDGET -->
     <div id="chatbot" class="chat-widget shadow-lg">
-        <div class="chat-header d-flex justify-content-between align-items-center" onclick="Chatbot.toggle()"><span><i
-                    class="bi bi-robot me-2"></i>Mecânico Virtual</span><i class="bi bi-chevron-down"></i></div>
+        <div class="chat-header d-flex justify-content-between align-items-center" onclick="Chatbot.toggle()">
+            <span><i class="bi bi-robot me-2"></i>Mecânico Virtual</span>
+            <i class="bi bi-chevron-down"></i>
+        </div>
         <div class="chat-body" id="chat-messages">
-            <div class="msg msg-ai">Olá! Pergunte sobre peças ou defeitos do seu carro.</div>
+            <div class="d-flex flex-column">
+                <div class="msg msg-ai">Olá! Sou a IA da Arthur Auto Peças. Posso ajudar com orçamentos e dúvidas
+                    técnicas.</div>
+            </div>
         </div>
         <div class="chat-input bg-white">
-            <input type="text" id="chat-txt" class="form-control border-0 bg-light" placeholder="Dúvida..."
+            <input type="text" id="chat-txt" class="form-control border-0 bg-light" placeholder="Digite sua dúvida..."
                 onkeypress="if(event.key==='Enter') Chatbot.send()">
             <button class="btn btn-primary rounded-circle" onclick="Chatbot.send()"><i
                     class="bi bi-send-fill"></i></button>
@@ -376,38 +443,45 @@
     <!-- AUTH MODAL -->
     <div class="modal fade" id="auth-modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0">
-                <div class="modal-body p-4">
-                    <div class="text-end"><button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <div class="modal-content border-0 overflow-hidden">
+                <div class="modal-body p-0 d-flex">
+                    <div
+                        class="d-none d-md-block bg-primary text-white p-5 col-5 d-flex flex-column justify-content-center">
+                        <h4>Bem-vindo!</h4>
+                        <p class="small opacity-75">Sua oficina online 24h.</p>
                     </div>
-                    <ul class="nav nav-pills mb-3 justify-content-center">
-                        <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill"
-                                data-bs-target="#tab-login">Entrar</button></li>
-                        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill"
-                                data-bs-target="#tab-register">Cadastrar</button></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="tab-login">
-                            <form onsubmit="Auth.login(event)">
-                                <input type="email" class="form-control mb-3" id="login-email" placeholder="Email"
-                                    required>
-                                <input type="password" class="form-control mb-3" id="login-pass" placeholder="Senha"
-                                    required>
-                                <button class="btn btn-primary w-100 fw-bold">Entrar</button>
-                            </form>
+                    <div class="p-4 col-12 col-md-7">
+                        <div class="text-end"><button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
-                        <div class="tab-pane fade" id="tab-register">
-                            <form onsubmit="Auth.register(event)">
-                                <input class="form-control mb-2" id="reg-name" placeholder="Nome" required>
-                                <input class="form-control mb-2" id="reg-email" placeholder="Email" required>
-                                <input class="form-control mb-2" id="reg-cpf" placeholder="CPF" required>
-                                <input class="form-control mb-3" id="reg-pass" placeholder="Senha" type="password"
-                                    required>
-                                <button class="btn btn-success w-100 fw-bold">Criar Conta</button>
-                            </form>
+                        <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab">
+                            <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill"
+                                    data-bs-target="#tab-login">Login</button></li>
+                            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill"
+                                    data-bs-target="#tab-register">Cadastro</button></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="tab-login">
+                                <form onsubmit="Auth.login(event)">
+                                    <div class="form-floating mb-3"><input type="email" class="form-control"
+                                            id="login-email" required><label>Email</label></div>
+                                    <div class="form-floating mb-3"><input type="password" class="form-control"
+                                            id="login-pass" required><label>Senha</label></div>
+                                    <button class="btn btn-primary w-100 py-2 fw-bold">Entrar</button>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="tab-register">
+                                <form onsubmit="Auth.register(event)">
+                                    <input class="form-control mb-2" id="reg-name" placeholder="Nome" required>
+                                    <input class="form-control mb-2" id="reg-email" placeholder="Email" required>
+                                    <input class="form-control mb-2" id="reg-cpf" placeholder="CPF" required>
+                                    <input class="form-control mb-3" id="reg-pass" placeholder="Senha" type="password"
+                                        required>
+                                    <button class="btn btn-success w-100 py-2 fw-bold">Criar Conta</button>
+                                </form>
+                            </div>
                         </div>
+                        <div id="auth-error" class="alert alert-danger mt-3 d-none small"></div>
                     </div>
-                    <div id="auth-error" class="alert alert-danger mt-3 d-none small"></div>
                 </div>
             </div>
         </div>
@@ -417,24 +491,26 @@
     <div class="modal fade" id="cart-modal" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content border-0">
-                <div class="modal-header">
-                    <h5 class="fw-bold">Carrinho</h5><button class="btn-close" data-bs-dismiss="modal"></button>
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="fw-bold">Seu Carrinho</h5><button class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <div id="cart-items-container"></div>
-                    <div class="d-flex justify-content-between align-items-center bg-light p-3 rounded mt-3">
-                        <span class="fw-bold">Total:</span><span class="fw-bold fs-4" id="cart-total">R$ 0,00</span>
+                    <div class="bg-light p-3 rounded mt-3 d-flex justify-content-between">
+                        <span>Total:</span><span class="fw-bold fs-5" id="cart-total">R$ 0,00</span>
                     </div>
+                    <div id="ai-quote-box" class="p-3 border rounded bg-white mt-3 d-none font-monospace small"></div>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-outline-primary" onclick="Cart.aiQuote()">✨ Orçamento IA</button>
-                    <button class="btn btn-success fw-bold px-4" onclick="Cart.showCheckout()">Finalizar Compra</button>
+                <div class="modal-footer border-0">
+                    <button class="btn btn-outline-primary" onclick="Cart.aiQuote()">💡 Gerar Orçamento IA</button>
+                    <button class="btn btn-success fw-bold px-4" onclick="Cart.startCheckout()">Finalizar
+                        Compra</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- CHECKOUT MODAL -->
+    <!-- CHECKOUT MODAL (NEW) -->
     <div class="modal fade" id="checkout-modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -442,199 +518,167 @@
                     <h5 class="fw-bold">Finalizar Pedido</h5><button class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Como deseja pagar?</p>
+                    <p class="text-muted">Escolha como deseja pagar. Pedidos não pagos em 48h são cancelados.</p>
                     <div class="d-grid gap-2">
-                        <button class="btn btn-outline-success text-start p-3" onclick="Cart.setPayment('pix')">
-                            <i class="bi bi-qr-code fs-4 me-2"></i> <strong>PIX</strong> (Aprovação rápida)
+                        <button class="btn btn-outline-success p-3 text-start" onclick="Cart.setPayment('pix')">
+                            <div class="fw-bold"><i class="bi bi-qr-code"></i> PIX</div>
+                            <small>Aprovação rápida. Envio de comprovante.</small>
                         </button>
-                        <button class="btn btn-outline-dark text-start p-3" onclick="Cart.setPayment('loja')">
-                            <i class="bi bi-shop fs-4 me-2"></i> <strong>Pagar na Loja</strong> (Dinheiro/Cartão)
+                        <button class="btn btn-outline-dark p-3 text-start" onclick="Cart.setPayment('loja')">
+                            <div class="fw-bold"><i class="bi bi-shop"></i> Pagar na Loja</div>
+                            <small>Dinheiro ou Cartão na retirada.</small>
                         </button>
                     </div>
-
-                    <div id="pix-info" class="d-none mt-3 p-3 bg-light border rounded text-center">
-                        <p class="mb-1 text-muted">Chave PIX (CNPJ):</p>
-                        <h4 class="font-monospace select-all"
-                            onclick="navigator.clipboard.writeText(App.config.pixKey); alert('Copiado!')">
-                            00.000.000/0001-00</h4>
-                        <small class="text-danger">Envie o comprovante para o WhatsApp após confirmar.</small>
+                    <div id="pix-detalhes" class="d-none mt-3 p-3 bg-light border rounded text-center">
+                        <small>Chave PIX (CNPJ):</small>
+                        <h4 class="font-monospace">00.000.000/0001-00</h4>
+                        <p class="small text-danger mb-0">Envie o comprovante no WhatsApp após confirmar.</p>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary fw-bold" id="btn-confirm-order" disabled
+                    <button class="btn btn-primary w-100 fw-bold" id="btn-submit-order" disabled
                         onclick="Cart.submitOrder()">Confirmar Pedido</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- EDIT ORDER MODAL (ADMIN) -->
-    <div class="modal fade" id="edit-order-modal" tabindex="-1">
+    <!-- ADMIN EDIT ORDER MODAL -->
+    <div class="modal fade" id="admin-edit-modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="fw-bold">Editar Pedido #<span id="edit-order-id"></span></h5><button class="btn-close"
+                    <h5 class="fw-bold">Editar Pedido #<span id="ae-id"></span></h5><button class="btn-close"
                         data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <h6>Itens Atuais:</h6>
-                    <ul class="list-group mb-3" id="edit-order-items"></ul>
-                    <h6>Adicionar Item:</h6>
+                    <h6>Itens do Pedido:</h6>
+                    <ul class="list-group mb-3" id="ae-list"></ul>
+                    <hr>
                     <div class="input-group">
-                        <select class="form-select" id="edit-add-prod"></select>
-                        <button class="btn btn-success" onclick="Admin.addItemToOrder()">Add</button>
+                        <select class="form-select" id="ae-add-select"></select>
+                        <button class="btn btn-success" onclick="Admin.addItem()">Adicionar</button>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" onclick="Admin.saveOrderChanges()">Salvar Alterações</button>
+                    <button class="btn btn-primary" onclick="Admin.saveChanges()">Salvar & Aprovar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- TOAST -->
+    <!-- TOASTS -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="liveToast" class="toast align-items-center text-white bg-secondary border-0" role="alert">
+        <div id="liveToast" class="toast align-items-center text-white border-0" role="alert">
             <div class="d-flex">
-                <div class="toast-body" id="toast-text"></div><button class="btn-close btn-close-white me-2 m-auto"
-                    data-bs-dismiss="toast"></button>
+                <div class="toast-body" id="toast-text"></div><button type="button"
+                    class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
             </div>
         </div>
     </div>
 
-    <!-- SCRIPTS -->
-    <script src="https://md-block.verou.me/md-block.js" type="module"></script> <!-- Markdown Renderer -->
+    <!-- LIBS -->
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- GOOGLE AI SDK IMPORT VIA MAP -->
-    <script type="importmap">
-      {
-        "imports": {
-          "@google/generative-ai": "https://esm.run/@google/generative-ai"
-        }
-      }
-    </script>
-
-    <script type="module">
-        import { GoogleGenerativeAI } from "@google/generative-ai";
-
-        // GLOBAL SCOPE EXPOSURE
-        window.App = {
-            config: {
-                supabaseUrl: 'https://ydwxljgmzoqsemwemtml.supabase.co',
-                supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlkd3hsamdtem9xc2Vtd2VtdG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwODM4ODEsImV4cCI6MjA4MDY1OTg4MX0.7elSMr11AHIhYayJgwqJQCpv0CdyiiM5XunW82Y-rAo',
-                geminiKey: 'AIzaSyCO22vM99hmTcsUB6RwEqgDXcsO-UrO1VQ',
-                whatsapp: '5585991815434',
-                pixKey: '00.000.000/0001-00'
-            },
-            state: { user: JSON.parse(localStorage.getItem('user')) || null, cart: JSON.parse(localStorage.getItem('cart')) || [], currentPayment: null }
+    <!-- LOGIC -->
+    <script>
+        /** SERVICES **/
+        const DB = {
+            client: supabase.createClient(App.config.supabaseUrl, App.config.supabaseKey),
+            async rpc(func) { return await func(this.client); }
         };
 
-        // --- SERVICES ---
-        const DB = supabase.createClient(App.config.supabaseUrl, App.config.supabaseKey);
-        const GenAI = new GoogleGenerativeAI(App.config.geminiKey);
-        const Model = GenAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const Services = {
+            // ROBUST REST API FALLBACK FOR GEMINI (No SDK to avoid modules issues)
+            async askGemini(prompt) {
+                const key = App.config.geminiKey;
+                const models = ['gemini-1.5-flash', 'gemini-pro', 'gemini-1.0-pro'];
 
-        // --- AUTH ---
-        window.Auth = {
-            async login(e) {
-                e.preventDefault();
-                const email = document.getElementById('login-email').value.trim().toLowerCase();
-                const pass = document.getElementById('login-pass').value.trim();
-                const errDiv = document.getElementById('auth-error');
-
-                const { data, error } = await DB.from('usuarios').select('*').ilike('email', email).maybeSingle();
-
-                if (error) { errDiv.innerText = "Erro DB: " + error.message; errDiv.classList.remove('d-none'); return; }
-                if (!data) {
-                    errDiv.innerHTML = "Usuário não encontrado.<br>Dica: Verifique se a tabela 'usuarios' existe no Supabase.";
-                    errDiv.classList.remove('d-none'); return;
+                for (let m of models) {
+                    try {
+                        const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${key}`, {
+                            method: 'POST', headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                        });
+                        if (r.ok) {
+                            const j = await r.json();
+                            return j.candidates?.[0]?.content?.parts?.[0]?.text || "Sem resposta.";
+                        }
+                    } catch (e) { console.warn(m + " failed"); }
                 }
-                if (data.senha !== pass) { errDiv.innerText = "Senha incorreta."; errDiv.classList.remove('d-none'); return; }
 
-                this.setSession(data);
-                bootstrap.Modal.getInstance(document.getElementById('auth-modal')).hide();
-                UI.showToast(`Bem-vindo, ${data.nome.split(' ')[0]}!`);
-            },
-            async register(e) {
-                e.preventDefault();
-                const user = {
-                    nome: document.getElementById('reg-name').value.trim(),
-                    email: document.getElementById('reg-email').value.trim().toLowerCase(),
-                    cpf: document.getElementById('reg-cpf').value.trim(),
-                    senha: document.getElementById('reg-pass').value.trim(),
-                    pontos: 0,
-                    is_admin: false
-                };
-                const { error } = await DB.from('usuarios').insert([user]);
-                if (error) alert('Erro: ' + error.message);
-                else { alert('Sucesso! Logue agora.'); location.reload(); } // Reload specifically requested to fix UI glitch
-            },
-            setSession(user) {
-                App.state.user = user;
-                localStorage.setItem('user', JSON.stringify(user));
-                UI.updateAuth();
-            },
-            logout() {
-                localStorage.removeItem('user');
-                location.reload();
+                // FINAL FALLBACK
+                return "⚠️ A IA está indisponível (Erro de Conexão/Key). Mas nosso time responde no Zap!";
             }
         };
 
-        // --- SHOP & CART ---
-        window.Shop = {
+        /** SHOP **/
+        const Shop = {
             list: [],
             async init() {
-                const { data } = await DB.from('produtos').select('*');
+                const { data } = await DB.client.from('produtos').select('*');
                 this.list = data || [];
                 this.render();
             },
             render(items = this.list) {
                 const grid = document.getElementById('product-grid');
+                if (!items.length) { grid.innerHTML = '<div class="col-12 text-center text-muted">Nada encontrado.</div>'; return; }
+
                 grid.innerHTML = items.map(p => `
                     <div class="col-6 col-md-4 col-lg-3">
                         <div class="card card-hover h-100">
-                            <img src="${p.imagem_url}" class="card-img-top" style="height:150px; object-fit:cover" onerror="this.src='https://placehold.co/300'">
-                            <div class="card-body">
+                            <div style="height:180px; overflow:hidden">
+                                <img src="${p.imagem_url}" class="w-100 h-100 object-fit-cover" onerror="this.src='https://placehold.co/300'">
+                            </div>
+                            <div class="card-body d-flex flex-column">
                                 <h6 class="fw-bold text-truncate">${p.nome}</h6>
-                                <p class="small text-muted mb-2">R$ ${p.preco}</p>
-                                <button class="btn btn-sm btn-outline-primary w-100" onclick="Cart.add(${p.id})">Add</button>
+                                <div class="mt-auto">
+                                    <p class="mb-2 text-primary fw-bold">R$ ${p.preco}</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 rounded-pill" onclick="Cart.add(${p.id})">Comprar</button>
+                                </div>
                             </div>
                         </div>
-                    </div>`).join('') || '<h4 class="text-center w-100 text-muted">Sem produtos :(</h4>';
+                    </div>
+                `).join('');
             },
             search(q) { this.render(this.list.filter(p => p.nome.toLowerCase().includes(q.toLowerCase()))); }
         };
 
-        window.Cart = {
+        /** CART & CHECKOUT **/
+        const Cart = {
+            paymentMethod: null,
             add(id) {
                 const p = Shop.list.find(x => x.id === id);
-                if (p) {
-                    App.state.cart.push(p);
-                    this.save();
-                    UI.showToast("Adicionado!");
-                }
+                if (p) { App.state.cart.push(p); this.save(); UI.toast("Item adicionado!"); }
             },
             remove(i) { App.state.cart.splice(i, 1); this.save(); },
             save() { localStorage.setItem('cart', JSON.stringify(App.state.cart)); UI.updateCart(); },
             open() { UI.modal('cart-modal'); },
 
-            showCheckout() {
-                if (!App.state.user) return UI.showToast("Faça login primeiro!", "bg-warning");
+            async aiQuote() {
+                const box = document.getElementById('ai-quote-box');
+                box.classList.remove('d-none');
+                box.innerHTML = "🤖 Analisando...";
+                const txt = await Services.askGemini(`Crie um orçamento técnico para peças de carro: ${App.state.cart.map(i => i.nome).join(', ')}. Use tom profissional.`);
+                box.innerHTML = txt.replace(/\n/g, '<br>');
+            },
+
+            startCheckout() {
+                if (!App.state.user) return UI.toast("Faça login para finalizar.", "bg-warning");
                 if (App.state.cart.length === 0) return;
+
                 bootstrap.Modal.getInstance(document.getElementById('cart-modal')).hide();
                 UI.modal('checkout-modal');
-                // Reset state
-                document.getElementById('pix-info').classList.add('d-none');
-                document.getElementById('btn-confirm-order').disabled = true;
+                this.paymentMethod = null;
+                document.getElementById('pix-detalhes').classList.add('d-none');
+                document.getElementById('btn-submit-order').disabled = true;
             },
 
             setPayment(type) {
-                App.state.currentPayment = type;
-                document.getElementById('btn-confirm-order').disabled = false;
-                document.getElementById('pix-info').classList.toggle('d-none', type !== 'pix');
+                this.paymentMethod = type;
+                document.getElementById('pix-detalhes').classList.toggle('d-none', type !== 'pix');
+                document.getElementById('btn-submit-order').disabled = false;
             },
 
             async submitOrder() {
@@ -645,16 +689,16 @@
                     items: App.state.cart,
                     total: total,
                     status: 'pendente',
-                    pagamento_metodo: App.state.currentPayment,
+                    pagamento_metodo: this.paymentMethod,
                     pagamento_status: 'aguardando'
                 };
 
-                // Insert DB
-                const { data, error } = await DB.from('pedidos').insert([order]).select().single();
+                // DB SAVE
+                const { data, error } = await DB.client.from('pedidos').insert([order]).select().single();
 
                 if (error) {
                     console.error(error);
-                    alert(`Erro ao salvar pedido: ${error.message}. Tente novamente ou contate o WhatsApp.`);
+                    alert("Erro ao salvar pedido (Verifique se criou a tabela 'pedidos' no Supabase).");
                     return;
                 }
 
@@ -662,49 +706,37 @@
                 const orderId = data.id;
                 bootstrap.Modal.getInstance(document.getElementById('checkout-modal')).hide();
 
-                let msg = `✅ Pedido #${orderId} REALIZADO!\n`;
-                msg += `Valor: R$ ${total.toFixed(2)}\n`;
-                msg += `Prazo: 48h para retirada.\n`;
-                if (App.state.currentPayment === 'pix') msg += `Envie o comprovante aqui no WhatsApp!`;
-                else msg += `Pagamento na Loja selecionado.`;
+                let msg = `Olá! Realizei o Pedido #${orderId} no site.\n`;
+                msg += `Itens: ${App.state.cart.length} unid.\nValor: R$ ${total.toFixed(2)}\n`;
+                msg += `Pagamento: ${this.paymentMethod.toUpperCase()}\n`;
+                if (this.paymentMethod === 'pix') msg += `(Segue comprovante em anexo)`;
 
-                // Link
                 window.open(`https://wa.me/${App.config.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
 
                 App.state.cart = [];
                 this.save();
-                UI.showToast("Pedido Gerado com Sucesso!");
-            },
-
-            async aiQuote() {
-                const prompt = `Gere um orçamento técnico e persuasivo para estes itens: ${App.state.cart.map(i => i.nome).join(', ')}.`;
-                try {
-                    const result = await Model.generateContent(prompt);
-                    const response = result.response.text();
-                    alert(response); // Simple alert for now as requested by "simple"
-                } catch (e) {
-                    alert("Modo Offline: " + App.state.cart.map(i => i.nome).join(', '));
-                }
+                UI.toast("Pedido Realizado! Finalize no WhatsApp.", "bg-success");
             }
         };
 
-        // --- ADMIN ---
-        window.Admin = {
-            currentEditId: null,
+        /** ADMIN **/
+        const Admin = {
+            editId: null,
+            tempItems: [],
+
             async load() {
-                const search = document.getElementById('admin-search-order').value;
-                let query = DB.from('pedidos').select('*').order('created_at', { ascending: false });
+                const searchId = document.getElementById('admin-search-id').value;
+                let q = DB.client.from('pedidos').select('*').order('created_at', { ascending: false });
+                if (searchId) q = q.eq('id', searchId);
 
-                if (search) query = query.eq('id', search);
+                const { data } = await q;
+                const body = document.getElementById('admin-order-list');
 
-                const { data } = await query;
-                const tbody = document.getElementById('admin-order-list');
-                tbody.innerHTML = '';
+                if (!data?.length) { body.innerHTML = '<tr><td colspan="6" class="text-center">Nenhum pedido.</td></tr>'; return; }
 
-                data?.forEach(o => {
-                    tbody.innerHTML += `
+                body.innerHTML = data.map(o => `
                     <tr>
-                        <td>#${o.id}</td>
+                        <td><strong>#${o.id}</strong></td>
                         <td>${o.user_nome}</td>
                         <td>R$ ${o.total}</td>
                         <td><span class="badge bg-${o.status === 'pendente' ? 'warning' : 'success'}">${o.status}</span></td>
@@ -712,91 +744,162 @@
                         <td>
                             <button class="btn btn-sm btn-primary" onclick="Admin.openEdit(${o.id})">Editar/Aprovar</button>
                         </td>
-                    </tr>`;
-                });
+                    </tr>
+                `).join('');
+
+                // Also load products for list
+                const pList = document.getElementById('admin-prod-list');
+                pList.innerHTML = Shop.list.map(p => `<tr><td>${p.nome}</td><td>R$ ${p.preco}</td><td><button class="btn btn-sm btn-danger">X</button></td></tr>`).join('');
             },
+
             async openEdit(id) {
-                this.currentEditId = id;
-                const { data } = await DB.from('pedidos').select('*').eq('id', id).single();
-                if (!data) return;
+                this.editId = id;
+                const { data } = await DB.client.from('pedidos').select('*').eq('id', id).single();
+                this.tempItems = data.items;
 
-                document.getElementById('edit-order-id').innerText = id;
-                const list = document.getElementById('edit-order-items');
-                list.innerHTML = '';
+                this.renderEditList();
 
-                data.items.forEach((item, idx) => {
-                    list.innerHTML += `<li class="list-group-item d-flex justify-content-between">${item.nome} <button class="btn btn-xs btn-danger" onclick="Admin.removeItem(${id}, ${idx})">X</button></li>`;
-                });
+                // Fill Select
+                const sel = document.getElementById('ae-add-select');
+                sel.innerHTML = Shop.list.map(p => `<option value="${p.id}">${p.nome} (R$${p.preco})</option>`).join('');
 
-                // Fill product select
-                const sel = document.getElementById('edit-add-prod');
-                sel.innerHTML = Shop.list.map(p => `<option value="${p.id}">${p.nome} - R$ ${p.preco}</option>`).join('');
-
-                UI.modal('edit-order-modal');
+                document.getElementById('ae-id').innerText = id;
+                UI.modal('admin-edit-modal');
             },
-            async removeItem(orderId, itemIdx) {
-                const { data } = await DB.from('pedidos').select('items').eq('id', orderId).single();
-                data.items.splice(itemIdx, 1);
-                // Recalc total hardcoded for now or fetch prices again
-                // Update DB
-                await DB.from('pedidos').update({ items: data.items }).eq('id', orderId);
-                this.openEdit(orderId); // Reload
+
+            renderEditList() {
+                const el = document.getElementById('ae-list');
+                el.innerHTML = this.tempItems.map((item, idx) => `
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        ${item.nome} <span class="badge bg-secondary">R$ ${item.preco}</span>
+                        <button class="btn btn-sm btn-danger py-0" onclick="Admin.removeItem(${idx})">X</button>
+                    </li>
+                `).join('');
             },
-            async addItemToOrder() {
-                const prodId = document.getElementById('edit-add-prod').value;
-                const p = Shop.list.find(x => x.id == prodId);
 
-                const { data } = await DB.from('pedidos').select('items').eq('id', this.currentEditId).single();
-                data.items.push(p);
-                await DB.from('pedidos').update({ items: data.items }).eq('id', this.currentEditId);
-                this.openEdit(this.currentEditId);
+            removeItem(idx) { this.tempItems.splice(idx, 1); this.renderEditList(); },
+
+            addItem() {
+                const id = document.getElementById('ae-add-select').value;
+                const p = Shop.list.find(x => x.id == id);
+                if (p) { this.tempItems.push(p); this.renderEditList(); }
             },
-            async saveOrderChanges() {
-                // Determine new status?
-                const approved = confirm("Aprovar pedido?");
-                const status = approved ? 'aprovado' : 'pendente';
 
-                // Recalc total
-                const { data } = await DB.from('pedidos').select('items').eq('id', this.currentEditId).single();
-                const total = data.items.reduce((a, b) => a + Number(b.preco), 0);
+            async saveChanges() {
+                const total = this.tempItems.reduce((a, b) => a + Number(b.preco), 0);
+                await DB.client.from('pedidos').update({
+                    items: this.tempItems,
+                    total: total,
+                    status: 'aprovado' // Auto approve on edit save
+                }).eq('id', this.editId);
 
-                await DB.from('pedidos').update({ status, total }).eq('id', this.currentEditId);
-
-                bootstrap.Modal.getInstance(document.getElementById('edit-order-modal')).hide();
+                bootstrap.Modal.getInstance(document.getElementById('admin-edit-modal')).hide();
                 this.load();
-                UI.showToast("Pedido Atualizado!");
+                UI.toast("Pedido atualizado e aprovado!");
             }
         };
 
-        // --- UI ---
-        window.UI = {
-            init() { Shop.init(); this.updateAuth(); this.updateCart(); },
-            modal(id) { new bootstrap.Modal(document.getElementById(id)).show(); },
-            showToast(msg, bg = 'bg-primary') {
-                const el = document.getElementById('liveToast');
-                el.className = `toast align-items-center text-white border-0 ${bg}`;
-                document.getElementById('toast-text').innerText = msg;
-                new bootstrap.Toast(el).show();
+        /** AUTH **/
+        const Auth = {
+            async login(e) {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value.trim().toLowerCase();
+                const pass = document.getElementById('login-pass').value.trim();
+                const err = document.getElementById('auth-error');
+
+                // LOGIN LOGIC
+                const { data, error } = await DB.client.from('usuarios').select('*').ilike('email', email).maybeSingle();
+
+                if (!data) {
+                    err.classList.remove('d-none');
+                    err.innerHTML = "Não encontrado. <br><strong>Dica:</strong> Execute 'db_setup.sql' no Supabase se as tabelas não existirem.";
+                    return;
+                }
+                if (data.senha !== pass) {
+                    err.classList.remove('d-none'); err.innerText = "Senha incorreta."; return;
+                }
+
+                this.setSession(data);
+                bootstrap.Modal.getInstance(document.getElementById('auth-modal')).hide();
+                UI.toast(`Olá, ${data.nome}!`);
+            },
+            async register(e) {
+                e.preventDefault();
+                const u = {
+                    nome: document.getElementById('reg-name').value,
+                    email: document.getElementById('reg-email').value.toLowerCase(),
+                    cpf: document.getElementById('reg-cpf').value,
+                    senha: document.getElementById('reg-pass').value,
+                    pontos: 0, is_admin: false
+                };
+                const { error } = await DB.client.from('usuarios').insert([u]);
+                if (error) alert("Erro: " + error.message);
+                else { alert("Sucesso!"); location.reload(); }
+            },
+            setSession(u) {
+                App.state.user = u; localStorage.setItem('user', JSON.stringify(u)); UI.updateAuth();
+            },
+            logout() { localStorage.removeItem('user'); location.reload(); }
+        };
+
+        /** CHATBOT **/
+        const Chatbot = {
+            isOpen: false,
+            toggle() { this.isOpen = !this.isOpen; document.getElementById('chatbot').classList.toggle('chat-open', this.isOpen); },
+            async send() {
+                const inp = document.getElementById('chat-txt');
+                const txt = inp.value; if (!txt) return;
+
+                this.msg(txt, 'user');
+                inp.value = '';
+
+                this.msg("Digitando...", 'ai', 'temp');
+                const res = await Services.askGemini(txt);
+                document.querySelector('.temp')?.remove();
+                this.msg(res, 'ai');
+            },
+            msg(txt, role, extra = '') {
+                const d = document.createElement('div');
+                d.className = `msg msg-${role} ${extra}`; d.innerHTML = txt;
+                const db = document.getElementById('chat-messages');
+                db.appendChild(d); db.scrollTop = db.scrollHeight;
+            }
+        };
+
+        /** UI INIT **/
+        const UI = {
+            init() {
+                Shop.init();
+                this.updateAuth();
+                this.updateCart();
+                if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-bs-theme', 'dark');
             },
             updateAuth() {
                 const u = App.state.user;
-                const c = document.getElementById('auth-container');
+                const el = document.getElementById('auth-container');
                 if (u) {
                     if (u.is_admin) document.getElementById('nav-admin-link').classList.remove('d-none');
-                    c.innerHTML = `<button class="btn btn-sm btn-light" onclick="Auth.logout()">Sair (${u.nome.split(' ')[0]})</button>`;
+                    el.innerHTML = `<button class="btn btn-sm btn-light border" onclick="Auth.logout()">Sair</button>`;
                 } else {
-                    c.innerHTML = `<button class="btn btn-gradient btn-sm" onclick="UI.modal('auth-modal')">Entrar</button>`;
+                    el.innerHTML = `<button class="btn btn-gradient btn-sm" onclick="UI.modal('auth-modal')">Entrar</button>`;
                 }
             },
             updateCart() {
                 document.getElementById('cart-badge').innerText = App.state.cart.length;
-                const list = document.getElementById('cart-items-container');
-                list.innerHTML = App.state.cart.map((p, i) => `
+                const t = App.state.cart.reduce((a, b) => a + Number(b.preco), 0);
+                document.getElementById('cart-total').innerText = 'R$ ' + t.toFixed(2);
+
+                const cList = document.getElementById('cart-items-container');
+                cList.innerHTML = App.state.cart.map((i, idx) => `
                     <div class="d-flex justify-content-between border-bottom py-2">
-                        <span>${p.nome}</span> <button class="btn btn-link text-danger p-0" onclick="Cart.remove(${i})">x</button>
+                        <small>${i.nome}</small>
+                        <button class="btn btn-link text-danger p-0" onclick="Cart.remove(${idx})">x</button>
                     </div>`).join('');
-                const total = App.state.cart.reduce((a, b) => a + Number(b.preco), 0);
-                document.getElementById('cart-total').innerText = 'R$ ' + total.toFixed(2);
+            },
+            showHome() {
+                document.getElementById('home').classList.remove('d-none');
+                document.getElementById('shop').classList.remove('d-none');
+                document.getElementById('admin-dashboard').classList.add('d-none');
             },
             showAdmin() {
                 document.getElementById('home').classList.add('d-none');
@@ -804,41 +907,22 @@
                 document.getElementById('admin-dashboard').classList.remove('d-none');
                 Admin.load();
             },
-            toggleTheme() {
-                const html = document.documentElement;
-                const next = html.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
-                html.setAttribute('data-bs-theme', next);
-            }
-        };
-
-        // --- CHATBOT ---
-        window.Chatbot = {
-            isOpen: false,
-            toggle() { this.isOpen = !this.isOpen; document.getElementById('chatbot').classList.toggle('chat-open', this.isOpen); },
-            async send() {
-                const inp = document.getElementById('chat-txt');
-                const txt = inp.value;
-                if (!txt) return;
-
-                this.addMsg(txt, 'user');
-                inp.value = '';
-
-                try {
-                    const result = await Model.generateContent(txt);
-                    this.addMsg(result.response.text(), 'ai');
-                } catch (e) {
-                    this.addMsg("Estou offline no momento. Tente mais tarde!", 'ai');
-                }
+            modal(id) { new bootstrap.Modal(document.getElementById(id)).show(); },
+            toast(msg, bg = 'bg-primary') {
+                const el = document.getElementById('liveToast');
+                el.className = `toast align-items-center text-white border-0 ${bg}`;
+                document.getElementById('toast-text').innerText = msg;
+                new bootstrap.Toast(el).show();
             },
-            addMsg(txt, role) {
-                const d = document.createElement('div');
-                d.className = `msg msg-${role}`;
-                d.innerText = txt;
-                document.getElementById('chat-messages').append(d);
+            toggleTheme() {
+                const r = document.documentElement;
+                const n = r.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+                r.setAttribute('data-bs-theme', n); localStorage.setItem('theme', n);
             }
         };
 
-        UI.init();
+        window.onload = () => UI.init();
+
     </script>
 </body>
 
