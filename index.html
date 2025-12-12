@@ -7,14 +7,12 @@
     <meta name="description" content="Arthur Auto Peças - A evolução da sua experiência automotiva.">
     <title>Arthur Auto Peças | Ultimate Edition</title>
 
-    <!-- EXTENSIONS & FONTS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
-    <!-- CORE STYLE SYSTEM -->
     <style>
         :root {
             --primary: #2563eb;
@@ -45,18 +43,9 @@
             overflow-x: hidden;
         }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--secondary);
-            border-radius: 4px;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 4px; }
 
         .navbar-blur {
             background: var(--glass);
@@ -66,180 +55,64 @@
             transition: var(--transition);
         }
 
-        .nav-link {
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            position: relative;
-        }
-
+        .nav-link { font-weight: 600; letter-spacing: 0.5px; position: relative; }
         .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: var(--transition);
-            transform: translateX(-50%);
+            content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px;
+            background: var(--primary); transition: var(--transition); transform: translateX(-50%);
         }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 80%;
-        }
+        .nav-link:hover::after, .nav-link.active::after { width: 80%; }
 
         .card-hover {
-            border: none;
-            border-radius: 20px;
-            background: white;
-            box-shadow: var(--card-shadow);
-            transition: var(--transition);
-            overflow: hidden;
-            position: relative;
+            border: none; border-radius: 20px; background: white;
+            box-shadow: var(--card-shadow); transition: var(--transition); overflow: hidden; position: relative;
         }
-
-        [data-bs-theme="dark"] .card-hover {
-            background: #1e293b;
-        }
-
-        .card-hover:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
+        [data-bs-theme="dark"] .card-hover { background: #1e293b; }
+        .card-hover:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12); }
 
         .btn-gradient {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border: none;
-            color: white;
-            border-radius: 12px;
-            padding: 12px 24px;
-            font-weight: 700;
-            transition: var(--transition);
+            border: none; color: white; border-radius: 12px; padding: 12px 24px; font-weight: 700; transition: var(--transition);
         }
-
-        .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
-        }
+        .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3); }
 
         .hero-section {
             min-height: 80vh;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            position: relative;
-            overflow: hidden;
-            border-radius: 0 0 50px 50px;
-            color: white;
-            display: flex;
-            align-items: center;
+            position: relative; overflow: hidden; border-radius: 0 0 50px 50px;
+            color: white; display: flex; align-items: center;
         }
 
         .hero-bg-accent {
-            position: absolute;
-            width: 600px;
-            height: 600px;
+            position: absolute; width: 600px; height: 600px;
             background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, transparent 70%);
-            top: -100px;
-            right: -100px;
-            border-radius: 50%;
-            animation: pulse 10s infinite;
+            top: -100px; right: -100px; border-radius: 50%; animation: pulse 10s infinite;
         }
 
         .chat-widget {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 350px;
-            height: 500px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            transform: translateY(120%);
-            transition: var(--transition);
+            position: fixed; bottom: 100px; right: 30px; width: 350px; height: 500px;
+            background: white; border-radius: 20px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            z-index: 1000; display: flex; flex-direction: column; overflow: hidden;
+            transform: translateY(120%); transition: var(--transition);
         }
+        [data-bs-theme="dark"] .chat-widget { background: #1e293b; color: white; }
+        .chat-open { transform: translateY(0); }
 
-        [data-bs-theme="dark"] .chat-widget {
-            background: #1e293b;
-            color: white;
-        }
+        .chat-header { background: var(--primary); color: white; padding: 15px; font-weight: bold; cursor: pointer; }
+        .chat-body { flex: 1; padding: 15px; overflow-y: auto; background: #f1f5f9; }
+        [data-bs-theme="dark"] .chat-body { background: #0f172a; }
 
-        .chat-open {
-            transform: translateY(0);
-        }
+        .chat-input { padding: 15px; border-top: 1px solid rgba(0, 0, 0, 0.1); display: flex; gap: 10px; }
 
-        .chat-header {
-            background: var(--primary);
-            color: white;
-            padding: 15px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .chat-body {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            background: #f1f5f9;
-        }
-
-        [data-bs-theme="dark"] .chat-body {
-            background: #0f172a;
-        }
-
-        .chat-input {
-            padding: 15px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            display: flex;
-            gap: 10px;
-        }
-
-        .msg {
-            padding: 8px 12px;
-            border-radius: 15px;
-            margin-bottom: 10px;
-            max-width: 80%;
-            font-size: 0.9rem;
-        }
-
-        .msg-ai {
-            background: white;
-            align-self: flex-start;
-            border-bottom-left-radius: 2px;
-            color: black;
-        }
-
-        .msg-user {
-            background: var(--primary);
-            color: white;
-            align-self: flex-end;
-            margin-left: auto;
-            border-bottom-right-radius: 2px;
-        }
+        .msg { padding: 8px 12px; border-radius: 15px; margin-bottom: 10px; max-width: 80%; font-size: 0.9rem; }
+        .msg-ai { background: white; align-self: flex-start; border-bottom-left-radius: 2px; color: black; }
+        .msg-user { background: var(--primary); color: white; align-self: flex-end; margin-left: auto; border-bottom-right-radius: 2px; }
 
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.5;
-            }
-
-            50% {
-                transform: scale(1.2);
-                opacity: 0.8;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 0.5;
-            }
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.5; }
         }
-
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out;
-        }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out; }
     </style>
 </head>
 
@@ -250,7 +123,7 @@
             config: {
                 supabaseUrl: 'https://ydwxljgmzoqsemwemtml.supabase.co',
                 supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlkd3hsamdtem9xc2Vtd2VtdG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwODM4ODEsImV4cCI6MjA4MDY1OTg4MX0.7elSMr11AHIhYayJgwqJQCpv0CdyiiM5XunW82Y-rAo',
-                geminiKey: 'AIzaSyCO22vM99hmTcsUB6RwEqgDXcsO-UrO1VQ',
+                geminiKey: 'AIzaSyCO22vM99hmTcsUB6RwEqgDXcsO-UrO1VQ', // CUIDADO: Em produção, esconda isso no backend
                 whatsapp: '5585991815434',
                 pixKey: '00.000.000/0001-00'
             },
@@ -262,21 +135,17 @@
         };
     </script>
 
-    <!-- NAVIGATION -->
     <nav class="navbar navbar-expand-lg navbar-blur fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-                <img src="public/logo.png" style="height: 48px;"
-                    onerror="this.src='https://placehold.co/48x48?text=AAP'">
+                <img src="public/logo.png" style="height: 48px;" onerror="this.src='https://placehold.co/48x48?text=AAP'">
                 <div style="line-height:1.1">
                     <span class="fw-black d-block fs-5 text-primary">ARTHUR</span>
-                    <small class="text-uppercase text-muted" style="font-size:0.65rem; letter-spacing: 2px;">Auto
-                        Peças</small>
+                    <small class="text-uppercase text-muted" style="font-size:0.65rem; letter-spacing: 2px;">Auto Peças</small>
                 </div>
             </a>
 
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarMain">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
                 <i class="bi bi-list fs-1 text-primary"></i>
             </button>
 
@@ -286,8 +155,7 @@
                     <li class="nav-item"><a class="nav-link" href="#shop" onclick="UI.showHome()">Loja</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" onclick="Chatbot.toggle()">IA Mechanic</a></li>
                     <li class="nav-item d-none" id="nav-admin-link">
-                        <a class="nav-link text-warning fw-bold" href="#" onclick="UI.showAdmin()"><i
-                                class="bi bi-shield-lock-fill"></i> Admin</a>
+                        <a class="nav-link text-warning fw-bold" href="#" onclick="UI.showAdmin()"><i class="bi bi-shield-lock-fill"></i> Admin</a>
                     </li>
                 </ul>
 
@@ -296,21 +164,17 @@
                         <i class="bi bi-moon-stars-fill"></i>
                     </button>
 
-                    <button class="btn btn-outline-primary rounded-circle position-relative border-0"
-                        onclick="Cart.open()">
+                    <button class="btn btn-outline-primary rounded-circle position-relative border-0" onclick="Cart.open()">
                         <i class="bi bi-bag-fill fs-5"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                            id="cart-badge">0</span>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-badge">0</span>
                     </button>
 
-                    <!-- User Account -->
                     <div id="auth-container"></div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
     <section id="home" class="hero-section">
         <div class="hero-bg-accent"></div>
         <div class="container position-relative z-index-1">
@@ -319,39 +183,33 @@
                     <span class="badge bg-white text-primary mb-3 px-3 py-2 rounded-pill fw-bold shadow-sm">
                         <i class="bi bi-award-fill me-1"></i> A Melhor da Região
                     </span>
-                    <h1 class="display-3 fw-bolder mb-3">Sua Oficina <br><span class="text-primary">Inteligente</span>
-                    </h1>
+                    <h1 class="display-3 fw-bolder mb-3">Sua Oficina <br><span class="text-primary">Inteligente</span></h1>
                     <p class="lead mb-4 text-white-50">Peças originais, consultoria com IA e atendimento premium.</p>
                     <div class="d-flex gap-3">
                         <a href="#shop" class="btn btn-gradient btn-lg">Explorar Catálogo</a>
-                        <button onclick="Chatbot.toggle()"
-                            class="btn btn-outline-light btn-lg border-2 fw-bold">Mecânico Virtual</button>
+                        <button onclick="Chatbot.toggle()" class="btn btn-outline-light btn-lg border-2 fw-bold">Mecânico Virtual</button>
                     </div>
                 </div>
                 <div class="col-lg-6 position-relative animate__animated animate__fadeInRight">
-                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80"
-                        class="img-fluid rounded-4 shadow-lg border border-3 border-dark" alt="Super Car">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80" class="img-fluid rounded-4 shadow-lg border border-3 border-dark" alt="Super Car">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SHOP SECTION -->
     <section id="shop" class="py-5">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
                 <h2 class="fw-bold mb-0">Catálogo <span class="text-primary">Premium</span></h2>
                 <div class="input-group" style="max-width: 300px;">
                     <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
-                    <input type="text" class="form-control border-start-0 ps-0" placeholder="Buscar peça..."
-                        oninput="Shop.search(this.value)">
+                    <input type="text" class="form-control border-start-0 ps-0" placeholder="Buscar peça..." oninput="Shop.search(this.value)">
                 </div>
             </div>
             <div id="product-grid" class="row g-4"></div>
         </div>
     </section>
 
-    <!-- ADMIN DASHBOARD -->
     <section id="admin-dashboard" class="d-none py-5 bg-light" style="min-height: 100vh; padding-top: 100px;">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -360,17 +218,13 @@
             </div>
 
             <div class="row g-4">
-                <!-- Orders Manager -->
                 <div class="col-12">
                     <div class="card border-0 shadow-sm">
-                        <div
-                            class="card-header bg-white border-0 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                        <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center flex-wrap gap-2">
                             <h5 class="mb-0 fw-bold">Gerenciar Pedidos</h5>
                             <div class="d-flex gap-2">
-                                <input type="text" class="form-control form-control-sm" id="admin-search-id"
-                                    placeholder="Buscar ID (ex: 12)" style="width: 150px;">
-                                <button class="btn btn-sm btn-primary" onclick="Admin.load()"><i
-                                        class="bi bi-search"></i></button>
+                                <input type="text" class="form-control form-control-sm" id="admin-search-id" placeholder="Buscar ID (ex: 12)" style="width: 150px;">
+                                <button class="btn btn-sm btn-primary" onclick="Admin.load()"><i class="bi bi-search"></i></button>
                             </div>
                         </div>
                         <div class="card-body p-0">
@@ -393,7 +247,6 @@
                     </div>
                 </div>
 
-                <!-- Product Manager -->
                 <div class="col-12">
                     <div class="card border-0 shadow-sm">
                         <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
@@ -418,54 +271,41 @@
         </div>
     </section>
 
-    <!-- CHATBOT WIDGET -->
     <div id="chatbot" class="chat-widget shadow-lg">
         <div class="chat-header d-flex justify-content-between align-items-center" onclick="Chatbot.toggle()">
             <span><i class="bi bi-robot me-2"></i>Mecânico Virtual</span>
             <i class="bi bi-chevron-down"></i>
         </div>
         <div class="chat-body" id="chat-messages">
-            <div class="d-flex flex-column">
-                <div class="msg msg-ai">Olá! Sou a IA da Arthur Auto Peças. Posso ajudar com orçamentos e dúvidas
-                    técnicas.</div>
+            <div class="d-flex flex-column" id="chat-msg-container">
+                <div class="msg msg-ai">Olá! Sou a IA da Arthur Auto Peças. Posso ajudar com orçamentos e dúvidas técnicas.</div>
             </div>
         </div>
         <div class="chat-input bg-white">
-            <input type="text" id="chat-txt" class="form-control border-0 bg-light" placeholder="Digite sua dúvida..."
-                onkeypress="if(event.key==='Enter') Chatbot.send()">
-            <button class="btn btn-primary rounded-circle" onclick="Chatbot.send()"><i
-                    class="bi bi-send-fill"></i></button>
+            <input type="text" id="chat-txt" class="form-control border-0 bg-light" placeholder="Digite sua dúvida..." onkeypress="if(event.key==='Enter') Chatbot.send()">
+            <button class="btn btn-primary rounded-circle" onclick="Chatbot.send()"><i class="bi bi-send-fill"></i></button>
         </div>
     </div>
 
-    <!-- MODALS -->
-
-    <!-- AUTH MODAL -->
     <div class="modal fade" id="auth-modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 overflow-hidden">
                 <div class="modal-body p-0 d-flex">
-                    <div
-                        class="d-none d-md-block bg-primary text-white p-5 col-5 d-flex flex-column justify-content-center">
+                    <div class="d-none d-md-block bg-primary text-white p-5 col-5 d-flex flex-column justify-content-center">
                         <h4>Bem-vindo!</h4>
                         <p class="small opacity-75">Sua oficina online 24h.</p>
                     </div>
                     <div class="p-4 col-12 col-md-7">
-                        <div class="text-end"><button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
+                        <div class="text-end"><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
                         <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab">
-                            <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill"
-                                    data-bs-target="#tab-login">Login</button></li>
-                            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill"
-                                    data-bs-target="#tab-register">Cadastro</button></li>
+                            <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-login">Login</button></li>
+                            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-register">Cadastro</button></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="tab-login">
                                 <form onsubmit="Auth.login(event)">
-                                    <div class="form-floating mb-3"><input type="email" class="form-control"
-                                            id="login-email" required><label>Email</label></div>
-                                    <div class="form-floating mb-3"><input type="password" class="form-control"
-                                            id="login-pass" required><label>Senha</label></div>
+                                    <div class="form-floating mb-3"><input type="email" class="form-control" id="login-email" required><label>Email</label></div>
+                                    <div class="form-floating mb-3"><input type="password" class="form-control" id="login-pass" required><label>Senha</label></div>
                                     <button class="btn btn-primary w-100 py-2 fw-bold">Entrar</button>
                                 </form>
                             </div>
@@ -474,8 +314,7 @@
                                     <input class="form-control mb-2" id="reg-name" placeholder="Nome" required>
                                     <input class="form-control mb-2" id="reg-email" placeholder="Email" required>
                                     <input class="form-control mb-2" id="reg-cpf" placeholder="CPF" required>
-                                    <input class="form-control mb-3" id="reg-pass" placeholder="Senha" type="password"
-                                        required>
+                                    <input class="form-control mb-3" id="reg-pass" placeholder="Senha" type="password" required>
                                     <button class="btn btn-success w-100 py-2 fw-bold">Criar Conta</button>
                                 </form>
                             </div>
@@ -487,7 +326,6 @@
         </div>
     </div>
 
-    <!-- CART MODAL -->
     <div class="modal fade" id="cart-modal" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content border-0">
@@ -503,14 +341,12 @@
                 </div>
                 <div class="modal-footer border-0">
                     <button class="btn btn-outline-primary" onclick="Cart.aiQuote()">💡 Gerar Orçamento IA</button>
-                    <button class="btn btn-success fw-bold px-4" onclick="Cart.startCheckout()">Finalizar
-                        Compra</button>
+                    <button class="btn btn-success fw-bold px-4" onclick="Cart.startCheckout()">Finalizar Compra</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- CHECKOUT MODAL (NEW) -->
     <div class="modal fade" id="checkout-modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -536,20 +372,17 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary w-100 fw-bold" id="btn-submit-order" disabled
-                        onclick="Cart.submitOrder()">Confirmar Pedido</button>
+                    <button class="btn btn-primary w-100 fw-bold" id="btn-submit-order" disabled onclick="Cart.submitOrder()">Confirmar Pedido</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ADMIN EDIT ORDER MODAL -->
     <div class="modal fade" id="admin-edit-modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="fw-bold">Editar Pedido #<span id="ae-id"></span></h5><button class="btn-close"
-                        data-bs-dismiss="modal"></button>
+                    <h5 class="fw-bold">Editar Pedido #<span id="ae-id"></span></h5><button class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <h6>Itens do Pedido:</h6>
@@ -567,21 +400,17 @@
         </div>
     </div>
 
-    <!-- TOASTS -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div id="liveToast" class="toast align-items-center text-white border-0" role="alert">
             <div class="d-flex">
-                <div class="toast-body" id="toast-text"></div><button type="button"
-                    class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                <div class="toast-body" id="toast-text"></div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
             </div>
         </div>
     </div>
 
-    <!-- LIBS -->
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- LOGIC -->
     <script>
         /** SERVICES **/
         const DB = {
@@ -590,26 +419,40 @@
         };
 
         const Services = {
-            // ROBUST REST API FALLBACK FOR GEMINI (No SDK to avoid modules issues)
+            // ROBUSTEZ: Uso de FETCH nativo (REST API) para evitar problemas de CORS/Módulos em arquivo local
             async askGemini(prompt) {
                 const key = App.config.geminiKey;
-                const models = ['gemini-1.5-flash', 'gemini-pro', 'gemini-1.0-pro'];
+                const models = ['gemini-1.5-flash', 'gemini-pro'];
+                let lastError = "";
 
+                // Tenta modelos diferentes em caso de sobrecarga
                 for (let m of models) {
                     try {
-                        const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${key}`, {
-                            method: 'POST', headers: { 'Content-Type': 'application/json' },
+                        const url = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${key}`;
+                        const response = await fetch(url, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
                         });
-                        if (r.ok) {
-                            const j = await r.json();
-                            return j.candidates?.[0]?.content?.parts?.[0]?.text || "Sem resposta.";
+
+                        if (!response.ok) {
+                            const errData = await response.json();
+                            console.error(`Erro Gemini (${m}):`, errData);
+                            lastError = errData.error?.message || "Erro desconhecido";
+                            continue; // Tenta o próximo modelo
                         }
-                    } catch (e) { console.warn(m + " failed"); }
+
+                        const data = await response.json();
+                        return data.candidates?.[0]?.content?.parts?.[0]?.text || "Não consegui formular uma resposta.";
+
+                    } catch (e) {
+                        console.warn(`Falha na conexão com ${m}:`, e);
+                        lastError = "Erro de rede (Verifique sua internet)";
+                    }
                 }
 
-                // FINAL FALLBACK
-                return "⚠️ A IA está indisponível (Erro de Conexão/Key). Mas nosso time responde no Zap!";
+                // Se tudo falhar
+                return `⚠️ Erro na IA: ${lastError}. Mas não se preocupe, nosso time humano responde no WhatsApp!`;
             }
         };
 
@@ -623,7 +466,7 @@
             },
             render(items = this.list) {
                 const grid = document.getElementById('product-grid');
-                if (!items.length) { grid.innerHTML = '<div class="col-12 text-center text-muted">Nada encontrado.</div>'; return; }
+                if (!items.length) { grid.innerHTML = '<div class="col-12 text-center text-muted">Carregando ou nenhum produto...</div>'; return; }
 
                 grid.innerHTML = items.map(p => `
                     <div class="col-6 col-md-4 col-lg-3">
@@ -659,9 +502,15 @@
             async aiQuote() {
                 const box = document.getElementById('ai-quote-box');
                 box.classList.remove('d-none');
-                box.innerHTML = "🤖 Analisando...";
-                const txt = await Services.askGemini(`Crie um orçamento técnico para peças de carro: ${App.state.cart.map(i => i.nome).join(', ')}. Use tom profissional.`);
-                box.innerHTML = txt.replace(/\n/g, '<br>');
+                box.innerHTML = "🤖 <em>Analisando peças e criando orçamento...</em>";
+                
+                const prompt = `Atue como um mecânico especialista. Crie um orçamento técnico e persuasivo para estas peças: ${App.state.cart.map(i => i.nome).join(', ')}. Explique brevemente a importância da qualidade. Use tom profissional e curto.`;
+                
+                const txt = await Services.askGemini(prompt);
+                
+                // Formatação simples do Markdown para HTML
+                const formatted = txt.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
+                box.innerHTML = formatted;
             },
 
             startCheckout() {
@@ -693,7 +542,6 @@
                     pagamento_status: 'aguardando'
                 };
 
-                // DB SAVE
                 const { data, error } = await DB.client.from('pedidos').insert([order]).select().single();
 
                 if (error) {
@@ -702,7 +550,6 @@
                     return;
                 }
 
-                // Success
                 const orderId = data.id;
                 bootstrap.Modal.getInstance(document.getElementById('checkout-modal')).hide();
 
@@ -747,7 +594,6 @@
                     </tr>
                 `).join('');
 
-                // Also load products for list
                 const pList = document.getElementById('admin-prod-list');
                 pList.innerHTML = Shop.list.map(p => `<tr><td>${p.nome}</td><td>R$ ${p.preco}</td><td><button class="btn btn-sm btn-danger">X</button></td></tr>`).join('');
             },
@@ -759,7 +605,6 @@
 
                 this.renderEditList();
 
-                // Fill Select
                 const sel = document.getElementById('ae-add-select');
                 sel.innerHTML = Shop.list.map(p => `<option value="${p.id}">${p.nome} (R$${p.preco})</option>`).join('');
 
@@ -790,7 +635,7 @@
                 await DB.client.from('pedidos').update({
                     items: this.tempItems,
                     total: total,
-                    status: 'aprovado' // Auto approve on edit save
+                    status: 'aprovado'
                 }).eq('id', this.editId);
 
                 bootstrap.Modal.getInstance(document.getElementById('admin-edit-modal')).hide();
@@ -807,12 +652,11 @@
                 const pass = document.getElementById('login-pass').value.trim();
                 const err = document.getElementById('auth-error');
 
-                // LOGIN LOGIC
                 const { data, error } = await DB.client.from('usuarios').select('*').ilike('email', email).maybeSingle();
 
                 if (!data) {
                     err.classList.remove('d-none');
-                    err.innerHTML = "Não encontrado. <br><strong>Dica:</strong> Execute 'db_setup.sql' no Supabase se as tabelas não existirem.";
+                    err.innerHTML = "Usuário não encontrado. Verifique o banco de dados.";
                     return;
                 }
                 if (data.senha !== pass) {
@@ -834,7 +678,7 @@
                 };
                 const { error } = await DB.client.from('usuarios').insert([u]);
                 if (error) alert("Erro: " + error.message);
-                else { alert("Sucesso!"); location.reload(); }
+                else { alert("Sucesso! Faça login."); location.reload(); }
             },
             setSession(u) {
                 App.state.user = u; localStorage.setItem('user', JSON.stringify(u)); UI.updateAuth();
@@ -853,16 +697,32 @@
                 this.msg(txt, 'user');
                 inp.value = '';
 
-                this.msg("Digitando...", 'ai', 'temp');
+                // Cria indicador de "digitando" com ID para remover depois
+                const tempId = 'temp-' + Date.now();
+                this.msg('<span class="spinner-grow spinner-grow-sm"></span> Digitando...', 'ai', tempId);
+                
+                // Chama a função robusta
                 const res = await Services.askGemini(txt);
-                document.querySelector('.temp')?.remove();
-                this.msg(res, 'ai');
+                
+                // Remove indicador e mostra resposta
+                const tempEl = document.getElementById(tempId);
+                if(tempEl) tempEl.remove();
+                
+                // Formatação simples do Markdown para HTML
+                const formatted = res.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
+                this.msg(formatted, 'ai');
             },
-            msg(txt, role, extra = '') {
+            msg(txt, role, id = '') {
                 const d = document.createElement('div');
-                d.className = `msg msg-${role} ${extra}`; d.innerHTML = txt;
-                const db = document.getElementById('chat-messages');
-                db.appendChild(d); db.scrollTop = db.scrollHeight;
+                if(id) d.id = id;
+                d.className = `msg msg-${role} animate__animated animate__fadeIn`; 
+                d.innerHTML = txt;
+                const db = document.getElementById('chat-msg-container');
+                db.appendChild(d); 
+                
+                // Scroll para o fim
+                const widgetBody = document.getElementById('chat-messages');
+                widgetBody.scrollTop = widgetBody.scrollHeight;
             }
         };
 
@@ -894,7 +754,7 @@
                     <div class="d-flex justify-content-between border-bottom py-2">
                         <small>${i.nome}</small>
                         <button class="btn btn-link text-danger p-0" onclick="Cart.remove(${idx})">x</button>
-                    </div>`).join('');
+                    </div>`).join('') || '<p class="text-center text-muted small">Carrinho vazio</p>';
             },
             showHome() {
                 document.getElementById('home').classList.remove('d-none');
@@ -925,5 +785,4 @@
 
     </script>
 </body>
-
 </html>
