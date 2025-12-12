@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Arthur Auto Peças - Encontre peças automotivas de alta qualidade com orçamentos personalizados.">
+    <meta name="description"
+        content="Arthur Auto Peças - Encontre peças automotivas de alta qualidade com orçamentos personalizados.">
     <title>Arthur Auto Peças - Loja Online de Peças Automotivas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@300;600&display=swap"
+        rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -18,6 +22,7 @@
             --card-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
             --transition-speed: 0.4s;
         }
+
         body {
             font-family: 'Roboto', sans-serif;
             background-color: var(--background-color);
@@ -31,63 +36,290 @@
             background-size: 80% auto;
             position: relative;
         }
+
         body::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(255,255,255,0.92);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.92);
             z-index: -1;
         }
-        .navbar { background: linear-gradient(90deg, #ffffff, #f8f9fa); box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05); padding: 15px 0; }
-        .navbar-brand { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.8rem; color: var(--primary-color); }
-        .nav-link { font-weight: 500; font-size: 1.1rem; transition: color var(--transition-speed); }
-        .nav-link:hover { color: var(--primary-color); }
-        .hero { position: relative; height: 500px; }
-        .carousel-item img { height: 500px; object-fit: cover; filter: brightness(0.5); }
-        .carousel-caption { top: 50%; transform: translateY(-50%); }
-        .carousel-caption h1 { font-family: 'Poppins', sans-serif; font-size: 3.5rem; font-weight: 600; }
-        .carousel-caption p { font-size: 1.3rem; }
-        .search-bar { max-width: 700px; margin: 30px auto; }
-        .search-bar input { border-radius: 25px; padding: 12px 20px; box-shadow: var(--card-shadow); }
-        .categories { background: white; padding: 40px 0; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); }
-        .category-btn { background-color: var(--secondary-color); color: white; padding: 10px 20px; border-radius: 20px; margin: 5px; transition: all var(--transition-speed); }
-        .category-btn:hover, .category-btn.active { background-color: var(--primary-color); transform: scale(1.05); }
-        .product-card { border: none; border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); transition: all var(--transition-speed); background: white; }
-        .product-card:hover { transform: translateY(-12px); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15); }
-        .product-card img { height: 220px; object-fit: cover; transition: transform var(--transition-speed); }
-        .product-card:hover img { transform: scale(1.05); }
-        .product-card .card-body { padding: 25px; }
-        .product-card h5 { font-size: 1.2rem; font-weight: 600; }
-        .product-card p { font-size: 0.95rem; color: var(--secondary-color); }
-        .add-to-cart-btn { background: linear-gradient(45deg, var(--primary-color), #3366cc); border: none; padding: 10px; border-radius: 8px; font-weight: 500; transition: all var(--transition-speed); }
-        .add-to-cart-btn:hover { background: linear-gradient(45deg, #003d99, var(--primary-color)); }
-        .cart-icon { position: relative; }
-        .cart-count { position: absolute; top: -10px; right: -10px; background-color: #e63946; color: white; font-size: 0.9rem; padding: 4px 8px; border-radius: 50%; }
-        .modal-content { border-radius: 12px; box-shadow: var(--card-shadow); }
-        .modal-header { background: var(--primary-color); color: white; border-radius: 12px 12px 0 0; }
-        #quote-result { font-size: 1.8rem; font-weight: 600; color: var(--accent-color); }
-        .loading-spinner { display: none; margin: 30px auto; }
-        .pagination { justify-content: center; margin-top: 30px; }
-        .page-link { border-radius: 8px; margin: 0 5px; transition: all var(--transition-speed); }
-        .page-link:hover { background-color: var(--primary-color); color: white; }
-        .testimonials { background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 50px 0; }
-        .testimonial-card { background: white; border-radius: 12px; padding: 20px; box-shadow: var(--card-shadow); text-align: center; }
-        .footer { background: linear-gradient(90deg, #2d3748, #1a202c); color: white; padding: 50px 0; }
-        .footer a { color: #a0aec0; transition: color var(--transition-speed); }
-        .footer a:hover { color: white; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .fade-in { animation: fadeIn 0.6s ease-in-out; }
-        .logo-img { max-height: 60px; margin-right: 10px; }
-        .user-info { display: flex; align-items: center; gap: 15px; }
-        .points-badge { background: linear-gradient(45deg, #FFD700, #FFA500); color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; }
-        .admin-panel { background: #fff; padding: 30px; border-radius: 12px; margin-top: 30px; box-shadow: var(--card-shadow); }
+
+        .navbar {
+            background: linear-gradient(90deg, #ffffff, #f8f9fa);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color var(--transition-speed);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            position: relative;
+            height: 500px;
+        }
+
+        .carousel-item img {
+            height: 500px;
+            object-fit: cover;
+            filter: brightness(0.5);
+        }
+
+        .carousel-caption {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .carousel-caption h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+        }
+
+        .carousel-caption p {
+            font-size: 1.3rem;
+        }
+
+        .search-bar {
+            max-width: 700px;
+            margin: 30px auto;
+        }
+
+        .search-bar input {
+            border-radius: 25px;
+            padding: 12px 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .categories {
+            background: white;
+            padding: 40px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .category-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin: 5px;
+            transition: all var(--transition-speed);
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .product-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all var(--transition-speed);
+            background: white;
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card img {
+            height: 220px;
+            object-fit: cover;
+            transition: transform var(--transition-speed);
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-card .card-body {
+            padding: 25px;
+        }
+
+        .product-card h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .product-card p {
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+        }
+
+        .add-to-cart-btn {
+            background: linear-gradient(45deg, var(--primary-color), #3366cc);
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all var(--transition-speed);
+        }
+
+        .add-to-cart-btn:hover {
+            background: linear-gradient(45deg, #003d99, var(--primary-color));
+        }
+
+        .cart-icon {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #e63946;
+            color: white;
+            font-size: 0.9rem;
+            padding: 4px 8px;
+            border-radius: 50%;
+        }
+
+        .modal-content {
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .modal-header {
+            background: var(--primary-color);
+            color: white;
+            border-radius: 12px 12px 0 0;
+        }
+
+        #quote-result {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .loading-spinner {
+            display: none;
+            margin: 30px auto;
+        }
+
+        .pagination {
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .page-link {
+            border-radius: 8px;
+            margin: 0 5px;
+            transition: all var(--transition-speed);
+        }
+
+        .page-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .testimonials {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 50px 0;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+
+        .footer {
+            background: linear-gradient(90deg, #2d3748, #1a202c);
+            color: white;
+            padding: 50px 0;
+        }
+
+        .footer a {
+            color: #a0aec0;
+            transition: color var(--transition-speed);
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .logo-img {
+            max-height: 60px;
+            margin-right: 10px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .points-badge {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .admin-panel {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
         @media (max-width: 768px) {
-            .hero .carousel-caption h1 { font-size: 2.2rem; }
-            .product-card img { height: 180px; }
-            .carousel-item img { height: 300px; }
+            .hero .carousel-caption h1 {
+                font-size: 2.2rem;
+            }
+
+            .product-card img {
+                height: 180px;
+            }
+
+            .carousel-item img {
+                height: 300px;
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -108,15 +340,18 @@
                     <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
                     <li class="nav-item" id="user-menu" style="display: none;">
                         <div class="user-info">
-                            <span class="points-badge"><i class="fas fa-star"></i> <span id="user-points">0</span> pts</span>
+                            <span class="points-badge"><i class="fas fa-star"></i> <span id="user-points">0</span>
+                                pts</span>
                             <button class="btn btn-sm btn-outline-danger" onclick="logout()">Sair</button>
                         </div>
                     </li>
                     <li class="nav-item" id="login-btn-nav">
-                        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#login-modal">Entrar</button>
+                        <button class="btn btn-outline-primary" data-bs-toggle="modal"
+                            data-bs-target="#login-modal">Entrar</button>
                     </li>
                     <li class="nav-item cart-icon ms-3">
-                        <button class="btn btn-outline-primary position-relative" data-bs-toggle="modal" data-bs-target="#cart-modal">
+                        <button class="btn btn-outline-primary position-relative" data-bs-toggle="modal"
+                            data-bs-target="#cart-modal">
                             <i class="fas fa-shopping-cart"></i>
                             <span id="cart-count" class="cart-count">0</span>
                         </button>
@@ -177,12 +412,15 @@
         <div class="admin-panel">
             <h2>Painel Administrativo</h2>
             <ul class="nav nav-tabs mb-4">
-                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-produtos">Gerenciar Produtos</a></li>
-                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pedidos">Pedidos Pendentes</a></li>
+                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-produtos">Gerenciar
+                        Produtos</a></li>
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pedidos">Pedidos Pendentes</a>
+                </li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="tab-produtos">
-                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#add-product-modal">+ Adicionar Produto</button>
+                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#add-product-modal">+
+                        Adicionar Produto</button>
                     <div id="admin-products-list"></div>
                 </div>
                 <div class="tab-pane fade" id="tab-pedidos">
@@ -196,7 +434,9 @@
     <section id="products" class="container my-5">
         <h2 class="text-center mb-5">Nossos Produtos</h2>
         <div class="row" id="products-list"></div>
-        <nav><ul class="pagination" id="pagination"></ul></nav>
+        <nav>
+            <ul class="pagination" id="pagination"></ul>
+        </nav>
     </section>
 
     <!-- Testimonials -->
@@ -233,13 +473,15 @@
             <div class="accordion" id="faqAccordion">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse1">
                             Como funciona o programa de pontos?
                         </button>
                     </h2>
                     <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Compras abaixo de R$ 200 ganham 30 pontos. Acima de R$ 200 ganham 60 pontos. Com 1600 pontos você ganha um brinde!
+                            Compras abaixo de R$ 200 ganham 30 pontos. Acima de R$ 200 ganham 60 pontos. Com 1600 pontos
+                            você ganha um brinde!
                         </div>
                     </div>
                 </div>
@@ -264,15 +506,19 @@
                 </div>
                 <div class="modal-body">
                     <form id="login-form">
-                        <div class="mb-3"><label>Email</label><input type="email" class="form-control" id="login-email" required></div>
-                        <div class="mb-3"><label>Senha</label><input type="password" class="form-control" id="login-password" required></div>
+                        <div class="mb-3"><label>Email</label><input type="email" class="form-control" id="login-email"
+                                required></div>
+                        <div class="mb-3"><label>Senha</label><input type="password" class="form-control"
+                                id="login-password" required></div>
                         <button type="submit" class="btn btn-primary w-100">Entrar</button>
-                        <div class="text-center mt-3"><a href="#" data-bs-toggle="modal" data-bs-target="#forgot-password-modal">Esqueceu a senha?</a></div>
+                        <div class="text-center mt-3"><a href="#" data-bs-toggle="modal"
+                                data-bs-target="#forgot-password-modal">Esqueceu a senha?</a></div>
                     </form>
                     <hr>
                     <button class="btn btn-danger w-100" onclick="loginWithGoogle()">Entrar com Google</button>
                     <hr>
-                    <p class="text-center">Não tem conta? <a href="#" data-bs-toggle="modal" data-bs-target="#register-modal">Cadastre-se</a></p>
+                    <p class="text-center">Não tem conta? <a href="#" data-bs-toggle="modal"
+                            data-bs-target="#register-modal">Cadastre-se</a></p>
                 </div>
             </div>
         </div>
@@ -281,13 +527,20 @@
     <div class="modal fade" id="register-modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header"><h5 class="modal-title">Cadastro</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                <div class="modal-header">
+                    <h5 class="modal-title">Cadastro</h5><button type="button" class="btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
                 <div class="modal-body">
                     <form id="register-form">
-                        <div class="mb-3"><label>Nome Completo</label><input type="text" class="form-control" id="reg-nome" required></div>
-                        <div class="mb-3"><label>Email</label><input type="email" class="form-control" id="reg-email" required></div>
-                        <div class="mb-3"><label>CPF</label><input type="text" class="form-control" id="reg-cpf" maxlength="14" required></div>
-                        <div class="mb-3"><label>Senha</label><input type="password" class="form-control" id="reg-password" required></div>
+                        <div class="mb-3"><label>Nome Completo</label><input type="text" class="form-control"
+                                id="reg-nome" required></div>
+                        <div class="mb-3"><label>Email</label><input type="email" class="form-control" id="reg-email"
+                                required></div>
+                        <div class="mb-3"><label>CPF</label><input type="text" class="form-control" id="reg-cpf"
+                                maxlength="14" required></div>
+                        <div class="mb-3"><label>Senha</label><input type="password" class="form-control"
+                                id="reg-password" required></div>
                         <button type="submit" class="btn btn-success w-100">Cadastrar</button>
                     </form>
                 </div>
@@ -298,11 +551,16 @@
     <div class="modal fade" id="forgot-password-modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header"><h5 class="modal-title">Recuperar Senha</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                <div class="modal-header">
+                    <h5 class="modal-title">Recuperar Senha</h5><button type="button" class="btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
                 <div class="modal-body">
                     <form id="forgot-password-form">
-                        <div class="mb-3"><label>CPF</label><input type="text" class="form-control" id="forgot-cpf" maxlength="14" required></div>
-                        <div class="mb-3"><label>Nome Completo</label><input type="text" class="form-control" id="forgot-nome" required></div>
+                        <div class="mb-3"><label>CPF</label><input type="text" class="form-control" id="forgot-cpf"
+                                maxlength="14" required></div>
+                        <div class="mb-3"><label>Nome Completo</label><input type="text" class="form-control"
+                                id="forgot-nome" required></div>
                         <button type="submit" class="btn btn-primary w-100">Recuperar</button>
                     </form>
                     <div id="password-result" class="mt-3"></div>
@@ -314,7 +572,10 @@
     <div class="modal fade" id="cart-modal" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header"><h5 class="modal-title">Seu Carrinho</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                <div class="modal-header">
+                    <h5 class="modal-title">Seu Carrinho</h5><button type="button" class="btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
                 <div class="modal-body">
                     <ul id="cart-items" class="list-group mb-3"></ul>
                     <button id="get-quote-btn" class="btn btn-primary w-100" disabled>Solicitar Orçamento</button>
@@ -326,11 +587,16 @@
     <div class="modal fade" id="quote-modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header"><h5 class="modal-title">Seu Orçamento</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                <div class="modal-header">
+                    <h5 class="modal-title">Seu Orçamento</h5><button type="button" class="btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
                 <div class="modal-body text-center">
-                    <div id="loading-spinner" class="spinner-border text-primary loading-spinner"><span class="visually-hidden">Carregando...</span></div>
+                    <div id="loading-spinner" class="spinner-border text-primary loading-spinner"><span
+                            class="visually-hidden">Carregando...</span></div>
                     <p id="quote-result" class="mt-3"></p>
-                    <button id="continue-to-whatsapp-btn" class="btn btn-success mt-3" style="display: none;">Continuar via WhatsApp</button>
+                    <button id="continue-to-whatsapp-btn" class="btn btn-success mt-3" style="display: none;">Continuar
+                        via WhatsApp</button>
                 </div>
             </div>
         </div>
@@ -346,8 +612,10 @@
                 </div>
                 <div class="modal-body">
                     <form id="add-product-form">
-                        <div class="mb-3"><label>Nome</label><input type="text" class="form-control" id="prod-nome" required></div>
-                        <div class="mb-3"><label>Descrição</label><textarea class="form-control" id="prod-desc" required></textarea></div>
+                        <div class="mb-3"><label>Nome</label><input type="text" class="form-control" id="prod-nome"
+                                required></div>
+                        <div class="mb-3"><label>Descrição</label><textarea class="form-control" id="prod-desc"
+                                required></textarea></div>
                         <div class="mb-3"><label>Categoria</label>
                             <select class="form-control" id="prod-cat" required>
                                 <option value="pneus">Pneus</option>
@@ -357,7 +625,8 @@
                                 <option value="suspensao">Suspensão</option>
                             </select>
                         </div>
-                        <div class="mb-3"><label>Preço (R$)</label><input type="number" step="0.01" class="form-control" id="prod-preco" required></div>
+                        <div class="mb-3"><label>Preço (R$)</label><input type="number" step="0.01" class="form-control"
+                                id="prod-preco" required></div>
                         <div class="mb-3"><label>Faixa de Preço</label>
                             <select class="form-control" id="prod-faixa">
                                 <option value="Baixa">Baixa</option>
@@ -366,11 +635,14 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label text-danger fw-bold">Tire uma foto real do produto (obrigatório)</label>
-                            <input type="file" accept="image/*" capture="environment" class="form-control" id="prod-foto-camera" required>
+                            <label class="form-label text-danger fw-bold">Tire uma foto real do produto
+                                (obrigatório)</label>
+                            <input type="file" accept="image/*" capture="environment" class="form-control"
+                                id="prod-foto-camera" required>
                             <small class="text-muted">Use a câmera do celular</small>
                         </div>
-                        <div class="mb-3"><label>Estoque</label><input type="number" class="form-control" id="prod-estoque" required></div>
+                        <div class="mb-3"><label>Estoque</label><input type="number" class="form-control"
+                                id="prod-estoque" required></div>
                         <button type="submit" class="btn btn-success w-100">Adicionar Produto</button>
                     </form>
                 </div>
@@ -391,336 +663,453 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyCO22vM99hmTcsUB6RwEqgDXcsO-UrO1VQ",
-            authDomain: "arthur-auto-pecas.firebaseapp.com",
-            projectId: "arthur-auto-pecas",
-            storageBucket: "arthur-auto-pecas.appspot.com",
-            messagingSenderId: "1082961458743",
-            appId: "1:1082961458743:web:8c2f5e8e8d8f8e8e8d8f8e"
-        };
-        firebase.initializeApp(firebaseConfig);
+        document.addEventListener('DOMContentLoaded', async () => {
+            console.log("Arthur Auto Peças App Starting...");
 
-        const SUPABASE_URL = 'https://ydwxljgmzoqsemwemtml.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlkd3hsamdtem9xc2Vtd2VtdG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwODM4ODEsImV4cCI6MjA4MDY1OTg4MX0.7elSMr11AHIhYayJgwqJQCpv0CdyiiM5XunW82Y-rAo';
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-        const whatsappNumber = '5585991815434';
+            const firebaseConfig = {
+                apiKey: "AIzaSyCO22vM99hmTcsUB6RwEqgDXcsO-UrO1VQ",
+                authDomain: "arthur-auto-pecas.firebaseapp.com",
+                projectId: "arthur-auto-pecas",
+                storageBucket: "arthur-auto-pecas.appspot.com",
+                messagingSenderId: "1082961458743",
+                appId: "1:1082961458743:web:8c2f5e8e8d8f8e8e8d8f8e"
+            };
 
-        let currentUser = null;
-        let products = [];
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let currentPage = 1;
-        const itemsPerPage = 12;
-
-        async function init() {
-            await loadProducts();
-            checkLoginStatus();
-            updateCartCount();
-            updateCartModal();
-            renderProducts();
-            setupEventListeners();
-        }
-
-        function checkLoginStatus() {
-            const user = JSON.parse(localStorage.getItem('currentUser'));
-            if (user) {
-                currentUser = user;
-                showUserMenu();
-                if (user.is_admin) showAdminPanel();
-            }
-        }
-
-        function showUserMenu() {
-            document.getElementById('login-btn-nav').style.display = 'none';
-            document.getElementById('user-menu').style.display = 'block';
-            document.getElementById('user-points').textContent = currentUser.pontos || 0;
-        }
-
-        function logout() {
-            localStorage.removeItem('currentUser');
-            firebase.auth().signOut().catch(() => {});
-            currentUser = null;
-            location.reload();
-        }
-
-        async function loginWithGoogle() {
-            const provider = new firebase.auth.GoogleAuthProvider();
             try {
-                const result = await firebase.auth().signInWithPopup(provider);
-                const googleUser = result.user;
-                const { data } = await supabase.from('usuarios')
-                    .upsert({
+                if (window.firebase) {
+                    firebase.initializeApp(firebaseConfig);
+                    console.log("Firebase initialized");
+                } else {
+                    console.error("Firebase SDK not loaded");
+                }
+            } catch (e) {
+                console.error("Firebase init error:", e);
+            }
+
+            const SUPABASE_URL = 'https://ydwxljgmzoqsemwemtml.supabase.co';
+            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlkd3hsamdtem9xc2Vtd2VtdG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwODM4ODEsImV4cCI6MjA4MDY1OTg4MX0.7elSMr11AHIhYayJgwqJQCpv0CdyiiM5XunW82Y-rAo';
+
+            let supabase;
+            try {
+                // Check if supabase global exists (UMD)
+                if (window.supabase) {
+                    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                    console.log("Supabase initialized");
+                } else {
+                    console.error("Supabase SDK not loaded");
+                    showToast("Erro crítico: Supabase não carregou. Verifique sua conexão.");
+                    return;
+                }
+            } catch (e) {
+                console.error("Supabase init error:", e);
+                return;
+            }
+
+            const whatsappNumber = '5585991815434';
+
+            let currentUser = null;
+            let products = [];
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let currentPage = 1;
+            const itemsPerPage = 12;
+
+            function showToast(msg) {
+                const toastEl = document.getElementById('toast');
+                const body = toastEl.querySelector('.toast-body');
+                if (body) body.textContent = msg;
+                const toast = new bootstrap.Toast(toastEl);
+                toast.show();
+            }
+
+            async function init() {
+                await loadProducts();
+                checkLoginStatus();
+                updateCartCount();
+                updateCartModal();
+                renderProducts();
+                setupEventListeners();
+            }
+
+            function checkLoginStatus() {
+                try {
+                    const user = JSON.parse(localStorage.getItem('currentUser'));
+                    if (user) {
+                        currentUser = user;
+                        showUserMenu();
+                        if (user.is_admin) showAdminPanel();
+                    }
+                } catch (e) {
+                    console.error("Error checking login status", e);
+                }
+            }
+
+            function showUserMenu() {
+                const loginBtn = document.getElementById('login-btn-nav');
+                const userMenu = document.getElementById('user-menu');
+                if (loginBtn) loginBtn.style.display = 'none';
+                if (userMenu) {
+                    userMenu.style.display = 'block';
+                    const pointsEl = document.getElementById('user-points');
+                    if (pointsEl) pointsEl.textContent = currentUser.pontos || 0;
+                }
+            }
+
+            window.logout = function () {
+                localStorage.removeItem('currentUser');
+                if (window.firebase) firebase.auth().signOut().catch(() => { });
+                currentUser = null;
+                location.reload();
+            }
+
+            window.loginWithGoogle = async function () {
+                if (!window.firebase) return showToast("Firebase não disponível");
+                const provider = new firebase.auth.GoogleAuthProvider();
+                try {
+                    const result = await firebase.auth().signInWithPopup(provider);
+                    const googleUser = result.user;
+
+                    // Tentativa de upsert no Supabase
+                    let userData = {
                         email: googleUser.email,
                         nome: googleUser.displayName || googleUser.email.split('@')[0],
                         google_id: googleUser.uid,
                         pontos: 0,
                         is_admin: false
-                    }, { onConflict: 'email' })
-                    .select()
-                    .single();
-
-                currentUser = data;
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
-                bootstrap.Modal.getInstance(document.getElementById('login-modal')).hide();
-                showUserMenu();
-                if (currentUser.is_admin) showAdminPanel();
-                showToast('Login com Google realizado!');
-            } catch (err) {
-                showToast('Erro no Google Login');
-            }
-        }
-
-        async function loadProducts() {
-            try {
-                const { data, error } = await supabase.from('produtos').select('*');
-                if (error) throw error;
-                products = data || [];
-                renderProducts();
-                if (currentUser?.is_admin) loadAdminProducts();
-            } catch (err) {
-                console.error(err);
-                showToast('Erro ao carregar produtos');
-            }
-        }
-
-        function renderProducts(filtered = products) {
-            const list = document.getElementById('products-list');
-            list.innerHTML = '';
-            const start = (currentPage - 1) * itemsPerPage;
-            const end = start + itemsPerPage;
-            filtered.slice(start, end).forEach(p => {
-                list.innerHTML += `
-                    <div class="col-md-4 col-lg-3 mb-4">
-                        <div class="card product-card fade-in">
-                            <img src="${p.imagem_url}" class="card-img-top" alt="${p.nome}">
-                            <div class="card-body">
-                                <h5 class="card-title">${p.nome}</h5>
-                                <p class="card-text">${p.descricao}</p>
-                                <p class="text-muted">Faixa: ${p.faixa_preco || 'Média'}</p>
-                                <p class="text-muted small">Estoque: ${p.estoque}</p>
-                                <button class="btn add-to-cart-btn w-100" onclick="addToCart(${p.id}, '${p.nome.replace(/'/g, "\\'")}', ${p.preco})">
-                                    Adicionar ao Orçamento
-                                </button>
-                            </div>
-                        </div>
-                    </div>`;
-            });
-            renderPagination(filtered);
-        }
-
-        function renderPagination(filtered) {
-            const pag = document.getElementById('pagination');
-            pag.innerHTML = '';
-            const pages = Math.ceil(filtered.length / itemsPerPage);
-            for (let i = 1; i <= pages; i++) {
-                pag.innerHTML += `<li class="page-item ${i === currentPage ? 'active' : ''}"><a class="page-link" href="#" onclick="currentPage=${i}; renderProducts(); return false;">${i}</a></li>`;
-            }
-        }
-
-        function addToCart(id, nome, preco) {
-            cart.push({ id, nome, preco });
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-            updateCartModal();
-            showToast(nome + ' adicionado!');
-        }
-
-        function removeFromCart(i) {
-            cart.splice(i, 1);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-            updateCartModal();
-        }
-
-        function updateCartCount() {
-            document.getElementById('cart-count').textContent = cart.length;
-        }
-
-        function updateCartModal() {
-            const list = document.getElementById('cart-items');
-            list.innerHTML = cart.map((c, i) => `
-                <li class="list-group-item d-flex justify-content-between">
-                    ${c.nome} - R$ ${parseFloat(c.preco).toFixed(2)}
-                    <button class="btn btn-sm btn-danger" onclick="removeFromCart(${i})">×</button>
-                </li>
-            `).join('');
-            document.getElementById('get-quote-btn').disabled = cart.length === 0;
-        }
-
-        function showAdminPanel() {
-            document.getElementById('admin-panel').style.display = 'block';
-            loadAdminProducts();
-        }
-
-        function loadAdminProducts() {
-            const list = document.getElementById('admin-products-list');
-            list.innerHTML = products.map(p => `
-                <div class="card mb-3">
-                    <div class="card-body d-flex justify-content-between">
-                        <div><h6>${p.nome}</h6><small>R$ ${parseFloat(p.preco).toFixed(2)}</small></div>
-                        <button class="btn btn-sm btn-danger" onclick="if(confirm('Excluir?')) supabase.from('produtos').delete().eq('id',${p.id}).then(()=>location.reload())">Excluir</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function setupEventListeners() {
-            document.getElementById('search-input').addEventListener('input', e => {
-                const termo = e.target.value.toLowerCase();
-                const filtrados = products.filter(p => p.nome.toLowerCase().includes(termo) || p.descricao.toLowerCase().includes(termo));
-                renderProducts(filtrados);
-            });
-
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    const cat = btn.dataset.category;
-                    renderProducts(cat === 'all' ? products : products.filter(p => p.categoria === cat));
-                });
-            });
-
-            // LOGIN FUNCIONANDO 100% (com fallback seguro)
-            document.getElementById('login-form').addEventListener('submit', async e => {
-    e.preventDefault();
-
-    const email = document.getElementById('login-email').value.trim();
-    const senha = document.getElementById('login-password').value;
-
-    try {
-        // Consulta simples
-        const { data, error } = await supabase
-            .from('usuarios')
-            .select('*')
-            .eq('email', email)
-            .eq('senha', senha)
-            .single();
-
-        if (error || !data) {
-            showToast('Email ou senha incorretos');
-            return;
-        }
-
-        currentUser = data;
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
-
-        bootstrap.Modal.getInstance(document.getElementById('login-modal')).hide();
-        showUserMenu();
-
-        if (currentUser.is_admin) showAdminPanel();
-
-        showToast('Login realizado com sucesso!');
-    } catch (err) {
-        console.error(err);
-        showToast('Erro ao fazer login');
-    }
-});
-
-
-            document.getElementById('register-form').addEventListener('submit', async e => {
-                e.preventDefault();
-                const payload = {
-                    nome: document.getElementById('reg-nome').value,
-                    email: document.getElementById('reg-email').value,
-                    cpf: document.getElementById('reg-cpf').value,
-                    senha: document.getElementById('reg-password').value,
-                    pontos: 0,
-                    is_admin: false
-                };
-                const { error } = await supabase.from('usuarios').insert([payload]);
-                if (error) return showToast('Erro ao cadastrar');
-                bootstrap.Modal.getInstance(document.getElementById('register-modal')).hide();
-                showToast('Cadastro realizado! Faça login.');
-            });
-
-            document.getElementById('forgot-password-form').addEventListener('submit', async e => {
-                e.preventDefault();
-                const cpf = document.getElementById('forgot-cpf').value;
-                const nome = document.getElementById('forgot-nome').value.trim();
-                try {
-                    let { data, error } = await supabase.rpc('recuperar_senha', { cpf_input: cpf, nome_input: nome });
-                    if (!error && data && data.length > 0) {
-                        document.getElementById('password-result').innerHTML = `<div class="alert alert-success">Sua senha: <strong>${data[0].senha}</strong></div>`;
-                    } else {
-                        const { data: users } = await supabase.from('usuarios').select('senha').eq('cpf', cpf).ilike('nome', `%${nome}%`);
-                        if (users && users.length > 0) {
-                            document.getElementById('password-result').innerHTML = `<div class="alert alert-success">Sua senha: <strong>${users[0].senha}</strong></div>`;
-                        } else {
-                            document.getElementById('password-result').innerHTML = '<div class="alert alert-danger">Dados não encontrados</div>';
-                        }
-                    }
-                } catch (err) {
-                    document.getElementById('password-result').innerHTML = '<div class="alert alert-danger">Erro ao recuperar</div>';
-                }
-            });
-
-            document.getElementById('add-product-form').addEventListener('submit', async e => {
-                e.preventDefault();
-                const fileInput = document.getElementById('prod-foto-camera');
-                if (!fileInput.files[0]) return showToast('Tire uma foto do produto!');
-
-                const file = fileInput.files[0];
-                const ext = file.name.split('.').pop();
-                const fileName = `${Date.now()}_${Math.random().toString(36).substring(2)}.${ext}`;
-                const filePath = `public/${fileName}`;
-
-                try {
-                    const { error: upErr } = await supabase.storage.from('produtos').upload(filePath, file);
-                    if (upErr) throw upErr;
-
-                    const { data: urlData } = supabase.storage.from('produtos').getPublicUrl(filePath);
-
-                    const produto = {
-                        nome: document.getElementById('prod-nome').value,
-                        descricao: document.getElementById('prod-desc').value,
-                        categoria: document.getElementById('prod-cat').value,
-                        preco: parseFloat(document.getElementById('prod-preco').value),
-                        faixa_preco: document.getElementById('prod-faixa').value || 'Média',
-                        imagem_url: urlData.publicUrl,
-                        estoque: parseInt(document.getElementById('prod-estoque').value)
                     };
 
-                    const { error } = await supabase.from('produtos').insert([produto]);
-                    if (error) throw error;
+                    const { data, error } = await supabase.from('usuarios')
+                        .upsert(userData, { onConflict: 'email' })
+                        .select()
+                        .single();
 
-                    bootstrap.Modal.getInstance(document.getElementById('add-product-modal')).hide();
-                    document.getElementById('add-product-form').reset();
-                    await loadProducts();
-                    showToast('Produto adicionado com sucesso!');
+                    if (error) {
+                        console.warn("Supabase Upsert Error (RLS likely):", error);
+                        // Fallback se RLS bloquear upsert de anonimo: usar dados do google apenas temporariamente no frontend
+                        // ou alertar o usuario. Vamos assumir sucesso parcial para nao travar.
+                        currentUser = userData;
+                        showToast('Aviso: Login local (banco de dados inacessível para escrita).');
+                    } else {
+                        currentUser = data;
+                    }
+
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+                    const modalEl = document.getElementById('login-modal');
+                    const modal = bootstrap.Modal.getInstance(modalEl);
+                    if (modal) modal.hide();
+
+                    showUserMenu();
+                    if (currentUser.is_admin) showAdminPanel();
+                    showToast('Login com Google realizado!');
+                } catch (err) {
+                    console.error("Google Login Error:", err);
+                    showToast('Erro no Google Login: ' + err.message);
+                }
+            }
+
+            async function loadProducts() {
+                try {
+                    const { data, error } = await supabase.from('produtos').select('*');
+                    if (error) {
+                        console.error("Load products error:", error);
+                        throw error;
+                    }
+                    products = data || [];
+                    renderProducts();
+                    if (currentUser?.is_admin) loadAdminProducts();
                 } catch (err) {
                     console.error(err);
-                    showToast('Erro ao adicionar produto');
+                    showToast('Erro ao carregar produtos. Verifique se a tabela existe e é pública.');
                 }
-            });
+            }
 
-            document.getElementById('get-quote-btn')?.addEventListener('click', () => {
-                bootstrap.Modal.getInstance(document.getElementById('cart-modal')).hide();
-                new bootstrap.Modal(document.getElementById('quote-modal')).show();
-                const total = cart.reduce((s, i) => s + parseFloat(i.preco), 0);
-                document.getElementById('quote-result').textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
-                document.getElementById('continue-to-whatsapp-btn').style.display = 'block';
-                document.getElementById('continue-to-whatsapp-btn').onclick = () => {
-                    if (!currentUser) return showToast('Faça login para enviar');
-                    const msg = cart.map(i => `${i.nome} - R$ ${parseFloat(i.preco).toFixed(2)}`).join('\n') +
+            function renderProducts(filtered = products) {
+                const list = document.getElementById('products-list');
+                if (!list) return;
+                list.innerHTML = '';
+
+                if (filtered.length === 0) {
+                    list.innerHTML = '<div class="col-12 text-center"><p>Nenhum produto encontrado.</p></div>';
+                    return;
+                }
+
+                const start = (currentPage - 1) * itemsPerPage;
+                const end = start + itemsPerPage;
+                filtered.slice(start, end).forEach(p => {
+                    // Safe quote escaping
+                    const safeName = p.nome.replace(/'/g, "\\'");
+                    list.innerHTML += `
+                        <div class="col-md-4 col-lg-3 mb-4">
+                            <div class="card product-card fade-in">
+                                <img src="${p.imagem_url}" class="card-img-top" alt="${p.nome}" onerror="this.src='https://via.placeholder.com/220?text=Sem+Foto'">
+                                <div class="card-body">
+                                    <h5 class="card-title">${p.nome}</h5>
+                                    <p class="card-text">${p.descricao}</p>
+                                    <p class="text-muted">Faixa: ${p.faixa_preco || 'Média'}</p>
+                                    <p class="text-muted small">Estoque: ${p.estoque}</p>
+                                    <button class="btn add-to-cart-btn w-100" onclick="window.addToCart(${p.id}, '${safeName}', ${p.preco})">
+                                        Adicionar ao Orçamento
+                                    </button>
+                                </div>
+                            </div>
+                        </div>`;
+                });
+                renderPagination(filtered);
+            }
+
+            function renderPagination(filtered) {
+                const pag = document.getElementById('pagination');
+                if (!pag) return;
+                pag.innerHTML = '';
+                const pages = Math.ceil(filtered.length / itemsPerPage);
+                for (let i = 1; i <= pages; i++) {
+                    pag.innerHTML += `<li class="page-item ${i === currentPage ? 'active' : ''}"><a class="page-link" href="#" onclick="window.changePage(${i}); return false;">${i}</a></li>`;
+                }
+            }
+
+            window.changePage = function (i) {
+                currentPage = i;
+                renderProducts();
+            }
+
+            window.addToCart = function (id, nome, preco) {
+                cart.push({ id, nome, preco });
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+                updateCartModal();
+                showToast(nome + ' adicionado!');
+            }
+
+            window.removeFromCart = function (i) {
+                cart.splice(i, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+                updateCartModal();
+            }
+
+            function updateCartCount() {
+                const el = document.getElementById('cart-count');
+                if (el) el.textContent = cart.length;
+            }
+
+            function updateCartModal() {
+                const list = document.getElementById('cart-items');
+                if (!list) return;
+                list.innerHTML = cart.map((c, i) => `
+                    <li class="list-group-item d-flex justify-content-between">
+                        ${c.nome} - R$ ${parseFloat(c.preco).toFixed(2)}
+                        <button class="btn btn-sm btn-danger" onclick="window.removeFromCart(${i})">×</button>
+                    </li>
+                `).join('');
+                const btn = document.getElementById('get-quote-btn');
+                if (btn) btn.disabled = cart.length === 0;
+            }
+
+            function showAdminPanel() {
+                const panel = document.getElementById('admin-panel');
+                if (panel) {
+                    panel.style.display = 'block';
+                    loadAdminProducts();
+                }
+            }
+
+            function loadAdminProducts() {
+                const list = document.getElementById('admin-products-list');
+                if (!list) return;
+                list.innerHTML = products.map(p => `
+                    <div class="card mb-3">
+                        <div class="card-body d-flex justify-content-between">
+                            <div><h6>${p.nome}</h6><small>R$ ${parseFloat(p.preco).toFixed(2)}</small></div>
+                            <button class="btn btn-sm btn-danger" onclick="if(confirm('Excluir?')) window.deleteProduct(${p.id})">Excluir</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            window.deleteProduct = async function (id) {
+                const { error } = await supabase.from('produtos').delete().eq('id', id);
+                if (!error) location.reload(); else showToast("Erro ao excluir");
+            }
+
+            function setupEventListeners() {
+                document.getElementById('search-input').addEventListener('input', e => {
+                    const termo = e.target.value.toLowerCase();
+                    const filtrados = products.filter(p => p.nome.toLowerCase().includes(termo) || p.descricao.toLowerCase().includes(termo));
+                    renderProducts(filtrados);
+                });
+
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        const cat = btn.dataset.category;
+                        renderProducts(cat === 'all' ? products : products.filter(p => p.categoria === cat));
+                    });
+                });
+
+                // LOGIN
+                const loginForm = document.getElementById('login-form');
+                if (loginForm) {
+                    loginForm.addEventListener('submit', async e => {
+                        e.preventDefault();
+                        console.log("Tentando login manual...");
+                        const email = document.getElementById('login-email').value.trim();
+                        const senha = document.getElementById('login-password').value;
+
+                        try {
+                            // Tenta RPC primeiro
+                            let { data, error } = await supabase.rpc('login_usuario', { email_input: email, senha_input: senha });
+
+                            if (error) {
+                                console.warn("RPC Login falhou, tentando fallback direto na tabela...", error);
+                                // Fallback: Select direto (pode falhar se RLS ativo)
+                                const { data: users, error: err2 } = await supabase.from('usuarios').select('*').eq('email', email).eq('senha', senha);
+                                if (err2 || !users || users.length === 0) {
+                                    showToast('Email ou senha incorretos (ou erro de acesso)');
+                                    return;
+                                }
+                                currentUser = users[0];
+                            } else {
+                                if (data && data.length > 0) currentUser = data[0];
+                                else { showToast('Credenciais inválidas'); return; }
+                            }
+
+                            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                            const modal = bootstrap.Modal.getInstance(document.getElementById('login-modal'));
+                            if (modal) modal.hide();
+
+                            showUserMenu();
+                            if (currentUser.is_admin) showAdminPanel();
+                            showToast('Login realizado com sucesso!');
+                        } catch (err) {
+                            console.error("Login Exception:", err);
+                            showToast('Erro ao fazer login: ' + err.message);
+                        }
+                    });
+                }
+
+                const registerForm = document.getElementById('register-form');
+                if (registerForm) {
+                    registerForm.addEventListener('submit', async e => {
+                        e.preventDefault();
+                        const payload = {
+                            nome: document.getElementById('reg-nome').value,
+                            email: document.getElementById('reg-email').value,
+                            cpf: document.getElementById('reg-cpf').value,
+                            senha: document.getElementById('reg-password').value,
+                            pontos: 0,
+                            is_admin: false
+                        };
+                        const { error } = await supabase.from('usuarios').insert([payload]);
+                        if (error) {
+                            console.error("Registration Error:", error);
+                            return showToast('Erro ao cadastrar. Verifique se o CPF/Email já existe.');
+                        }
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('register-modal'));
+                        if (modal) modal.hide();
+                        showToast('Cadastro realizado! Faça login.');
+                    });
+                }
+
+                const forgotForm = document.getElementById('forgot-password-form');
+                if (forgotForm) {
+                    forgotForm.addEventListener('submit', async e => {
+                        e.preventDefault();
+                        const cpf = document.getElementById('forgot-cpf').value;
+                        const nome = document.getElementById('forgot-nome').value.trim();
+                        try {
+                            // Tenta RPC
+                            let { data, error } = await supabase.rpc('recuperar_senha', { cpf_input: cpf, nome_input: nome });
+
+                            if (error || !data || data.length === 0) {
+                                // Fallback
+                                const { data: users } = await supabase.from('usuarios').select('senha').eq('cpf', cpf).ilike('nome', `%${nome}%`);
+                                if (users && users.length > 0) {
+                                    document.getElementById('password-result').innerHTML = `<div class="alert alert-success">Sua senha: <strong>${users[0].senha}</strong></div>`;
+                                } else {
+                                    document.getElementById('password-result').innerHTML = '<div class="alert alert-danger">Dados não encontrados</div>';
+                                }
+                            } else {
+                                document.getElementById('password-result').innerHTML = `<div class="alert alert-success">Sua senha: <strong>${data[0].senha}</strong></div>`;
+                            }
+                        } catch (err) {
+                            document.getElementById('password-result').innerHTML = '<div class="alert alert-danger">Erro ao recuperar</div>';
+                        }
+                    });
+                }
+
+                const addProdForm = document.getElementById('add-product-form');
+                if (addProdForm) {
+                    addProdForm.addEventListener('submit', async e => {
+                        e.preventDefault();
+                        const fileInput = document.getElementById('prod-foto-camera');
+                        if (!fileInput.files[0]) return showToast('Tire uma foto do produto!');
+
+                        const file = fileInput.files[0];
+                        const ext = file.name.split('.').pop();
+                        const fileName = `${Date.now()}_${Math.random().toString(36).substring(2)}.${ext}`;
+                        const filePath = `public/${fileName}`;
+
+                        try {
+                            const { error: upErr } = await supabase.storage.from('produtos').upload(filePath, file);
+                            if (upErr) throw upErr;
+
+                            const { data: urlData } = supabase.storage.from('produtos').getPublicUrl(filePath);
+
+                            const produto = {
+                                nome: document.getElementById('prod-nome').value,
+                                descricao: document.getElementById('prod-desc').value,
+                                categoria: document.getElementById('prod-cat').value,
+                                preco: parseFloat(document.getElementById('prod-preco').value),
+                                faixa_preco: document.getElementById('prod-faixa').value || 'Média',
+                                imagem_url: urlData.publicUrl,
+                                estoque: parseInt(document.getElementById('prod-estoque').value)
+                            };
+
+                            const { error } = await supabase.from('produtos').insert([produto]);
+                            if (error) throw error;
+
+                            bootstrap.Modal.getInstance(document.getElementById('add-product-modal')).hide();
+                            document.getElementById('add-product-form').reset();
+                            await loadProducts();
+                            showToast('Produto adicionado com sucesso!');
+                        } catch (err) {
+                            console.error(err);
+                            showToast('Erro ao adicionar produto');
+                        }
+                    });
+                }
+
+                const quoteBtn = document.getElementById('get-quote-btn');
+                if (quoteBtn) {
+                    quoteBtn.addEventListener('click', () => {
+                        const cartModal = bootstrap.Modal.getInstance(document.getElementById('cart-modal'));
+                        if (cartModal) cartModal.hide();
+                        new bootstrap.Modal(document.getElementById('quote-modal')).show();
+
+                        const total = cart.reduce((s, i) => s + parseFloat(i.preco), 0);
+                        document.getElementById('quote-result').textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+
+                        const continueBtn = document.getElementById('continue-to-whatsapp-btn');
+                        continueBtn.style.display = 'block';
+                        continueBtn.onclick = () => {
+                            if (!currentUser) return showToast('Faça login para enviar');
+                            const msg = cart.map(i => `${i.nome} - R$ ${parseFloat(i.preco).toFixed(2)}`).join('\n') +
                                 `\n\nTotal: R$ ${total.toFixed(2).replace('.', ',')}`;
-                    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Olá! Meu orçamento:\n\n' + msg)}`, '_blank');
-                    cart = []; localStorage.setItem('cart', '[]'); updateCartCount(); updateCartModal();
-                };
-            });
-        }
+                            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Olá! Meu orçamento:\n\n' + msg)}`, '_blank');
+                            cart = []; localStorage.setItem('cart', '[]'); updateCartCount(); updateCartModal();
+                        };
+                    });
+                }
+            }
 
-        function showToast(msg) {
-            const toastEl = document.getElementById('toast');
-            document.querySelector('.toast-body').textContent = msg;
-            new bootstrap.Toast(toastEl).show();
-        }
-
-        init();
+            init();
+        });
     </script>
 </body>
-</html>
 
+</html>
