@@ -4,329 +4,266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Arthur Auto Peças - Sua loja de confiança para peças automotivas.">
-    <title>Arthur Auto Peças | Loja Online</title>
-
+    <meta name="description" content="Arthur Auto Peças - Encontre peças automotivas de alta qualidade.">
+    <title>Arthur Auto Peças | Premium</title>
     <!-- Dependencies -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@300;600&display=swap"
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-    <!-- App Styles -->
     <style>
         :root {
-            --primary: #0052cc;
-            --secondary: #4b5e77;
-            --accent: #00cc00;
-            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            --glass-bg: rgba(255, 255, 255, 0.9);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-            --card-hover: translateY(-5px);
+            --primary-color: #0052cc;
+            --secondary-color: #4b5e77;
+            --accent-color: #00cc00;
+            --background-color: #f4f7fa;
+            --text-color: #2d3748;
+            --card-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            --transition-speed: 0.3s;
         }
 
         body {
             font-family: 'Roboto', sans-serif;
-            background: var(--bg-gradient);
-            min-height: 100vh;
-            color: #2d3748;
+            background-color: var(--background-color);
+            color: var(--text-color);
         }
 
-        /* Navbar Glassmorphism */
+        /* Navbar */
         .navbar {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            sticky: top;
         }
 
         .navbar-brand {
             font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            color: var(--primary);
+            font-weight: 600;
             font-size: 1.5rem;
-        }
-
-        .logo-img {
-            height: 45px;
-            margin-right: 10px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
         }
 
         .nav-link {
             font-weight: 500;
-            margin: 0 10px;
-            color: #4a5568;
             transition: 0.3s;
+            margin: 0 8px;
         }
 
         .nav-link:hover {
-            color: var(--primary);
+            color: var(--primary-color);
         }
 
         /* Hero */
-        .hero-carousel {
-            height: 450px;
-            margin-bottom: -40px;
+        .hero {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
         }
 
         .carousel-item img {
-            height: 450px;
+            height: 400px;
             object-fit: cover;
             filter: brightness(0.6);
         }
 
-        .hero-text {
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        .carousel-caption h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        /* Components */
-        .search-container {
+        /* Products container */
+        .search-bar {
+            max-width: 600px;
+            margin: -25px auto 30px;
             position: relative;
             z-index: 10;
-            max-width: 700px;
-            margin: 0 auto 40px;
+            padding: 0 15px;
         }
 
         .search-input {
             border-radius: 50px;
-            padding: 18px 30px;
+            padding: 15px 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border: none;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             width: 100%;
-            transition: 0.3s;
         }
 
-        .search-input:focus {
-            outline: none;
-            box-shadow: 0 10px 30px rgba(0, 82, 204, 0.15);
-            transform: scale(1.01);
-        }
-
-        .category-pill {
+        .category-btn {
             background: white;
-            border: 1px solid #e2e8f0;
-            color: var(--secondary);
-            padding: 10px 25px;
-            border-radius: 50px;
+            color: var(--secondary-color);
+            border: 1px solid #ddd;
+            padding: 8px 20px;
+            border-radius: 20px;
             margin: 5px;
-            font-weight: 500;
-            cursor: pointer;
             transition: 0.3s;
         }
 
-        .category-pill:hover,
-        .category-pill.active {
-            background: var(--primary);
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary-color);
             color: white;
-            border-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 82, 204, 0.2);
+            border-color: var(--primary-color);
         }
 
         .product-card {
             border: none;
-            border-radius: 16px;
+            border-radius: 12px;
             background: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: var(--card-shadow);
+            transition: 0.3s;
             overflow: hidden;
             height: 100%;
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        .product-img-wrapper {
-            height: 220px;
-            overflow: hidden;
-            position: relative;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
         }
 
         .product-img {
-            width: 100%;
-            height: 100%;
+            height: 200px;
             object-fit: cover;
-            transition: 0.5s;
+            width: 100%;
         }
 
-        .product-card:hover .product-img {
-            transform: scale(1.1);
+        .card-body {
+            padding: 1.5rem;
         }
 
-        .price-badge {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.7);
+        /* Admin Badge */
+        .admin-badge {
+            background: #ffc107;
+            color: #000;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Points Badge */
+        .points-display {
+            background: var(--primary-color);
             color: white;
-            padding: 5px 12px;
+            padding: 5px 15px;
             border-radius: 20px;
             font-weight: bold;
+            font-size: 0.9rem;
         }
 
-        .btn-primary-custom {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 10px;
-            font-weight: 600;
-            width: 100%;
-            transition: 0.3s;
-        }
-
-        .btn-primary-custom:hover {
-            background: #003d99;
-            transform: translateY(-2px);
-        }
-
-        .floating-cart {
+        /* Floating Cart */
+        .cart-float {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            z-index: 100;
-            background: white;
+            background: var(--accent-color);
+            color: white;
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary);
-            font-size: 1.5rem;
-            border: 2px solid var(--primary);
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0, 200, 0, 0.4);
             cursor: pointer;
+            z-index: 1000;
             transition: 0.3s;
         }
 
-        .floating-cart:hover {
-            transform: scale(1.1) rotate(-10deg);
-            background: var(--primary);
-            color: white;
+        .cart-float:hover {
+            transform: scale(1.1);
         }
 
-        .cart-badge {
+        .cart-count {
             position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #e53e3e;
+            top: 0;
+            right: 0;
+            background: red;
             color: white;
-            font-size: 0.8rem;
-            width: 24px;
-            height: 24px;
+            font-size: 12px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* Utilities */
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-            opacity: 0;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* Modal Styles */
         .modal-content {
-            border-radius: 20px;
+            border-radius: 15px;
             border: none;
-            overflow: hidden;
         }
 
         .modal-header {
-            background: var(--primary);
-            color: white;
-        }
-
-        .admin-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            margin-top: 2rem;
-            box-shadow: var(--glass-shadow);
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- STATE MANAGEMENT & CONFIG -->
+    <!-- DATA & CONFIG -->
     <script>
         const AppConfig = {
             supabaseUrl: 'https://ydwxljgmzoqsemwemtml.supabase.co',
             supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlkd3hsamdtem9xc2Vtd2VtdG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwODM4ODEsImV4cCI6MjA4MDY1OTg4MX0.7elSMr11AHIhYayJgwqJQCpv0CdyiiM5XunW82Y-rAo',
-            firebaseConfig: {
-                apiKey: "AIzaSyCO22vM99hmTcsUB6RwEqgDXcsO-UrO1VQ",
-                authDomain: "arthur-auto-pecas.firebaseapp.com",
-                projectId: "arthur-auto-pecas",
-                storageBucket: "arthur-auto-pecas.appspot.com",
-                messagingSenderId: "1082961458743",
-                appId: "1:1082961458743:web:8c2f5e8e8d8f8e8e8d8f8e"
-            },
-            whatsappNumber: '5585991815434'
+            geminiKey: 'AIzaSyCO22vM99hmTcsUB6RwEqgDXcsO-UrO1VQ', // User provided key
+            whatsapp: '5585991815434'
         };
 
         const State = {
             user: JSON.parse(localStorage.getItem('user')) || null,
             cart: JSON.parse(localStorage.getItem('cart')) || [],
             products: [],
-            currentCategory: 'all',
-            currentPage: 1
+            orders: [] // For admin
         };
     </script>
 
-    <!-- NAVIGATION -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="public/logo.png" alt="" class="logo-img" onerror="this.style.display='none'">
-                <span>Arthur Auto Peças</span>
+            <a class="navbar-brand" href="#">
+                <img src="public/logo.png" style="height: 40px; margin-right: 10px;"
+                    onerror="this.style.display='none'">
+                Arthur Auto Peças
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navContent">
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol"><span
+                    class="navbar-toggler-icon"></span></button>
+
+            <div class="collapse navbar-collapse" id="navcol">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="#produtos">Produtos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
 
-                    <!-- Auth Buttons -->
-                    <li class="nav-item ms-2" id="auth-buttons">
-                        <button class="btn btn-outline-primary rounded-pill px-4"
-                            onclick="UI.openModal('login-modal')">Entrar</button>
+                    <!-- Guest View -->
+                    <li class="nav-item" id="nav-guest">
+                        <button class="btn btn-outline-primary rounded-pill btn-sm px-4"
+                            onclick="UI.modal('login-modal')">Entrar / Cadastrar</button>
                     </li>
 
-                    <!-- User Menu -->
-                    <li class="nav-item dropdown ms-2" id="user-menu" style="display: none;">
-                        <a class="nav-link dropdown-toggle fw-bold" href="#" data-bs-toggle="dropdown">
-                            <i class="fas fa-user-circle me-1"></i> <span id="user-name">Usuário</span>
+                    <!-- Logged View -->
+                    <li class="nav-item dropdown" id="nav-user" style="display: none;">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <span class="points-display me-2"><i class="fas fa-star text-warning"></i> <span
+                                    id="user-points">0</span></span>
+                            <span id="user-name" class="fw-bold">User</span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg">
-                            <li><span class="dropdown-item-text text-muted small">Pontos: <b
-                                        id="user-points">0</b></span></li>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                            <li id="gift-badge" style="display:none;"><a class="dropdown-item text-success fw-bold"
+                                    href="#"><i class="fas fa-gift"></i> Resgatar Brinde!</a></li>
+                            <li id="admin-link" style="display:none;"><a class="dropdown-item" href="#"
+                                    onclick="Admin.openPanel()">Painel Admin</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li id="admin-link" style="display: none;"><a class="dropdown-item" href="#admin">Painel
-                                    Admin</a></li>
                             <li><a class="dropdown-item text-danger" href="#" onclick="Auth.logout()">Sair</a></li>
                         </ul>
                     </li>
@@ -335,410 +272,270 @@
         </div>
     </nav>
 
-    <!-- CONTENT -->
-    <div id="app">
-
-        <!-- Hero -->
-        <div id="homeCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
-                        class="d-block w-100" alt="...">
-                    <div class="carousel-caption hero-text">
-                        <h1 class="display-4 fw-bold">Qualidade em Cada Peça</h1>
-                        <p class="lead">As melhores marcas para o seu veículo com garantia total.</p>
-                    </div>
+    <!-- HERO -->
+    <section class="hero carousel slide" data-bs-ride="carousel" id="heroCar">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1920&q=80"
+                    class="d-block w-100">
+                <div class="carousel-caption">
+                    <h1 class="display-4">Arthur Auto Peças</h1>
+                    <p class="lead">Qualidade e Fidelidade. Acumule pontos a cada compra!</p>
                 </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
-                        class="d-block w-100" alt="...">
-                    <div class="carousel-caption hero-text">
-                        <h1 class="display-4 fw-bold">Orçamento Rápido</h1>
-                        <p class="lead">Solicite sua cotação e receba atendimento via WhatsApp.</p>
-                    </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=80"
+                    class="d-block w-100">
+                <div class="carousel-caption">
+                    <h1>Programa de Fidelidade</h1>
+                    <p class="lead">Ganhe brindes exclusivos acumulando 1600 pontos.</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Search & Filter -->
-        <section class="container" style="position: relative; z-index: 20;">
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="🔍 O que você procura hoje?"
-                    oninput="Products.filter(this.value)">
-            </div>
-
-            <div class="d-flex justify-content-center flex-wrap mb-5" id="category-filters">
-                <button class="category-pill active" onclick="Products.setCategory('all', this)">Todos</button>
-                <button class="category-pill" onclick="Products.setCategory('pneus', this)">Pneus</button>
-                <button class="category-pill" onclick="Products.setCategory('motor', this)">Motor</button>
-                <button class="category-pill" onclick="Products.setCategory('freios', this)">Freios</button>
-                <button class="category-pill" onclick="Products.setCategory('eletrica', this)">Elétrica</button>
-                <button class="category-pill" onclick="Products.setCategory('suspensao', this)">Suspensão</button>
-            </div>
-        </section>
-
-        <!-- Products Grid -->
-        <section id="produtos" class="container mb-5">
-            <div class="row g-4" id="products-grid">
-                <!-- Products injected here -->
-            </div>
-            <div class="text-center mt-5">
-                <nav>
-                    <ul class="pagination justify-content-center" id="pagination"></ul>
-                </nav>
-            </div>
-        </section>
-
-        <!-- Admin Interface (Hidden by default) -->
-        <section id="admin" class="container mb-5" style="display: none;">
-            <div class="admin-section">
-                <h3 class="mb-4 text-primary"><i class="fas fa-cogs"></i> Gestão de Loja</h3>
-                <ul class="nav nav-tabs mb-4">
-                    <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-prod">Produtos</a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="tab-prod">
-                        <button class="btn btn-success mb-3" onclick="UI.openModal('add-product-modal')"><i
-                                class="fas fa-plus"></i> Novo Produto</button>
-                        <div id="admin-table" class="table-responsive"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Info Sections -->
-        <section id="sobre" class="py-5 bg-white">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6"><img
-                            src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                            class="img-fluid rounded-4 shadow" alt="Oficina"></div>
-                    <div class="col-md-6 mt-4 mt-md-0">
-                        <h2 class="fw-bold mb-3">Sobre a Arthur Auto Peças</h2>
-                        <p class="text-muted">Somos especialistas em peças automotivas, comprometidos com a qualidade e
-                            a segurança do seu veículo. Com um catálogo diversificado e atendimento especializado,
-                            garantimos que você encontre exatamente o que precisa.</p>
-                        <div class="d-flex gap-3 mt-4">
-                            <div class="text-center px-3">
-                                <h4 class="fw-bold text-primary">10k+</h4><small>Clientes</small>
-                            </div>
-                            <div class="text-center px-3 border-start">
-                                <h4 class="fw-bold text-primary">50k+</h4><small>Peças</small>
-                            </div>
-                            <div class="text-center px-3 border-start">
-                                <h4 class="fw-bold text-primary">4.9</h4><small>Avaliação</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contato" class="py-5">
-            <div class="container text-center">
-                <h2 class="fw-bold mb-4">Precisa de Ajuda?</h2>
-                <div class="row justify-content-center">
-                    <div class="col-md-4 mb-3">
-                        <div class="card p-4 border-0 shadow-sm h-100">
-                            <i class="fas fa-phone fa-2x text-primary mb-3"></i>
-                            <h5>Telefone</h5>
-                            <p class="text-muted">(85) 99181-5434</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="card p-4 border-0 shadow-sm h-100">
-                            <i class="fas fa-map-marker-alt fa-2x text-primary mb-3"></i>
-                            <h5>Localização</h5>
-                            <p class="text-muted">Centro, Sobral - CE</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer class="bg-dark text-white py-4 mt-5">
-            <div class="container text-center">
-                <p class="mb-0">&copy; 2025 Arthur Auto Peças. Todos os direitos reservados.</p>
-            </div>
-        </footer>
+    <!-- SEARCH & FILTER -->
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Buscar peça..." oninput="Products.filter(this.value)">
     </div>
 
-    <!-- Floating Cart -->
-    <div class="floating-cart" onclick="UI.openModal('cart-modal')">
-        <i class="fas fa-shopping-bag"></i>
-        <div class="cart-badge" id="cart-count">0</div>
+    <div class="container text-center mb-5">
+        <button class="category-btn active" onclick="Products.filterCat('all', this)">Todos</button>
+        <button class="category-btn" onclick="Products.filterCat('pneus', this)">Pneus</button>
+        <button class="category-btn" onclick="Products.filterCat('motor', this)">Motor</button>
+        <button class="category-btn" onclick="Products.filterCat('freios', this)">Freios</button>
+        <button class="category-btn" onclick="Products.filterCat('eletrica', this)">Elétrica</button>
+    </div>
+
+    <!-- PRODUCTS GRID -->
+    <section id="produtos" class="container mb-5">
+        <h3 class="text-center mb-4 fw-bold text-secondary">Nossos Produtos</h3>
+        <div class="row g-4" id="products-grid">
+            <!-- Rendered by JS -->
+        </div>
+    </section>
+
+    <!-- ADMIN PANEL (Hidden) -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="admin-panel">
+        <div class="offcanvas-header bg-dark text-white">
+            <h5 class="offcanvas-title">Administração</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav nav-tabs mb-3" id="adminTabs">
+                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-orders">Pedidos
+                        Pendentes</a></li>
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-stock">Estoque</a></li>
+            </ul>
+            <div class="tab-content">
+                <!-- Orders Tab -->
+                <div class="tab-pane fade show active" id="tab-orders">
+                    <p class="small text-muted">Aprove pedidos finalizados no WhatsApp para dar pontos aos clientes.</p>
+                    <div id="admin-orders-list" class="list-group"></div>
+                </div>
+                <!-- Stock Tab -->
+                <div class="tab-pane fade" id="tab-stock">
+                    <button class="btn btn-success w-100 mb-3" onclick="UI.modal('add-prod-modal')"><i
+                            class="fas fa-plus"></i> Novo Produto</button>
+                    <div id="admin-products-list" class="list-group"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CART ICON -->
+    <div class="cart-float" onclick="UI.modal('cart-modal')">
+        <i class="fas fa-shopping-cart"></i>
+        <div class="cart-count" id="cart-count">0</div>
     </div>
 
     <!-- MODALS -->
-    <!-- Login -->
+
+    <!-- Login Modal -->
     <div class="modal fade" id="login-modal" tabindex="-1">
         <div class="modal-dialog">
-            <div class="modal-content p-3">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title fw-bold">Acessar Conta</h5><button type="button" class="btn-close"
-                        data-bs-dismiss="modal"></button>
+            <div class="modal-content p-4">
+                <div class="d-flex justify-content-between mb-3">
+                    <h4 class="fw-bold">Login</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body">
-                    <form onsubmit="Auth.login(event)">
-                        <div class="mb-3"><input type="email" class="form-control p-3 bg-light border-0"
-                                id="login-email" placeholder="Seu E-mail" required></div>
-                        <div class="mb-3"><input type="password" class="form-control p-3 bg-light border-0"
-                                id="login-pass" placeholder="Sua Senha" required></div>
-                        <button type="submit" class="btn btn-primary-custom mb-3">Entrar</button>
-                    </form>
-                    <button class="btn btn-outline-danger w-100 mb-3" onclick="Auth.googleLogin()"><i
-                            class="fab fa-google me-2"></i> Entrar com Google</button>
-                    <div class="text-center">
-                        <a href="#" class="text-decoration-none small" data-bs-toggle="modal"
-                            data-bs-target="#recover-modal" data-bs-dismiss="modal">Esqueci a senha</a> |
-                        <a href="#" class="text-decoration-none small fw-bold" data-bs-toggle="modal"
-                            data-bs-target="#register-modal" data-bs-dismiss="modal">Criar Conta</a>
-                    </div>
+                <form onsubmit="Auth.login(event)">
+                    <div class="mb-3"><label>Email</label><input type="email" id="log-email" class="form-control"
+                            required></div>
+                    <div class="mb-3"><label>Senha</label><input type="password" id="log-pass" class="form-control"
+                            required></div>
+                    <button class="btn btn-primary w-100 mb-2">Entrar</button>
+                </form>
+                <div class="text-center mt-3">
+                    <a href="#" class="small text-decoration-none"
+                        onclick="UI.switchModal('login-modal', 'recover-modal')">Esqueci a senha</a> |
+                    <a href="#" class="small fw-bold text-decoration-none"
+                        onclick="UI.switchModal('login-modal', 'register-modal')">Não tem conta? Cadastre-se!</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Register -->
+    <!-- Register Modal -->
     <div class="modal fade" id="register-modal" tabindex="-1">
         <div class="modal-dialog">
-            <div class="modal-content p-3">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title fw-bold">Criar Conta</h5><button type="button" class="btn-close"
-                        data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form onsubmit="Auth.register(event)">
-                        <div class="mb-3"><input type="text" class="form-control p-3 bg-light border-0" id="reg-name"
-                                placeholder="Nome Completo" required></div>
-                        <div class="mb-3"><input type="email" class="form-control p-3 bg-light border-0" id="reg-email"
-                                placeholder="E-mail" required></div>
-                        <div class="mb-3"><input type="text" class="form-control p-3 bg-light border-0" id="reg-cpf"
-                                placeholder="CPF" maxlength="14" required></div>
-                        <div class="mb-3"><input type="password" class="form-control p-3 bg-light border-0"
-                                id="reg-pass" placeholder="Senha" required></div>
-                        <button type="submit" class="btn btn-success w-100 py-3 fw-bold">Cadastrar</button>
-                    </form>
-                </div>
+            <div class="modal-content p-4">
+                <h4 class="fw-bold mb-3">Criar Conta</h4>
+                <form onsubmit="Auth.register(event)">
+                    <div class="mb-2"><label>Nome Completo</label><input type="text" id="reg-nome" class="form-control"
+                            required></div>
+                    <div class="mb-2"><label>Email</label><input type="email" id="reg-email" class="form-control"
+                            required></div>
+                    <div class="mb-2"><label>CPF</label><input type="text" id="reg-cpf" class="form-control" required>
+                    </div>
+                    <div class="mb-3"><label>Senha</label><input type="password" id="reg-pass" class="form-control"
+                            required></div>
+                    <button class="btn btn-success w-100">Cadastrar</button>
+                </form>
             </div>
         </div>
     </div>
 
-    <!-- Recover Password -->
+    <!-- Recover Password Modal (Insecure Display as Requested) -->
     <div class="modal fade" id="recover-modal" tabindex="-1">
         <div class="modal-dialog">
-            <div class="modal-content p-3">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title">Recuperar Acesso</h5><button type="button" class="btn-close"
-                        data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form onsubmit="Auth.recover(event)">
-                        <div class="mb-3"><input type="text" class="form-control p-3 bg-light border-0" id="rec-cpf"
-                                placeholder="CPF" required></div>
-                        <div class="mb-3"><input type="text" class="form-control p-3 bg-light border-0" id="rec-name"
-                                placeholder="Nome" required></div>
-                        <button type="submit" class="btn btn-primary-custom">Buscar Senha</button>
-                    </form>
-                    <div id="rec-result" class="mt-3"></div>
-                </div>
+            <div class="modal-content p-4">
+                <h5 class="fw-bold mb-3">Recuperar Senha</h5>
+                <p class="small text-muted">Informe seus dados para visualizar sua senha.</p>
+                <form onsubmit="Auth.recover(event)">
+                    <div class="mb-2"><input type="text" id="rec-cpf" class="form-control" placeholder="CPF" required>
+                    </div>
+                    <div class="mb-3"><input type="text" id="rec-nome" class="form-control" placeholder="Nome Completo"
+                            required></div>
+                    <button class="btn btn-primary w-100">Buscar Senha</button>
+                </form>
             </div>
         </div>
     </div>
 
-    <!-- Cart -->
+    <!-- Cart Modal + Gemini -->
     <div class="modal fade" id="cart-modal" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title fw-bold">Seu Orçamento</h5><button type="button" class="btn-close"
-                        data-bs-dismiss="modal"></button>
+                <div class="modal-header">
+                    <h5 class="fw-bold"><i class="fas fa-robot text-primary"></i> Assistente de Orçamento</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <ul id="cart-list" class="list-group list-group-flush mb-4"></ul>
-                    <div class="d-flex justify-content-between align-items-center bg-light p-3 rounded">
-                        <h4 class="mb-0 fw-bold">Total Estimado</h4>
-                        <h4 class="mb-0 text-primary" id="cart-total">R$ 0,00</h4>
+                    <div id="cart-list"></div>
+                    <div class="alert alert-info mt-3 small">
+                        <i class="fas fa-info-circle"></i> Compras abaixo de R$ 200 ganham <strong>30 pts</strong>.
+                        Acima ganham <strong>60 pts</strong>.
                     </div>
-                    <button class="btn btn-success w-100 py-3 mt-3 fw-bold" onclick="Cart.checkout()"><i
-                            class="fab fa-whatsapp me-2"></i> Solicitar via WhatsApp</button>
+                    <div id="gemini-box" class="p-3 bg-light rounded mt-3" style="display:none;"></div>
+                    <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-outline-primary" onclick="Cart.getQuote()">Gerar Orçamento (IA)</button>
+                        <button class="btn btn-success fw-bold" onclick="Cart.checkout()">Finalizar no WhatsApp</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Add Product -->
-    <div class="modal fade" id="add-product-modal" tabindex="-1">
+    <!-- Add Product Modal (Admin) -->
+    <div class="modal fade" id="add-prod-modal" tabindex="-1">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title">Novo Produto</h5><button type="button" class="btn-close"
-                        data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form onsubmit="Products.add(event)">
-                        <div class="mb-2"><input type="text" class="form-control" id="new-name" placeholder="Nome"
-                                required></div>
-                        <div class="mb-2"><textarea class="form-control" id="new-desc"
-                                placeholder="Descrição"></textarea></div>
-                        <div class="mb-2">
-                            <select class="form-control" id="new-cat">
-                                <option value="motor">Motor</option>
-                                <option value="pneus">Pneus</option>
-                                <option value="freios">Freios</option>
-                                <option value="eletrica">Elétrica</option>
-                            </select>
-                        </div>
-                        <div class="mb-2"><input type="number" step="0.01" class="form-control" id="new-price"
-                                placeholder="Preço" required></div>
-                        <div class="mb-2"><input type="number" class="form-control" id="new-stock" placeholder="Estoque"
-                                required></div>
-                        <div class="mb-2">
-                            <label class="small text-danger">Foto (Obrigatória)</label>
-                            <input type="file" class="form-control" id="new-photo" accept="image/*"
-                                capture="environment" required>
-                        </div>
-                        <button class="btn btn-success w-100">Salvar</button>
-                    </form>
-                </div>
+            <div class="modal-content p-4">
+                <h5>Novo Produto</h5>
+                <form onsubmit="Admin.addProduct(event)">
+                    <input type="text" id="prod-name" class="form-control mb-2" placeholder="Nome" required>
+                    <input type="text" id="prod-cat" class="form-control mb-2"
+                        placeholder="Categoria (ex: motor, pneus)" required>
+                    <input type="number" id="prod-price" class="form-control mb-2" placeholder="Preço" step="0.01"
+                        required>
+                    <input type="text" id="prod-img" class="form-control mb-2" placeholder="URL da Imagem (https://...)"
+                        required>
+                    <textarea id="prod-desc" class="form-control mb-2" placeholder="Descrição"></textarea>
+                    <button class="btn btn-success w-100">Salvar</button>
+                </form>
             </div>
         </div>
     </div>
 
-    <!-- Toast Notification -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="app-toast" class="toast align-items-center text-white bg-primary border-0" role="alert">
+    <!-- TOAST -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="main-toast" class="toast align-items-center text-white bg-primary border-0" role="alert">
             <div class="d-flex">
-                <div class="toast-body" id="toast-msg">Hello</div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                <div class="toast-body" id="toast-msg"></div><button type="button"
+                    class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
             </div>
         </div>
     </div>
 
-    <!-- LIBRARIES -->
+    <!-- LIBS -->
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- CORE LOGIC -->
+    <!-- LOGIC -->
     <script>
-        // --- SERVICES ---
+        // --- DB SERVICE ---
         const DB = {
             client: null,
             init: function () {
                 try {
-                    this.client = window.supabase.createClient(AppConfig.supabaseUrl, AppConfig.supabaseKey);
-                    console.log("DB Connected");
-                } catch (e) { console.error("DB Error", e); }
+                    this.client = supabase.createClient(AppConfig.supabaseUrl, AppConfig.supabaseKey);
+                } catch (e) { console.error("DB Init Fail", e); }
             }
         };
 
-        const Firebase = {
-            init: function () {
-                try {
-                    firebase.initializeApp(AppConfig.firebaseConfig);
-                    console.log("Firebase Connected");
-                } catch (e) { console.error("Firebase Error", e); }
-            }
-        };
-
-        // --- AUTHENTICATION (DIRECT TABLE ACCESS - NO RPC) ---
+        // --- AUTH SERVICE ---
         const Auth = {
             login: async function (e) {
                 e.preventDefault();
-                const email = document.querySelector('#login-email').value;
-                const pass = document.querySelector('#login-pass').value;
+                const email = document.getElementById('log-email').value.trim().toLowerCase();
+                const pass = document.getElementById('log-pass').value.trim();
 
-                // DIRECT QUERY - AVOIDS RPC ERRORS
-                const { data, error } = await DB.client
-                    .from('usuarios')
-                    .select('*')
-                    .eq('email', email)
-                    .eq('senha', pass)
-                    .maybeSingle();
+                const { data, error } = await DB.client.from('usuarios').select('*').eq('email', email).maybeSingle();
 
-                if (error || !data) {
-                    UI.toast('Email ou senha incorretos.', 'bg-danger');
-                } else {
+                if (data && data.senha === pass) {
                     this.setSession(data);
                     bootstrap.Modal.getInstance(document.getElementById('login-modal')).hide();
-                    UI.toast('Bem-vindo, ' + data.nome + '!');
+                    UI.toast(`Bem-vindo, ${data.nome}`);
+                } else {
+                    UI.toast("Email ou senha inválidos", "bg-danger");
                 }
             },
-
             register: async function (e) {
                 e.preventDefault();
-                const newUser = {
-                    nome: document.querySelector('#reg-name').value,
-                    email: document.querySelector('#reg-email').value,
-                    cpf: document.querySelector('#reg-cpf').value,
-                    senha: document.querySelector('#reg-pass').value,
+                const user = {
+                    nome: document.getElementById('reg-nome').value.trim(),
+                    email: document.getElementById('reg-email').value.trim().toLowerCase(),
+                    cpf: document.getElementById('reg-cpf').value.trim(),
+                    senha: document.getElementById('reg-pass').value.trim(),
                     pontos: 0,
                     is_admin: false
                 };
 
-                // Check existance
-                const { data: exists } = await DB.client.from('usuarios').select('id').or(`email.eq.${newUser.email},cpf.eq.${newUser.cpf}`).maybeSingle();
-                if (exists) return UI.toast('Email ou CPF já cadastrados', 'bg-warning');
+                // Check Exists
+                const { data: exists } = await DB.client.from('usuarios').select('id').or(`email.eq.${user.email},cpf.eq.${user.cpf}`).maybeSingle();
+                if (exists) return UI.toast("Usuário já existe!", "bg-warning");
 
-                // Insert
-                const { error } = await DB.client.from('usuarios').insert([newUser]);
-                if (error) {
-                    UI.toast('Erro ao cadastrar', 'bg-danger');
-                } else {
-                    UI.toast('Cadastro realizado! Faça login.');
+                const { error } = await DB.client.from('usuarios').insert([user]);
+                if (error) UI.toast("Erro ao cadastrar", "bg-danger");
+                else {
+                    UI.toast("Cadastro sucesso! Faça login.");
                     bootstrap.Modal.getInstance(document.getElementById('register-modal')).hide();
                 }
             },
-
-            googleLogin: async function () {
-                const provider = new firebase.auth.GoogleAuthProvider();
-                try {
-                    const result = await firebase.auth().signInWithPopup(provider);
-                    const gUser = result.user;
-
-                    // Check if exists in DB
-                    const { data: dbUser } = await DB.client.from('usuarios').select('*').eq('email', gUser.email).maybeSingle();
-
-                    if (dbUser) {
-                        this.setSession(dbUser);
-                    } else {
-                        // Create
-                        const newUser = {
-                            nome: gUser.displayName,
-                            email: gUser.email,
-                            google_id: gUser.uid,
-                            pontos: 0,
-                            is_admin: false
-                        };
-                        const { data: created, error } = await DB.client.from('usuarios').insert([newUser]).select().single();
-                        if (!error) this.setSession(created);
-                    }
-                    bootstrap.Modal.getInstance(document.getElementById('login-modal')).hide();
-                } catch (e) {
-                    UI.toast('Erro no login Google', 'bg-danger');
-                }
-            },
-
             recover: async function (e) {
                 e.preventDefault();
-                const cpf = document.querySelector('#rec-cpf').value;
-                const nome = document.querySelector('#rec-name').value;
+                const cpf = document.getElementById('rec-cpf').value.trim();
+                const nome = document.getElementById('rec-nome').value.trim();
 
-                const { data } = await DB.client.from('usuarios').select('senha').eq('cpf', cpf).ilike('nome', `%${nome}%`).maybeSingle();
-                const resDiv = document.getElementById('rec-result');
-                if (data) resDiv.innerHTML = `<span class="text-success fw-bold">Sua senha: ${data.senha}</span>`;
-                else resDiv.innerHTML = `<span class="text-danger">Dados não conferem.</span>`;
+                const { data } = await DB.client.from('usuarios').select('senha').eq('cpf', cpf).ilike('nome', nome).maybeSingle();
+                if (data) alert(`Sua senha é: ${data.senha}`);
+                else UI.toast("Dados não conferem", "bg-danger");
             },
-
             setSession: function (user) {
                 State.user = user;
                 localStorage.setItem('user', JSON.stringify(user));
                 UI.updateAuth();
             },
-
             logout: function () {
                 State.user = null;
                 localStorage.removeItem('user');
@@ -746,170 +543,61 @@
             }
         };
 
-        // --- PRODUCTS LOGIC ---
+        // --- PRODUCTS SERVICE ---
         const Products = {
+            list: [],
             load: async function () {
                 const { data } = await DB.client.from('produtos').select('*');
-                State.products = data || [];
+                this.list = data || [];
                 this.render();
             },
+            render: function (items = this.list) {
+                const grid = document.getElementById('products-grid');
+                grid.innerHTML = '';
+                if (items.length === 0) grid.innerHTML = '<div class="col-12 text-center py-5">Nenhum produto encontrado.</div>';
 
-            render: function () {
-                const container = document.getElementById('products-grid');
-                container.innerHTML = '';
-
-                let filtered = State.products;
-
-                // Categories
-                if (State.currentCategory !== 'all') {
-                    filtered = filtered.filter(p => p.categoria === State.currentCategory);
-                }
-
-                // Empty State
-                if (filtered.length === 0) {
-                    container.innerHTML = '<div class="col-12 text-center text-muted my-5"><h5>Nenhum produto encontrado nesta categoria.</h5></div>';
-                    return;
-                }
-
-                filtered.forEach(p => {
-                    // Fallback image logic handled inline
-                    const bgClass = p.estoque < 5 ? 'text-danger' : 'text-success';
-                    const safeName = p.nome.replace(/'/g, "\\'");
-
+                items.forEach(p => {
                     const html = `
-                    <div class="col-6 col-md-4 col-lg-3 fade-in">
+                    <div class="col-12 col-md-6 col-lg-3">
                         <div class="product-card h-100 d-flex flex-column">
-                            <div class="product-img-wrapper">
-                                <img src="${p.imagem_url}" class="product-img" onerror="this.src='https://placehold.co/300?text=Sem+Foto'">
-                                <div class="price-badge">R$ ${p.preco}</div>
-                            </div>
-                            <div class="p-3 flex-grow-1 d-flex flex-column">
-                                <h6 class="fw-bold mb-1 text-truncate">${p.nome}</h6>
-                                <p class="small text-muted mb-2 flex-grow-1">${p.descricao.substring(0, 50)}...</p>
-                                <small class="${bgClass} mb-2"><i class="fas fa-box"></i> Estoque: ${p.estoque}</small>
-                                <button class="btn btn-outline-primary btn-sm w-100 mt-auto rounded-pill" onclick="Cart.add(${p.id}, '${safeName}', ${p.preco})">Adicionar</button>
+                            <img src="${p.imagem_url}" class="product-img" onerror="this.src='https://placehold.co/300?text=Sem+Imagem'">
+                            <div class="card-body d-flex flex-column flex-grow-1">
+                                <h6 class="fw-bold mb-1">${p.nome}</h6>
+                                <p class="small text-muted flex-grow-1">${p.descricao || ''}</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="badge bg-secondary text-white" style="visibility:hidden">R$ ${p.preco}</span> <!-- Hidden Price -->
+                                    <button class="btn btn-sm btn-outline-primary rounded-pill" onclick="Cart.add(${p.id})">
+                                        <i class="fas fa-plus"></i> Adicionar
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>`;
-                    container.insertAdjacentHTML('beforeend', html);
+                    grid.innerHTML += html;
                 });
             },
-
-            setCategory: function (cat, btn) {
-                State.currentCategory = cat;
-                document.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                this.render();
-            },
-
             filter: function (term) {
-                term = term.toLowerCase();
-                if (!term) {
-                    this.render();
-                    return;
-                }
-                const matches = State.products.filter(p => p.nome.toLowerCase().includes(term));
-                // Hacky render specific logic but fine for now
-                const container = document.getElementById('products-grid');
-                container.innerHTML = '';
-                matches.forEach(p => { /* Same render logic, simplified for brevity in filter */
-                    // Ideally we'd separate renderOneItem, but re-using render is easier if we updated state.
-                    // Lets update state temporarily for filter? No, better to just modify the render logic to accept list.
-                    // For this simple script, I'll validly just re-render all filtered.
-                });
-                // To keep it simple, I will just hide non-matching items via CSS or similar, OR simpler:
-                // Actually, let's update render to accept list argument.
-                // Modifying render() above to use 'filtered' variable.
+                const lower = term.toLowerCase();
+                const start = this.list.filter(p => p.nome.toLowerCase().includes(lower));
+                this.render(start);
             },
-
-            // Re-implementing filter properly
-            // Actually, for simplicity in this monolith:
-            // I will update State.currentFilter and call render. 
-        };
-
-        // Patching Products.render to handle search
-        Products.render = function (list = State.products) {
-            const container = document.getElementById('products-grid');
-            container.innerHTML = '';
-
-            let display = list;
-            if (State.currentCategory !== 'all') {
-                display = display.filter(p => p.categoria === State.currentCategory);
-            }
-
-            // Search filter
-            const searchContainer = document.querySelector('.search-input');
-            if (searchContainer && searchContainer.value) {
-                const term = searchContainer.value.toLowerCase();
-                display = display.filter(p => p.nome.toLowerCase().includes(term));
-            }
-
-            if (display.length === 0) {
-                container.innerHTML = '<div class="col-12 text-center text-muted my-5"><h5>Nada encontrado.</h5></div>';
-                return;
-            }
-
-            display.forEach(p => {
-                const safeName = p.nome.replace(/'/g, "\\'");
-                const html = `
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 fade-in mb-4">
-                    <div class="product-card h-100 d-flex flex-column">
-                        <div class="product-img-wrapper">
-                            <img src="${p.imagem_url}" class="product-img" onerror="this.src='https://placehold.co/300?text=Sem+Foto'">
-                            <div class="price-badge">R$ ${parseFloat(p.preco).toFixed(2)}</div>
-                        </div>
-                        <div class="p-3 flex-grow-1 d-flex flex-column">
-                            <h6 class="fw-bold mb-1">${p.nome}</h6>
-                            <p class="small text-muted mb-2 flex-grow-1">${p.descricao || 'Sem descrição'}</p>
-                            <button class="btn btn-primary-custom btn-sm mt-auto" onclick="Cart.add(${p.id}, '${safeName}', ${p.preco})">
-                                <i class="fas fa-cart-plus"></i> Adicionar
-                            </button>
-                        </div>
-                    </div>
-                </div>`;
-                container.insertAdjacentHTML('beforeend', html);
-            });
-        };
-
-        Products.filter = function (val) { this.render(); }; // Triggers re-render reading input
-
-        Products.add = async function (e) {
-            e.preventDefault();
-            const file = document.getElementById('new-photo').files[0];
-            if (!file) return UI.toast('Foto obrigatória!', 'bg-warning');
-
-            const ext = file.name.split('.').pop();
-            const path = `produtos/${Date.now()}.${ext}`;
-
-            const { error: upErr } = await DB.client.storage.from('produtos').upload(path, file);
-            if (upErr) return UI.toast('Erro upload imagem', 'bg-danger');
-
-            const { data: { publicUrl } } = DB.client.storage.from('produtos').getPublicUrl(path);
-
-            const newProd = {
-                nome: document.getElementById('new-name').value,
-                descricao: document.getElementById('new-desc').value,
-                categoria: document.getElementById('new-cat').value,
-                preco: parseFloat(document.getElementById('new-price').value),
-                estoque: parseInt(document.getElementById('new-stock').value),
-                imagem_url: publicUrl
-            };
-
-            const { error } = await DB.client.from('produtos').insert([newProd]);
-            if (error) UI.toast('Erro ao salvar no banco', 'bg-danger');
-            else {
-                UI.toast('Produto Salvo!');
-                bootstrap.Modal.getInstance(document.getElementById('add-product-modal')).hide();
-                this.load();
+            filterCat: function (cat, btn) {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                if (cat === 'all') this.render();
+                else this.render(this.list.filter(p => p.categoria === cat));
             }
         };
 
-        // --- CART LOGIC ---
+        // --- CART & ORDERS ---
         const Cart = {
-            add: function (id, nome, preco) {
-                State.cart.push({ id, nome, preco });
-                this.save();
-                UI.toast(`${nome} no carrinho!`);
+            add: function (id) {
+                const p = Products.list.find(x => x.id === id);
+                if (p) {
+                    State.cart.push(p);
+                    this.save();
+                    UI.toast(`${p.nome} adicionado!`);
+                }
             },
             remove: function (idx) {
                 State.cart.splice(idx, 1);
@@ -919,79 +607,185 @@
                 localStorage.setItem('cart', JSON.stringify(State.cart));
                 UI.updateCart();
             },
-            checkout: function () {
-                if (!State.user) return UI.toast('Entre para enviar o pedido', 'bg-warning');
+            getQuote: async function () {
+                const box = document.getElementById('gemini-box');
+                box.style.display = 'block';
+                box.innerHTML = '🤖 Calculando com Inteligência Artificial...';
+
+                const items = State.cart.map(i => i.nome).join(', ');
+                const prompt = `Gere um orçamento amigável e técnico para: ${items}. Não coloque valor unítário. Diga que é uma excelente escolha.`;
+
+                try {
+                    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${AppConfig.geminiKey}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                    });
+                    const data = await res.json();
+                    box.innerHTML = data.candidates?.[0]?.content?.parts?.[0]?.text || "Orçamento Gerado.";
+                } catch (e) { box.innerHTML = "Orçamento pronto. Finalize abaixo."; }
+            },
+            checkout: async function () {
+                if (!State.user) return UI.toast("Faça login para finalizar e ganhar pontos!", "bg-warning");
                 if (State.cart.length === 0) return;
 
-                const items = State.cart.map(i => `* ${i.nome} (R$ ${i.preco})`).join('\n');
-                const total = State.cart.reduce((a, b) => a + b.preco, 0);
-                const msg = `Olá! Sou ${State.user.nome} e gostaria de cotar:\n\n${items}\n\n*Total Estimado: R$ ${total.toFixed(2)}*`;
+                const total = State.cart.reduce((a, b) => a + parseFloat(b.preco), 0);
 
-                window.open(`https://wa.me/${AppConfig.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
-                State.cart = []; this.save();
+                // 1. Create Pending Order in DB
+                const order = {
+                    user_id: State.user.id,
+                    user_nome: State.user.nome,
+                    items: State.cart, // Supabase stores JSON
+                    total: total,
+                    status: 'pendente'
+                };
+
+                const { data, error } = await DB.client.from('pedidos').insert([order]).select().single();
+
+                if (error) {
+                    console.error(error);
+                    UI.toast("Erro ao registrar pedido. Tente novamente.", "bg-danger");
+                    return;
+                }
+
+                // 2. Redirect WhatsApp
+                const msg = `Olá! Sou ${State.user.nome}. Gostaria de confirmar o pedido #${data.id} contendo: ${State.cart.map(i => i.nome).join(', ')}.`;
+                window.open(`https://wa.me/${AppConfig.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
+
+                State.cart = [];
+                this.save();
                 bootstrap.Modal.getInstance(document.getElementById('cart-modal')).hide();
+                UI.toast("Pedido enviado! Aguarde aprovação para ganhar pontos.");
             }
         };
 
-        // --- UI CONTROLLER ---
+        // --- ADMIN SERVICE ---
+        const Admin = {
+            openPanel: function () {
+                new bootstrap.Offcanvas(document.getElementById('admin-panel')).show();
+                this.loadOrders();
+                this.loadStock();
+            },
+            loadOrders: async function () {
+                const { data } = await DB.client.from('pedidos').select('*').eq('status', 'pendente').order('created_at', { ascending: false });
+                const div = document.getElementById('admin-orders-list');
+                div.innerHTML = '';
+                if (!data || data.length === 0) div.innerHTML = '<p class="p-3 text-muted">Nenhum pedido pendente.</p>';
+                else {
+                    data.forEach(o => {
+                        div.innerHTML += `
+                        <div class="list-group-item">
+                            <h6 class="fw-bold">#${o.id} - ${o.user_nome}</h6>
+                            <small>R$ ${o.total.toFixed(2)}</small>
+                            <button class="btn btn-sm btn-success w-100 mt-2" onclick="Admin.approve(${o.id}, ${o.total}, '${o.user_id}')">Confirmar & Dar Pontos</button>
+                        </div>`;
+                    });
+                }
+            },
+            approve: async function (orderId, total, userId) {
+                // Points Logic
+                let points = (total >= 200) ? 60 : 30;
+
+                // Update Order
+                await DB.client.from('pedidos').update({ status: 'aprovado' }).eq('id', orderId);
+
+                // Get current user points
+                const { data: u } = await DB.client.from('usuarios').select('pontos').eq('id', userId).single();
+                const newPoints = (u.pontos || 0) + points;
+
+                // Update User
+                await DB.client.from('usuarios').update({ pontos: newPoints }).eq('id', userId);
+
+                UI.toast(`Pedido confirmado! +${points} pts para o cliente.`);
+                this.loadOrders(); // Refresh
+            },
+            loadStock: function () {
+                const div = document.getElementById('admin-products-list');
+                div.innerHTML = '';
+                Products.list.forEach(p => {
+                    div.innerHTML += `
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>${p.nome} <br> <small class="text-muted">R$ ${p.preco}</small></span>
+                        <button class="btn btn-sm text-danger" onclick="Admin.delProd(${p.id})"><i class="fas fa-trash"></i></button>
+                    </div>`;
+                });
+            },
+            addProduct: async function (e) {
+                e.preventDefault();
+                const newP = {
+                    nome: document.getElementById('prod-name').value,
+                    categoria: document.getElementById('prod-cat').value,
+                    preco: parseFloat(document.getElementById('prod-price').value),
+                    descricao: document.getElementById('prod-desc').value,
+                    imagem_url: document.getElementById('prod-img').value,
+                    estoque: 10
+                };
+                const { error } = await DB.client.from('produtos').insert([newP]);
+                if (!error) {
+                    UI.toast("Produto Criado!");
+                    Products.load();
+                    bootstrap.Modal.getInstance(document.getElementById('add-prod-modal')).hide();
+                }
+            },
+            delProd: async function (id) {
+                if (confirm('Deletar produto?')) {
+                    await DB.client.from('produtos').delete().eq('id', id);
+                    Products.load();
+                    this.loadStock();
+                }
+            }
+        };
+
+        // --- UI ---
         const UI = {
             init: function () {
+                DB.init();
+                Products.load();
                 this.updateAuth();
                 this.updateCart();
             },
             updateAuth: function () {
-                const btns = document.getElementById('auth-buttons');
-                const menu = document.getElementById('user-menu');
+                const u = State.user;
+                if (u) {
+                    document.getElementById('nav-guest').style.display = 'none';
+                    document.getElementById('nav-user').style.display = 'block';
+                    document.getElementById('user-name').innerText = u.nome.split(' ')[0];
+                    document.getElementById('user-points').innerText = u.pontos || 0;
 
-                if (State.user) {
-                    btns.style.display = 'none';
-                    menu.style.display = 'block';
-                    document.getElementById('user-name').innerText = State.user.nome.split(' ')[0];
-                    document.getElementById('user-points').innerText = State.user.pontos || 0;
-                    if (State.user.is_admin) {
-                        document.getElementById('admin-link').style.display = 'block';
-                        document.getElementById('admin').style.display = 'block';
-                        // Load admin table simplified
-                        // ...
-                    }
+                    if (u.pontos >= 1600) document.getElementById('gift-badge').style.display = 'block';
+                    if (u.is_admin) document.getElementById('admin-link').style.display = 'block';
                 } else {
-                    btns.style.display = 'block';
-                    menu.style.display = 'none';
-                    document.getElementById('admin').style.display = 'none';
+                    document.getElementById('nav-guest').style.display = 'block';
+                    document.getElementById('nav-user').style.display = 'none';
                 }
             },
             updateCart: function () {
-                document.getElementById('cart-count').innerText = State.cart.length;
+                const c = State.cart;
+                document.getElementById('cart-count').innerText = c.length;
+
                 const list = document.getElementById('cart-list');
                 list.innerHTML = '';
-                let total = 0;
-                State.cart.forEach((item, idx) => {
-                    total += parseFloat(item.preco);
-                    list.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center">
-                        ${item.nome}
-                        <button class="btn btn-sm text-danger" onclick="Cart.remove(${idx})"><i class="fas fa-trash"></i></button>
-                    </li>`;
+                c.forEach((i, idx) => {
+                    list.innerHTML += `<div class="d-flex justify-content-between border-bottom py-2">
+                        <span>${i.nome}</span>
+                        <a href="#" class="text-danger" onclick="Cart.remove(${idx})">X</a>
+                    </div>`;
                 });
-                document.getElementById('cart-total').innerText = 'R$ ' + total.toFixed(2);
             },
-            openModal: function (id) {
-                new bootstrap.Modal(document.getElementById(id)).show();
+            modal: function (id) { new bootstrap.Modal(document.getElementById(id)).show(); },
+            switchModal: function (curr, next) {
+                bootstrap.Modal.getInstance(document.getElementById(curr)).hide();
+                new bootstrap.Modal(document.getElementById(next)).show();
             },
             toast: function (msg, bg = 'bg-primary') {
-                const el = document.getElementById('app-toast');
-                el.className = `toast align-items-center text-white border-0 ${bg}`;
                 document.getElementById('toast-msg').innerText = msg;
-                new bootstrap.Toast(el).show();
+                const t = document.getElementById('main-toast');
+                t.className = `toast align-items-center text-white border-0 ${bg}`;
+                new bootstrap.Toast(t).show();
             }
         };
 
-        // --- APP STARTUP ---
-        document.addEventListener('DOMContentLoaded', () => {
-            DB.init();
-            Firebase.init();
-            UI.init();
-            Products.load(); // Fetch initial data
-        });
+        window.onload = () => UI.init();
 
     </script>
 </body>
