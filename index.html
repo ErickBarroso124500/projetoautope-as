@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Arthur Auto Peças - Encontre peças automotivas de alta qualidade com orçamentos personalizados.">
     <title>Arthur Auto Peças - Loja Online de Peças Automotivas</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <style>
         :root {
             --primary-color: #0052cc;
@@ -22,218 +18,54 @@
             --card-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
             --transition-speed: 0.4s;
         }
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.7;
-            margin: 0;
-        }
-        /* Navbar */
-        .navbar {
-            background: linear-gradient(90deg, #ffffff, #f8f9fa);
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
-            padding: 15px 0;
-        }
-        .navbar-brand {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.8rem;
-            color: var(--primary-color);
-        }
-        .nav-link {
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: color var(--transition-speed);
-        }
-        .nav-link:hover {
-            color: var(--primary-color);
-        }
-        /* Hero Section with Carousel */
-        .hero {
-            position: relative;
-            height: 500px;
-        }
-        .carousel-item img {
-            height: 500px;
-            object-fit: cover;
-            filter: brightness(0.5);
-        }
-        .carousel-caption {
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        .carousel-caption h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 600;
-        }
-        .carousel-caption p {
-            font-size: 1.3rem;
-        }
-        /* Search Bar */
-        .search-bar {
-            max-width: 700px;
-            margin: 30px auto;
-        }
-        .search-bar input {
-            border-radius: 25px;
-            padding: 12px 20px;
-            box-shadow: var(--card-shadow);
-        }
-        /* Categories */
-        .categories {
-            background: white;
-            padding: 40px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-        .category-btn {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            margin: 5px;
-            transition: all var(--transition-speed);
-        }
-        .category-btn:hover,
-        .category-btn.active {
-            background-color: var(--primary-color);
-            transform: scale(1.05);
-        }
-        /* Product Cards */
-        .product-card {
-            border: none;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            transition: all var(--transition-speed);
-            background: white;
-        }
-        .product-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
-        }
-        .product-card img {
-            height: 220px;
-            object-fit: cover;
-            transition: transform var(--transition-speed);
-        }
-        .product-card:hover img {
-            transform: scale(1.05);
-        }
-        .product-card .card-body {
-            padding: 25px;
-        }
-        .product-card h5 {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-        .product-card p {
-            font-size: 0.95rem;
-            color: var(--secondary-color);
-        }
-        .add-to-cart-btn {
-            background: linear-gradient(45deg, var(--primary-color), #3366cc);
-            border: none;
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all var(--transition-speed);
-        }
-        .add-to-cart-btn:hover {
-            background: linear-gradient(45deg, #003d99, var(--primary-color));
-        }
-        /* Cart Icon */
-        .cart-icon {
-            position: relative;
-        }
-        .cart-count {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: #e63946;
-            color: white;
-            font-size: 0.9rem;
-            padding: 4px 8px;
-            border-radius: 50%;
-        }
-        /* Modals */
-        .modal-content {
-            border-radius: 12px;
-            box-shadow: var(--card-shadow);
-        }
-        .modal-header {
-            background: var(--primary-color);
-            color: white;
-            border-radius: 12px 12px 0 0;
-        }
-        #quote-result {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--accent-color);
-        }
-        .loading-spinner {
-            display: none;
-            margin: 30px auto;
-        }
-        /* Pagination */
-        .pagination {
-            justify-content: center;
-            margin-top: 30px;
-        }
-        .page-link {
-            border-radius: 8px;
-            margin: 0 5px;
-            transition: all var(--transition-speed);
-        }
-        .page-link:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        /* Testimonials */
-        .testimonials {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 50px 0;
-        }
-        .testimonial-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: var(--card-shadow);
-            text-align: center;
-        }
-        /* Footer */
-        .footer {
-            background: linear-gradient(90deg, #2d3748, #1a202c);
-            color: white;
-            padding: 50px 0;
-        }
-        .footer a {
-            color: #a0aec0;
-            transition: color var(--transition-speed);
-        }
-        .footer a:hover {
-            color: white;
-        }
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in {
-            animation: fadeIn 0.6s ease-in-out;
-        }
-        /* Responsive Adjustments */
+        body { font-family: 'Roboto', sans-serif; background-color: var(--background-color); color: var(--text-color); line-height: 1.7; margin: 0; }
+        .navbar { background: linear-gradient(90deg, #ffffff, #f8f9fa); box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05); padding: 15px 0; }
+        .navbar-brand { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.8rem; color: var(--primary-color); }
+        .nav-link { font-weight: 500; font-size: 1.1rem; transition: color var(--transition-speed); }
+        .nav-link:hover { color: var(--primary-color); }
+        .hero { position: relative; height: 500px; }
+        .carousel-item img { height: 500px; object-fit: cover; filter: brightness(0.5); }
+        .carousel-caption { top: 50%; transform: translateY(-50%); }
+        .carousel-caption h1 { font-family: 'Poppins', sans-serif; font-size: 3.5rem; font-weight: 600; }
+        .carousel-caption p { font-size: 1.3rem; }
+        .search-bar { max-width: 700px; margin: 30px auto; }
+        .search-bar input { border-radius: 25px; padding: 12px 20px; box-shadow: var(--card-shadow); }
+        .categories { background: white; padding: 40px 0; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); }
+        .category-btn { background-color: var(--secondary-color); color: white; padding: 10px 20px; border-radius: 20px; margin: 5px; transition: all var(--transition-speed); }
+        .category-btn:hover, .category-btn.active { background-color: var(--primary-color); transform: scale(1.05); }
+        .product-card { border: none; border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); transition: all var(--transition-speed); background: white; }
+        .product-card:hover { transform: translateY(-12px); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15); }
+        .product-card img { height: 220px; object-fit: cover; transition: transform var(--transition-speed); }
+        .product-card:hover img { transform: scale(1.05); }
+        .product-card .card-body { padding: 25px; }
+        .product-card h5 { font-size: 1.2rem; font-weight: 600; }
+        .product-card p { font-size: 0.95rem; color: var(--secondary-color); }
+        .add-to-cart-btn { background: linear-gradient(45deg, var(--primary-color), #3366cc); border: none; padding: 10px; border-radius: 8px; font-weight: 500; transition: all var(--transition-speed); }
+        .add-to-cart-btn:hover { background: linear-gradient(45deg, #003d99, var(--primary-color)); }
+        .cart-icon { position: relative; }
+        .cart-count { position: absolute; top: -10px; right: -10px; background-color: #e63946; color: white; font-size: 0.9rem; padding: 4px 8px; border-radius: 50%; }
+        .modal-content { border-radius: 12px; box-shadow: var(--card-shadow); }
+        .modal-header { background: var(--primary-color); color: white; border-radius: 12px 12px 0 0; }
+        #quote-result { font-size: 1.8rem; font-weight: 600; color: var(--accent-color); }
+        .loading-spinner { display: none; margin: 30px auto; }
+        .pagination { justify-content: center; margin-top: 30px; }
+        .page-link { border-radius: 8px; margin: 0 5px; transition: all var(--transition-speed); }
+        .page-link:hover { background-color: var(--primary-color); color: white; }
+        .testimonials { background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 50px 0; }
+        .testimonial-card { background: white; border-radius: 12px; padding: 20px; box-shadow: var(--card-shadow); text-align: center; }
+        .footer { background: linear-gradient(90deg, #2d3748, #1a202c); color: white; padding: 50px 0; }
+        .footer a { color: #a0aec0; transition: color var(--transition-speed); }
+        .footer a:hover { color: white; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.6s ease-in-out; }
+        .logo-img { max-height: 60px; margin-right: 10px; }
+        .user-info { display: flex; align-items: center; gap: 15px; }
+        .points-badge { background: linear-gradient(45deg, #FFD700, #FFA500); color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; }
+        .admin-panel { background: #fff; padding: 30px; border-radius: 12px; margin-top: 30px; box-shadow: var(--card-shadow); }
         @media (max-width: 768px) {
-            .hero .carousel-caption h1 {
-                font-size: 2.2rem;
-            }
-            .product-card img {
-                height: 180px;
-            }
-            .carousel-item img {
-                height: 300px;
-            }
+            .hero .carousel-caption h1 { font-size: 2.2rem; }
+            .product-card img { height: 180px; }
+            .carousel-item img { height: 300px; }
         }
     </style>
 </head>
@@ -241,26 +73,28 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="https://via.placeholder.com/150x50?text=Arthur+Auto+Pecas" alt="Arthur Auto Peças" style="height: 40px; margin-right: 10px;">Arthur Auto Peças</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="https://i.imgur.com/8tOLQs3.png" alt="Logo" class="logo-img">
+                Arthur Auto Peças
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#products">Produtos</a>
+                    <li class="nav-item"><a class="nav-link" href="#products">Produtos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Sobre Nós</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Depoimentos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
+                    <li class="nav-item" id="user-menu" style="display: none;">
+                        <div class="user-info">
+                            <span class="points-badge"><i class="fas fa-star"></i> <span id="user-points">0</span> pts</span>
+                            <button class="btn btn-sm btn-outline-danger" onclick="logout()">Sair</button>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">Sobre Nós</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#testimonials">Depoimentos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#faq">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contato</a>
+                    <li class="nav-item" id="login-btn-nav">
+                        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#login-modal">Entrar</button>
                     </li>
                     <li class="nav-item cart-icon ms-3">
                         <button class="btn btn-outline-primary position-relative" data-bs-toggle="modal" data-bs-target="#cart-modal">
@@ -268,14 +102,12 @@
                             <span id="cart-count" class="cart-count">0</span>
                         </button>
                     </li>
-                    <li class="nav-item ms-3" id="auth-section">
-                        <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#login-modal">Login</button>
-                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <!-- Hero Section with Carousel -->
+
+    <!-- Hero Section -->
     <section class="hero">
         <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -295,20 +127,20 @@
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
+                <span class="carousel-control-prev-icon"></span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Próximo</span>
+                <span class="carousel-control-next-icon"></span>
             </button>
         </div>
     </section>
+
     <!-- Search Bar -->
     <div class="search-bar">
         <input type="text" id="search-input" class="form-control" placeholder="Pesquise por peças ou categorias...">
     </div>
-    <!-- Categories Section -->
+
+    <!-- Categories -->
     <section class="categories">
         <div class="container text-center">
             <h4>Filtrar por Categoria</h4>
@@ -320,106 +152,212 @@
             <button class="btn category-btn" data-category="suspensao">Suspensão</button>
         </div>
     </section>
+
+    <!-- Admin Panel -->
+    <div id="admin-panel" class="container" style="display: none;">
+        <div class="admin-panel">
+            <h2>Painel Administrativo</h2>
+            <ul class="nav nav-tabs mb-4">
+                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-produtos">Gerenciar Produtos</a></li>
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pedidos">Pedidos Pendentes</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="tab-produtos">
+                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#add-product-modal">+ Adicionar Produto</button>
+                    <div id="admin-products-list"></div>
+                </div>
+                <div class="tab-pane fade" id="tab-pedidos">
+                    <div id="pending-orders-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Products Section -->
     <section id="products" class="container my-5">
         <h2 class="text-center mb-5">Nossos Produtos</h2>
         <div class="row" id="products-list"></div>
-        <nav aria-label="Paginação de produtos">
-            <ul class="pagination" id="pagination"></ul>
-        </nav>
+        <nav><ul class="pagination" id="pagination"></ul></nav>
     </section>
-    <!-- Testimonials Section -->
+
+    <!-- Testimonials -->
     <section id="testimonials" class="testimonials">
         <div class="container">
             <h2 class="text-center mb-5">O Que Nossos Clientes Dizem</h2>
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <div class="testimonial-card fade-in">
-                        <p>"Excelente atendimento e peças de qualidade! O orçamento foi rápido e claro."</p>
+                        <p>"Excelente atendimento e peças de qualidade!"</p>
                         <h5>João Silva</h5>
-                        <p class="text-muted">Cliente desde 2023</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="testimonial-card fade-in">
-                        <p>"Adorei a facilidade de escolher as peças e receber o orçamento pelo WhatsApp."</p>
+                        <p>"Adorei a facilidade de escolher as peças."</p>
                         <h5>Maria Oliveira</h5>
-                        <p class="text-muted">Cliente desde 2024</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="testimonial-card fade-in">
-                        <p>"Loja confiável, entrega no prazo prometido. Recomendo!"</p>
+                        <p>"Loja confiável, recomendo!"</p>
                         <h5>Carlos Souza</h5>
-                        <p class="text-muted">Cliente desde 2022</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- FAQ Section -->
+
+    <!-- FAQ -->
     <section id="faq" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5">Perguntas Frequentes</h2>
             <div class="accordion" id="faqAccordion">
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="faq1">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                            Como funciona o orçamento?
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                            Como funciona o programa de pontos?
                         </button>
                     </h2>
-                    <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                    <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Você seleciona as peças desejadas, solicita um orçamento, e nosso sistema calcula o valor total. O orçamento é enviado para o WhatsApp com instruções de pagamento.
+                            Compras abaixo de R$ 200 ganham 30 pontos. Acima de R$ 200 ganham 60 pontos. Com 1600 pontos você ganha um brinde!
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="faq2">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
                             Qual o prazo para retirada?
                         </button>
                     </h2>
-                    <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                    <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Após a confirmação do pagamento, as peças estarão disponíveis para retirada em até 2 dias úteis na loja.
+                            Após confirmação do pagamento, as peças estarão disponíveis em até 2 dias úteis.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Contact Section -->
+
+    <!-- Contact -->
     <section id="contact" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5">Entre em Contato</h2>
-            <form id="contact-form" novalidate>
+            <form id="contact-form">
                 <div class="mb-3">
-                    <label for="name" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="name" required>
-                    <div class="invalid-feedback">Por favor, insira seu nome.</div>
+                    <label class="form-label">Nome</label>
+                    <input type="text" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" required>
-                    <div class="invalid-feedback">Por favor, insira um email válido.</div>
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <label for="message" class="form-label">Mensagem</label>
-                    <textarea class="form-control" id="message" rows="5" required></textarea>
-                    <div class="invalid-feedback">Por favor, insira sua mensagem.</div>
+                    <label class="form-label">Mensagem</label>
+                    <textarea class="form-control" rows="5" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
         </div>
     </section>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="login-modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="login-form">
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="login-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                        <div class="text-center mt-3">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#forgot-password-modal">Esqueceu a senha?</a>
+                        </div>
+                    </form>
+                    <hr>
+                    <p class="text-center">Não tem uma conta? <a href="#" data-bs-toggle="modal" data-bs-target="#register-modal">Cadastre-se!</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="register-modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cadastro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="register-form">
+                        <div class="mb-3">
+                            <label class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="reg-nome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="reg-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">CPF</label>
+                            <input type="text" class="form-control" id="reg-cpf" maxlength="14" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="reg-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal fade" id="forgot-password-modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Recuperar Senha</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="forgot-password-form">
+                        <div class="mb-3">
+                            <label class="form-label">CPF</label>
+                            <input type="text" class="form-control" id="forgot-cpf" maxlength="14" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="forgot-nome" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Recuperar</button>
+                    </form>
+                    <div id="password-result" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Cart Modal -->
-    <div class="modal fade" id="cart-modal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal fade" id="cart-modal" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="cartModalLabel">Seu Carrinho</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title">Seu Carrinho</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <ul id="cart-items" class="list-group mb-3"></ul>
@@ -428,689 +366,608 @@
             </div>
         </div>
     </div>
+
     <!-- Quote Modal -->
-    <div class="modal fade" id="quote-modal" tabindex="-1" aria-labelledby="quoteModalLabel" aria-hidden="true">
+    <div class="modal fade" id="quote-modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="quoteModalLabel">Seu Orçamento Personalizado</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title">Seu Orçamento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body text-center">
-                    <div id="loading-spinner" class="spinner-border text-primary loading-spinner" role="status">
+                    <div id="loading-spinner" class="spinner-border text-primary loading-spinner">
                         <span class="visually-hidden">Carregando...</span>
                     </div>
                     <p id="quote-result" class="mt-3"></p>
-                    <button id="continue-to-whatsapp-btn" class="btn btn-success mt-3" style="display: none;">Continuar para Pagamento via WhatsApp</button>
+                    <button id="continue-to-whatsapp-btn" class="btn btn-success mt-3" style="display: none;">Continuar via WhatsApp</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Login Modal -->
-    <div class="modal fade" id="login-modal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+
+    <!-- Add Product Modal -->
+    <div class="modal fade" id="add-product-modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title">Adicionar Produto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="login-form">
+                    <form id="add-product-form">
                         <div class="mb-3">
-                            <label for="login-email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="login-email" required>
+                            <label class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="prod-nome" required>
                         </div>
                         <div class="mb-3">
-                            <label for="login-password" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="login-password" required>
+                            <label class="form-label">Descrição</label>
+                            <textarea class="form-control" id="prod-desc" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Entrar</button>
-                        <p class="mt-3">Esqueceu a senha? <a href="#" id="forgot-password-link">Clique aqui</a></p>
-                        <p>Não tem uma conta? <a href="#" id="register-link">Cadastre-se!</a></p>
+                        <div class="mb-3">
+                            <label class="form-label">Categoria</label>
+                            <select class="form-control" id="prod-cat" required>
+                                <option value="pneus">Pneus</option>
+                                <option value="freios">Freios</option>
+                                <option value="motor">Motor</option>
+                                <option value="eletrica">Elétrica</option>
+                                <option value="suspensao">Suspensão</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Preço (R$)</label>
+                            <input type="number" step="0.01" class="form-control" id="prod-preco" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Faixa de Preço</label>
+                            <select class="form-control" id="prod-faixa">
+                                <option value="Baixa">Baixa</option>
+                                <option value="Média">Média</option>
+                                <option value="Alta">Alta</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">URL da Imagem</label>
+                            <input type="url" class="form-control" id="prod-img" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Estoque</label>
+                            <input type="number" class="form-control" id="prod-estoque" required>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Adicionar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Register Modal -->
-    <div class="modal fade" id="register-modal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="registerModalLabel">Cadastro</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="register-form">
-                        <div class="mb-3">
-                            <label for="register-name" class="form-label">Nome Completo</label>
-                            <input type="text" class="form-control" id="register-name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="register-email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="register-email" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="register-cpf" class="form-label">CPF</label>
-                            <input type="text" class="form-control" id="register-cpf" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="register-password" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="register-password" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Cadastrar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Forgot Password Modal -->
-    <div class="modal fade" id="forgot-password-modal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="forgotPasswordModalLabel">Recuperar Senha</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="forgot-password-form">
-                        <div class="mb-3">
-                            <label for="forgot-name" class="form-label">Nome Completo</label>
-                            <input type="text" class="form-control" id="forgot-name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="forgot-cpf" class="form-label">CPF</label>
-                            <input type="text" class="form-control" id="forgot-cpf" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Recuperar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Admin Panel Modal -->
-    <div class="modal fade" id="admin-modal" tabindex="-1" aria-labelledby="adminModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="adminModalLabel">Painel do Administrador</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul class="nav nav-tabs" id="adminTabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="products-tab" data-bs-toggle="tab" data-bs-target="#admin-products" type="button" role="tab">Gerenciar Produtos</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="orders-tab" data-bs-toggle="tab" data-bs-target="#admin-orders" type="button" role="tab">Gerenciar Pedidos</button>
-                        </li>
-                    </ul>
-                    <div class="tab-content mt-3">
-                        <div class="tab-pane fade show active" id="admin-products" role="tabpanel">
-                            <h5>Adicionar Novo Produto</h5>
-                            <form id="add-product-form">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="add-name" class="form-label">Nome</label>
-                                        <input type="text" class="form-control" id="add-name" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="add-description" class="form-label">Descrição</label>
-                                        <input type="text" class="form-control" id="add-description" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="add-image" class="form-label">URL da Imagem</label>
-                                        <input type="text" class="form-control" id="add-image" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="add-category" class="form-label">Categoria</label>
-                                        <select class="form-select" id="add-category" required>
-                                            <option value="pneus">Pneus</option>
-                                            <option value="freios">Freios</option>
-                                            <option value="motor">Motor</option>
-                                            <option value="eletrica">Elétrica</option>
-                                            <option value="suspensao">Suspensão</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="add-price" class="form-label">Preço</label>
-                                        <input type="number" class="form-control" id="add-price" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="add-stock" class="form-label">Estoque</label>
-                                        <input type="number" class="form-control" id="add-stock" required>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Adicionar</button>
-                            </form>
-                            <h5 class="mt-4">Lista de Produtos</h5>
-                            <ul id="admin-products-list" class="list-group"></ul>
-                        </div>
-                        <div class="tab-pane fade" id="admin-orders" role="tabpanel">
-                            <h5>Pedidos Pendentes</h5>
-                            <ul id="pending-orders-list" class="list-group"></ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Profile Modal -->
-    <div class="modal fade" id="profile-modal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="profileModalLabel">Perfil</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p id="profile-points"></p>
-                    <button id="claim-gift-btn" class="btn btn-success" style="display: none;">Resgatar Brinde</button>
-                    <h5>Compras Registradas</h5>
-                    <ul id="profile-purchases" class="list-group"></ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Toast Container -->
+
+    <!-- Toast -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="toast" class="toast">
             <div class="toast-header">
                 <strong class="me-auto">Notificação</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
             </div>
             <div class="toast-body"></div>
         </div>
     </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container text-center">
             <p>&copy; 2025 Arthur Auto Peças. Todos os direitos reservados.</p>
-            <p>Paracuru - CE | Telefone: (85) 9 8700-4279</p>
             <div class="mb-3">
-                <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="mx-3"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-whatsapp"></i></a>
             </div>
-            <p><a href="#privacy">Política de Privacidade</a> | <a href="#terms">Termos de Uso</a></p>
         </div>
     </footer>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- JavaScript Logic -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        // Products data with stock
-        let products = JSON.parse(localStorage.getItem('products')) || [
-            { id: 1, name: 'Pneu Aro 15 Michelin', description: 'Pneu de alta performance para veículos leves.', image: 'https://picsum.photos/id/101/300/220', category: 'pneus', priceRange: 'Média', stock: 10 },
-            { id: 2, name: 'Pneu Aro 17 Pirelli', description: 'Pneu esportivo com aderência superior.', image: 'https://picsum.photos/id/102/300/220', category: 'pneus', priceRange: 'Alta', stock: 10 },
-            // ... (adicionar todos os outros produtos similares, com stock: 10)
-            // Para brevidade, assumir que todos têm stock: 10 inicialmente. Em produção, adicionar todos.
-        ];
-        // Prices (hidden)
-        let prices = JSON.parse(localStorage.getItem('prices')) || {
-            'Pneu Aro 15 Michelin': 350,
-            // ... (todos os preços)
-        };
-        // Users
-        let users = JSON.parse(localStorage.getItem('users')) || [];
-        // Pending orders
-        let pendingOrders = JSON.parse(localStorage.getItem('pendingOrders')) || [];
-        // Cart as object {name: quantity}
-        let cart = JSON.parse(localStorage.getItem('cart')) || {};
-        // Current user email
-        let currentUser = localStorage.getItem('currentUser') || null;
-        // WhatsApp number updated
-        const whatsappNumber = '5585987004279';
-        // Gemini API Key
+        // Configuração Supabase
+        const SUPABASE_URL = 'https://ydwxljgmzoqsemwemtml.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlkd3hsamdtem9xc2Vtd2VtdG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwODM4ODEsImV4cCI6MjA4MDY1OTg4MX0.7elSMr11AHIhYayJgwqJQCpv0CdyiiM5XunW82Y-rAo';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        const whatsappNumber = '5585991815434';
         const geminiApiKey = 'AIzaSyCO22vM99hmTcsUB6RwEqgDXcsO-UrO1VQ';
-        // Pagination settings
-        const itemsPerPage = 12;
+        
+        let currentUser = null;
+        let products = [];
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let currentPage = 1;
-        // Show toast
-        function showToast(message) {
-            const toast = new bootstrap.Toast(document.getElementById('toast'));
-            document.querySelector('.toast-body').textContent = message;
-            toast.show();
-        }
-        // Save data
-        function saveData() {
-            localStorage.setItem('products', JSON.stringify(products));
-            localStorage.setItem('prices', JSON.stringify(prices));
-            localStorage.setItem('users', JSON.stringify(users));
-            localStorage.setItem('pendingOrders', JSON.stringify(pendingOrders));
-            localStorage.setItem('cart', JSON.stringify(cart));
-            localStorage.setItem('currentUser', currentUser);
-        }
-        // Get price range
-        function getPriceRange(price) {
-            if (price < 100) return 'Baixa';
-            if (price <= 300) return 'Média';
-            return 'Alta';
-        }
-        // Update auth section
-        function updateAuthSection() {
-            const authSection = document.getElementById('auth-section');
-            if (currentUser) {
-                const user = users.find(u => u.email === currentUser);
-                authSection.innerHTML = `
-                    <div class="dropdown">
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            ${user.name}
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#profile-modal">Perfil</a></li>
-                            ${user.isAdmin ? '<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#admin-modal">Admin</a></li>' : ''}
-                            <li><a class="dropdown-item" href="#" id="logout-link">Sair</a></li>
-                        </ul>
-                    </div>
-                `;
-                document.getElementById('logout-link').addEventListener('click', logout);
-            } else {
-                authSection.innerHTML = `<button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#login-modal">Login</button>`;
-            }
-        }
-        // Login
-        document.getElementById('login-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            const user = users.find(u => u.email === email && u.password === password);
-            if (user) {
-                currentUser = email;
-                saveData();
-                updateAuthSection();
-                bootstrap.Modal.getInstance(document.getElementById('login-modal')).hide();
-                showToast('Login realizado com sucesso!');
-            } else {
-                showToast('Email ou senha incorretos.');
-            }
-        });
-        // Register
-        document.getElementById('register-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('register-name').value;
-            const email = document.getElementById('register-email').value;
-            const cpf = document.getElementById('register-cpf').value;
-            const password = document.getElementById('register-password').value;
-            if (users.find(u => u.email === email || u.cpf === cpf)) {
-                showToast('Email ou CPF já cadastrado.');
-                return;
-            }
-            users.push({ name, email, cpf, password, points: 0, purchases: [], isAdmin: false });
-            saveData();
-            bootstrap.Modal.getInstance(document.getElementById('register-modal')).hide();
-            showToast('Cadastro realizado! Faça login.');
-        });
-        // Forgot password
-        document.getElementById('forgot-password-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('forgot-name').value;
-            const cpf = document.getElementById('forgot-cpf').value;
-            const user = users.find(u => u.name === name && u.cpf === cpf);
-            if (user) {
-                showToast(`Sua senha é: ${user.password}`);
-            } else {
-                showToast('Nome ou CPF incorretos.');
-            }
-            bootstrap.Modal.getInstance(document.getElementById('forgot-password-modal')).hide();
-        });
-        // Links
-        document.getElementById('register-link').addEventListener('click', () => {
-            bootstrap.Modal.getInstance(document.getElementById('login-modal')).hide();
-            new bootstrap.Modal(document.getElementById('register-modal')).show();
-        });
-        document.getElementById('forgot-password-link').addEventListener('click', () => {
-            bootstrap.Modal.getInstance(document.getElementById('login-modal')).hide();
-            new bootstrap.Modal(document.getElementById('forgot-password-modal')).show();
-        });
-        // Logout
-        function logout() {
-            currentUser = null;
-            cart = {};
-            saveData();
-            updateAuthSection();
+        const itemsPerPage = 12;
+
+        // Inicialização
+        async function init() {
+            await loadProducts();
+            checkLoginStatus();
             updateCartCount();
             updateCartModal();
-            showToast('Logout realizado.');
+            renderProducts();
+            setupEventListeners();
         }
-        // Render products
+
+        // Verificar login
+        function checkLoginStatus() {
+            const user = JSON.parse(localStorage.getItem('currentUser'));
+            if (user) {
+                currentUser = user;
+                showUserMenu();
+                if (user.is_admin) showAdminPanel();
+            }
+        }
+
+        // Mostrar menu do usuário
+        function showUserMenu() {
+            document.getElementById('login-btn-nav').style.display = 'none';
+            document.getElementById('user-menu').style.display = 'block';
+            document.getElementById('user-points').textContent = currentUser.pontos;
+        }
+
+        // Logout
+        function logout() {
+            localStorage.removeItem('currentUser');
+            currentUser = null;
+            location.reload();
+        }
+
+        // Carregar produtos
+        async function loadProducts() {
+            try {
+                const { data, error } = await supabase.from('produtos').select('*');
+                if (error) throw error;
+                products = data;
+            } catch (error) {
+                console.error('Erro ao carregar produtos:', error);
+                showToast('Erro ao carregar produtos');
+            }
+        }
+
+        // Renderizar produtos
         function renderProducts(filteredProducts = products) {
-            const productsList = document.getElementById('products-list');
-            productsList.innerHTML = '';
+            const list = document.getElementById('products-list');
+            list.innerHTML = '';
             const start = (currentPage - 1) * itemsPerPage;
             const end = start + itemsPerPage;
             const paginatedProducts = filteredProducts.slice(start, end);
+            
             paginatedProducts.forEach(product => {
                 const card = `
                     <div class="col-md-4 col-lg-3 mb-4">
                         <div class="card product-card fade-in">
-                            <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                            <img src="${product.imagem_url}" class="card-img-top" alt="${product.nome}">
                             <div class="card-body">
-                                <h5 class="card-title">${product.name}</h5>
-                                <p class="card-text">${product.description}</p>
-                                <p class="card-text text-muted">Faixa de preço: ${product.priceRange} | Estoque: ${product.stock}</p>
-                                <button class="btn add-to-cart-btn" onclick="addToCart('${product.name}')">Adicionar ao Carrinho</button>
+                                <h5 class="card-title">${product.nome}</h5>
+                                <p class="card-text">${product.descricao}</p>
+                                <p class="text-muted">Faixa: ${product.faixa_preco}</p>
+                                <p class="fw-bold text-success">R$ ${parseFloat(product.preco).toFixed(2)}</p>
+                                <p class="text-muted small">Estoque: ${product.estoque}</p>
+                                <button class="btn add-to-cart-btn w-100" onclick="addToCart(${product.id}, '${product.nome}', ${product.preco})">Adicionar</button>
                             </div>
                         </div>
                     </div>
                 `;
-                productsList.innerHTML += card;
+                list.innerHTML += card;
             });
             renderPagination(filteredProducts);
         }
-        // Render pagination
+
+        // Renderizar paginação
         function renderPagination(filteredProducts) {
             const pagination = document.getElementById('pagination');
             pagination.innerHTML = '';
             const pageCount = Math.ceil(filteredProducts.length / itemsPerPage);
             for (let i = 1; i <= pageCount; i++) {
-                const pageItem = `
+                pagination.innerHTML += `
                     <li class="page-item ${i === currentPage ? 'active' : ''}">
-                        <a class="page-link" href="#" onclick="changePage(${i})">${i}</a>
+                        <a class="page-link" href="#" onclick="changePage(${i}); return false;">${i}</a>
                     </li>
                 `;
-                pagination.innerHTML += pageItem;
             }
         }
-        // Change page
+
         function changePage(page) {
             currentPage = page;
-            renderProducts(products);
+            renderProducts();
             window.scrollTo({ top: document.getElementById('products').offsetTop, behavior: 'smooth' });
         }
-        // Add to cart
-        function addToCart(productName) {
-            const product = products.find(p => p.name === productName);
-            if (product.stock <= (cart[productName] || 0)) {
-                showToast('Estoque insuficiente.');
-                return;
-            }
-            cart[productName] = (cart[productName] || 0) + 1;
-            saveData();
+
+        // Adicionar ao carrinho
+        function addToCart(id, name, price) {
+            cart.push({ id, name, price });
+            localStorage.setItem('cart', JSON.stringify(cart));
             updateCartCount();
             updateCartModal();
-            showToast(`${productName} adicionado ao carrinho!`);
+            showToast(`${name} adicionado ao carrinho!`);
         }
-        // Update cart quantity
-        function updateCartQuantity(productName, delta) {
-            cart[productName] += delta;
-            if (cart[productName] <= 0) delete cart[productName];
-            saveData();
+
+        // Remover do carrinho
+        function removeFromCart(index) {
+            const item = cart[index];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
             updateCartCount();
             updateCartModal();
+            showToast(`${item.name} removido do carrinho.`);
         }
-        // Update cart count
+
+        // Atualizar contador
         function updateCartCount() {
-            const count = Object.values(cart).reduce((a, b) => a + b, 0);
-            document.getElementById('cart-count').textContent = count || 0;
+            document.getElementById('cart-count').textContent = cart.length || 0;
         }
-        // Update cart modal
+
+        // Atualizar modal do carrinho
         function updateCartModal() {
             const cartItems = document.getElementById('cart-items');
             cartItems.innerHTML = '';
-            for (const [item, qty] of Object.entries(cart)) {
-                const listItem = `
+            cart.forEach((item, index) => {
+                cartItems.innerHTML += `
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        ${item} x ${qty}
-                        <div>
-                            <button class="btn btn-sm btn-secondary me-1" onclick="updateCartQuantity('${item}', -1)">-</button>
-                            <button class="btn btn-sm btn-secondary me-1" onclick="updateCartQuantity('${item}', 1)">+</button>
-                            <button class="btn btn-sm btn-danger" onclick="updateCartQuantity('${item}', -${qty})">Remover</button>
-                        </div>
+                        ${item.name} - R$ ${parseFloat(item.price).toFixed(2)}
+                        <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">Remover</button>
                     </li>
                 `;
-                cartItems.innerHTML += listItem;
-            }
-            document.getElementById('get-quote-btn').disabled = Object.keys(cart).length === 0;
+            });
+            document.getElementById('get-quote-btn').disabled = cart.length === 0;
         }
-        // Get quote
+
+        // Obter orçamento
         async function getQuote() {
-            if (Object.keys(cart).length === 0) return;
-            if (!currentUser) {
-                showToast('Faça login para solicitar orçamento.');
-                new bootstrap.Modal(document.getElementById('login-modal')).show();
-                return;
-            }
+            if (cart.length === 0) return;
+            
             const loadingSpinner = document.getElementById('loading-spinner');
             const quoteResult = document.getElementById('quote-result');
             const continueBtn = document.getElementById('continue-to-whatsapp-btn');
+            
             loadingSpinner.style.display = 'block';
             quoteResult.textContent = '';
             continueBtn.style.display = 'none';
-            const itemsList = Object.entries(cart).map(([name, qty]) => `${name} x ${qty}`).join(', ');
-            const prompt = `Calcule o valor total das peças: ${itemsList}.
-                            Preços (não incluir na resposta): ${Object.entries(prices).map(([k, v]) => `${k}: ${v}`).join(', ')}.
-                            Responda SOMENTE com "Total: R$ XXX,XX" sem detalhes individuais. Use vírgula para decimais.`;
+            
+            const total = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+            const itemsList = cart.map(item => item.name).join(', ');
+            
+            const prompt = `Calcule o valor total das peças: ${itemsList}. Total calculado: R$ ${total.toFixed(2)}. Responda SOMENTE com "Total: R$ XXX,XX" usando vírgula para decimais.`;
+            
             try {
                 const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${geminiApiKey}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         contents: [{ parts: [{ text: prompt }] }],
-                        generationConfig: {
-                            temperature: 0.1,
-                            topK: 1,
-                            topP: 1,
-                            maxOutputTokens: 50
-                        }
+                        generationConfig: { temperature: 0.1, maxOutputTokens: 50 }
                     })
                 });
-                if (!response.ok) throw new Error('API error');
+                
+                if (!response.ok) throw new Error('API Error');
+                
                 const data = await response.json();
                 const totalText = data.candidates[0].content.parts[0].text.trim();
                 quoteResult.textContent = totalText;
                 continueBtn.style.display = 'block';
-                continueBtn.onclick = () => continueToWhatsApp(totalText);
+                continueBtn.onclick = () => continueToWhatsApp(total, totalText);
             } catch (error) {
-                // Fallback local calculation
-                let total = 0;
-                for (const [item, qty] of Object.entries(cart)) {
-                    if (prices[item]) total += prices[item] * qty;
-                }
                 const totalText = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
                 quoteResult.textContent = totalText;
                 continueBtn.style.display = 'block';
-                continueBtn.onclick = () => continueToWhatsApp(totalText);
+                continueBtn.onclick = () => continueToWhatsApp(total, totalText);
             } finally {
                 loadingSpinner.style.display = 'none';
             }
         }
-        // Continue to WhatsApp and store pending
-        function continueToWhatsApp(totalText) {
-            const itemsList = Object.entries(cart).map(([name, qty]) => `${name} x ${qty}`).join(', ');
-            const message = `Olá! Quero prosseguir com o pedido: ${itemsList}.
-                             ${totalText}.
-                             Forma de pagamento: Aguardo orientações.
-                             Entendo que após pagamento, tenho até 2 dias úteis para retirada na loja.`;
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-            // Store pending order
-            pendingOrders.push({ user: currentUser, items: cart, total: parseFloat(totalText.replace('Total: R$ ', '').replace(',', '.')), date: new Date().toISOString() });
-            saveData();
-            // Clear cart
-            cart = {};
-            saveData();
-            updateCartCount();
-            updateCartModal();
-            showToast('Pedido enviado para WhatsApp. Aguarde confirmação do admin.');
+
+        // Continuar para WhatsApp
+        async function continueToWhatsApp(total, totalText) {
+            if (!currentUser) {
+                showToast('Você precisa estar logado para finalizar a compra!');
+                bootstrap.Modal.getInstance(document.getElementById('quote-modal')).hide();
+                new bootstrap.Modal(document.getElementById('login-modal')).show();
+                return;
+            }
+            
+            try {
+                const { error } = await supabase.from('pedidos_whatsapp').insert([{
+                    usuario_id: currentUser.id,
+                    itens: JSON.stringify(cart),
+                    total: total
+                }]);
+                
+                if (error) throw error;
+                
+                const message = `Olá! Quero prosseguir com o pedido:
+${cart.map(item => `${item.name} - R$ ${parseFloat(item.price).toFixed(2)}`).join('\n')}
+
+${totalText}
+
+Aguardo orientações para pagamento.`;
+                
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+                showToast('Pedido enviado! Aguarde aprovação do administrador.');
+            } catch (error) {
+                console.error('Erro:', error);
+                showToast('Erro ao enviar pedido');
+            }
         }
-        // Update profile modal
-        function updateProfileModal() {
-            const user = users.find(u => u.email === currentUser);
-            document.getElementById('profile-points').textContent = `Pontos: ${user.points}`;
-            document.getElementById('claim-gift-btn').style.display = user.points >= 1600 ? 'block' : 'none';
-            const purchasesList = document.getElementById('profile-purchases');
-            purchasesList.innerHTML = '';
-            user.purchases.forEach(p => {
-                const item = `<li class="list-group-item">${p.date}: ${p.total.toFixed(2)} - Pontos ganhos: ${p.points}</li>`;
-                purchasesList.innerHTML += item;
-            });
-        }
-        // Claim gift
-        document.getElementById('claim-gift-btn').addEventListener('click', () => {
-            const user = users.find(u => u.email === currentUser);
-            if (user.points >= 1600) {
-                user.points -= 1600;
-                saveData();
-                updateProfileModal();
-                showToast('Brinde resgatado! Contate a loja para retirar.');
+
+        // Login
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const senha = document.getElementById('login-password').value;
+            
+            try {
+                const { data, error } = await supabase
+                    .from('usuarios')
+                    .select('*')
+                    .eq('email', email)
+                    .eq('senha', senha)
+                    .single();
+                
+                if (error || !data) {
+                    showToast('Email ou senha incorretos');
+                    return;
+                }
+                
+                currentUser = data;
+                localStorage.setItem('currentUser', JSON.stringify(data));
+                bootstrap.Modal.getInstance(document.getElementById('login-modal')).hide();
+                showUserMenu();
+                if (data.is_admin) showAdminPanel();
+                showToast('Login realizado com sucesso!');
+            } catch (error) {
+                showToast('Erro ao fazer login');
             }
         });
-        // Admin: render products list
-        function renderAdminProducts() {
+
+        // Cadastro
+        document.getElementById('register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const nome = document.getElementById('reg-nome').value;
+            const email = document.getElementById('reg-email').value;
+            const cpf = document.getElementById('reg-cpf').value;
+            const senha = document.getElementById('reg-password').value;
+            
+            try {
+                const { error } = await supabase.from('usuarios').insert([{
+                    nome, email, cpf, senha, pontos: 0, is_admin: false
+                }]);
+                
+                if (error) throw error;
+                
+                bootstrap.Modal.getInstance(document.getElementById('register-modal')).hide();
+                showToast('Cadastro realizado! Faça login.');
+            } catch (error) {
+                showToast('Erro ao cadastrar. Email ou CPF já existe.');
+            }
+        });
+
+        // Recuperar senha
+        document.getElementById('forgot-password-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const cpf = document.getElementById('forgot-cpf').value;
+            const nome = document.getElementById('forgot-nome').value;
+            
+            try {
+                const { data, error } = await supabase
+                    .from('usuarios')
+                    .select('senha')
+                    .eq('cpf', cpf)
+                    .eq('nome', nome)
+                    .single();
+                
+                if (error || !data) {
+                    document.getElementById('password-result').innerHTML = 
+                        '<div class="alert alert-danger">CPF ou nome incorretos</div>';
+                    return;
+                }
+                
+                document.getElementById('password-result').innerHTML = 
+                    `<div class="alert alert-success">Sua senha é: <strong>${data.senha}</strong></div>`;
+            } catch (error) {
+                showToast('Erro ao recuperar senha');
+            }
+        });
+
+        // Painel Admin
+        function showAdminPanel() {
+            document.getElementById('admin-panel').style.display = 'block';
+            loadAdminProducts();
+            loadPendingOrders();
+        }
+
+        async function loadAdminProducts() {
             const list = document.getElementById('admin-products-list');
             list.innerHTML = '';
-            products.forEach((p, index) => {
-                const item = `
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        ${p.name} - Preço: ${prices[p.name]} - Estoque: ${p.stock}
-                        <div>
-                            <button class="btn btn-sm btn-warning me-1" onclick="editProduct(${index})">Editar</button>
-                            <button class="btn btn-sm btn-danger" onclick="deleteProduct(${index})">Excluir</button>
+            
+            products.forEach(p => {
+                list.innerHTML += `
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5>${p.nome}</h5>
+                            <p>${p.descricao}</p>
+                            <p>Preço: R$ ${parseFloat(p.preco).toFixed(2)} | Estoque: ${p.estoque}</p>
+                            <button class="btn btn-sm btn-warning" onclick="editProduct(${p.id})">Editar</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteProduct(${p.id})">Excluir</button>
                         </div>
-                    </li>
+                    </div>
                 `;
-                list.innerHTML += item;
             });
         }
-        // Edit product
-        function editProduct(index) {
-            const p = products[index];
-            const newPrice = prompt('Novo preço:', prices[p.name]);
-            const newStock = prompt('Novo estoque:', p.stock);
-            if (newPrice) {
-                prices[p.name] = parseFloat(newPrice);
-                p.priceRange = getPriceRange(prices[p.name]);
+
+        async function loadPendingOrders() {
+            try {
+                const { data, error } = await supabase
+                    .from('pedidos_whatsapp')
+                    .select('*')
+                    .eq('status', 'aguardando_aprovacao');
+                
+                if (error) throw error;
+                
+                const list = document.getElementById('pending-orders-list');
+                list.innerHTML = '';
+                
+                if (data.length === 0) {
+                    list.innerHTML = '<p>Nenhum pedido pendente</p>';
+                    return;
+                }
+                
+                data.forEach(pedido => {
+                    list.innerHTML += `
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5>Pedido #${pedido.id}</h5>
+                                <p>Total: R$ ${parseFloat(pedido.total).toFixed(2)}</p>
+                                <button class="btn btn-success" onclick="aprovarPedido(${pedido.id}, ${pedido.usuario_id}, ${pedido.total})">Aprovar</button>
+                                <button class="btn btn-danger" onclick="recusarPedido(${pedido.id})">Recusar</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error('Erro:', error);
             }
-            if (newStock) p.stock = parseInt(newStock);
-            saveData();
-            renderProducts();
-            renderAdminProducts();
-            showToast('Produto atualizado.');
         }
-        // Delete product
-        function deleteProduct(index) {
-            if (confirm('Confirmar exclusão?')) {
-                const p = products.splice(index, 1)[0];
-                delete prices[p.name];
-                saveData();
-                renderProducts();
-                renderAdminProducts();
-                showToast('Produto excluído.');
+
+        async function aprovarPedido(pedidoId, usuarioId, total) {
+            try {
+                const pontos = total < 200 ? 30 : 60;
+                
+                await supabase.from('pedidos_whatsapp').update({ status: 'aprovado' }).eq('id', pedidoId);
+                await supabase.from('compras').insert([{
+                    usuario_id: usuarioId,
+                    total: total,
+                    pontos_ganhos: pontos,
+                    status: 'concluida',
+                    itens: '{}'
+                }]);
+                await supabase.rpc('increment', { x: pontos, row_id: usuarioId });
+                
+                showToast('Pedido aprovado!');
+                loadPendingOrders();
+            } catch (error) {
+                showToast('Erro ao aprovar pedido');
             }
         }
-        // Add product
-        document.getElementById('add-product-form').addEventListener('submit', (e) => {
+
+        async function recusarPedido(pedidoId) {
+            try {
+                await supabase.from('pedidos_whatsapp').update({ status: 'recusado' }).eq('id', pedidoId);
+                showToast('Pedido recusado');
+                loadPendingOrders();
+            } catch (error) {
+                showToast('Erro ao recusar pedido');
+            }
+        }
+
+        // Adicionar produto (Admin)
+        document.getElementById('add-product-form').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const name = document.getElementById('add-name').value;
-            const description = document.getElementById('add-description').value;
-            const image = document.getElementById('add-image').value;
-            const category = document.getElementById('add-category').value;
-            const price = parseFloat(document.getElementById('add-price').value);
-            const stock = parseInt(document.getElementById('add-stock').value);
-            const id = products.length + 1;
-            const priceRange = getPriceRange(price);
-            products.push({ id, name, description, image, category, priceRange, stock });
-            prices[name] = price;
-            saveData();
-            renderProducts();
-            renderAdminProducts();
-            e.target.reset();
-            showToast('Produto adicionado.');
-        });
-        // Render pending orders
-        function renderPendingOrders() {
-            const list = document.getElementById('pending-orders-list');
-            list.innerHTML = '';
-            pendingOrders.forEach((order, index) => {
-                const user = users.find(u => u.email === order.user);
-                const itemsList = Object.entries(order.items).map(([name, qty]) => `${name} x ${qty}`).join(', ');
-                const item = `
-                    <li class="list-group-item">
-                        Usuário: ${user.name} (${order.user})<br>
-                        Itens: ${itemsList}<br>
-                        Total: R$ ${order.total.toFixed(2)}<br>
-                        Data: ${new Date(order.date).toLocaleString()}<br>
-                        <button class="btn btn-sm btn-success" onclick="confirmOrder(${index})">Confirmar</button>
-                    </li>
-                `;
-                list.innerHTML += item;
-            });
-        }
-        // Confirm order
-        function confirmOrder(index) {
-            const order = pendingOrders.splice(index, 1)[0];
-            const user = users.find(u => u.email === order.user);
-            const points = order.total < 200 ? 30 : 60;
-            user.points += points;
-            user.purchases.push({ date: order.date, total: order.total, points });
-            // Update stock
-            for (const [name, qty] of Object.entries(order.items)) {
-                const p = products.find(pr => pr.name === name);
-                p.stock -= qty;
+            
+            const produto = {
+                nome: document.getElementById('prod-nome').value,
+                descricao: document.getElementById('prod-desc').value,
+                categoria: document.getElementById('prod-cat').value,
+                preco: parseFloat(document.getElementById('prod-preco').value),
+                faixa_preco: document.getElementById('prod-faixa').value,
+                imagem_url: document.getElementById('prod-img').value,
+                estoque: parseInt(document.getElementById('prod-estoque').value)
+            };
+            
+            try {
+                const { error } = await supabase.from('produtos').insert([produto]);
+                if (error) throw error;
+                
+                bootstrap.Modal.getInstance(document.getElementById('add-product-modal')).hide();
+                await loadProducts();
+                renderProducts();
+                loadAdminProducts();
+                showToast('Produto adicionado!');
+            } catch (error) {
+                showToast('Erro ao adicionar produto');
             }
-            saveData();
-            renderPendingOrders();
-            renderProducts();
-            showToast('Pedido confirmado. Pontos adicionados.');
-        }
-        // Search
-        document.getElementById('search-input').addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const filtered = products.filter(p =>
-                p.name.toLowerCase().includes(searchTerm) ||
-                p.description.toLowerCase().includes(searchTerm)
-            );
-            currentPage = 1;
-            renderProducts(filtered);
         });
-        // Category filtering
-        document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                e.target.classList.add('active');
-                const category = e.target.dataset.category;
-                const filtered = category === 'all' ? products : products.filter(p => p.category === category);
+
+        async function deleteProduct(id) {
+            if (!confirm('Deseja excluir este produto?')) return;
+            
+            try {
+                await supabase.from('produtos').delete().eq('id', id);
+                await loadProducts();
+                renderProducts();
+                loadAdminProducts();
+                showToast('Produto excluído!');
+            } catch (error) {
+                showToast('Erro ao excluir produto');
+            }
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            document.getElementById('search-input').addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filtered = products.filter(p =>
+                    p.nome.toLowerCase().includes(searchTerm) ||
+                    p.descricao.toLowerCase().includes(searchTerm)
+                );
                 currentPage = 1;
                 renderProducts(filtered);
             });
-        });
-        // Contact form
-        document.getElementById('contact-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const form = e.target;
-            if (form.checkValidity()) {
+            
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    const category = e.target.dataset.category;
+                    const filtered = category === 'all' ? products : products.filter(p => p.categoria === category);
+                    currentPage = 1;
+                    renderProducts(filtered);
+                });
+            });
+            
+            document.getElementById('get-quote-btn').addEventListener('click', () => {
+                bootstrap.Modal.getInstance(document.getElementById('cart-modal')).hide();
+                new bootstrap.Modal(document.getElementById('quote-modal')).show();
+                getQuote();
+            });
+            
+            document.getElementById('contact-form').addEventListener('submit', (e) => {
+                e.preventDefault();
                 showToast('Mensagem enviada com sucesso!');
-                form.reset();
-                form.classList.remove('was-validated');
-            } else {
-                form.classList.add('was-validated');
-            }
-        });
-        // Get quote button
-        document.getElementById('get-quote-btn').addEventListener('click', () => {
-            bootstrap.Modal.getInstance(document.getElementById('cart-modal')).hide();
-            new bootstrap.Modal(document.getElementById('quote-modal')).show();
-            getQuote();
-        });
-        // On load
-        updateCartCount();
-        updateCartModal();
-        updateAuthSection();
-        renderProducts();
-        // Admin modals on show
-        const adminModal = document.getElementById('admin-modal');
-        adminModal.addEventListener('show.bs.modal', () => {
-            renderAdminProducts();
-            renderPendingOrders();
-        });
-        const profileModal = document.getElementById('profile-modal');
-        profileModal.addEventListener('show.bs.modal', updateProfileModal);
+                e.target.reset();
+            });
+            
+            document.getElementById('reg-cpf').addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 11) value = value.slice(0, 11);
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                e.target.value = value;
+            });
+            
+            document.getElementById('forgot-cpf').addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 11) value = value.slice(0, 11);
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                e.target.value = value;
+            });
+        }
+
+        // Toast
+        function showToast(message) {
+            const toast = new bootstrap.Toast(document.getElementById('toast'));
+            document.querySelector('.toast-body').textContent = message;
+            toast.show();
+        }
+
+        // Iniciar
+        init();
     </script>
 </body>
 </html>
-
