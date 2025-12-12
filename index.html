@@ -586,33 +586,40 @@
 
             // LOGIN FUNCIONANDO 100% (com fallback seguro)
             document.getElementById('login-form').addEventListener('submit', async e => {
-                e.preventDefault();
-                const email = document.getElementById('login-email').value.trim();
-                const senha = document.getElementById('login-password').value;
+    e.preventDefault();
 
-                try {
-                    let { data, error } = await supabase.rpc('login_usuario', { email_input: email, senha_input: senha });
-                    if (!error && data && data.length > 0) {
-                        currentUser = data[0];
-                    } else {
-                        const { data: users, error: err2 } = await supabase.from('usuarios').select('*').eq('email', email).eq('senha', senha);
-                        if (err2 || !users || users.length === 0) {
-                            showToast('Email ou senha incorretos');
-                            return;
-                        }
-                        currentUser = users[0];
-                    }
+    const email = document.getElementById('login-email').value.trim();
+    const senha = document.getElementById('login-password').value;
 
-                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
-                    bootstrap.Modal.getInstance(document.getElementById('login-modal')).hide();
-                    showUserMenu();
-                    if (currentUser.is_admin) showAdminPanel();
-                    showToast('Login realizado com sucesso!');
-                } catch (err) {
-                    console.error(err);
-                    showToast('Erro ao fazer login');
-                }
-            });
+    try {
+        // Consulta simples
+        const { data, error } = await supabase
+            .from('usuarios')
+            .select('*')
+            .eq('email', email)
+            .eq('senha', senha)
+            .single();
+
+        if (error || !data) {
+            showToast('Email ou senha incorretos');
+            return;
+        }
+
+        currentUser = data;
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+        bootstrap.Modal.getInstance(document.getElementById('login-modal')).hide();
+        showUserMenu();
+
+        if (currentUser.is_admin) showAdminPanel();
+
+        showToast('Login realizado com sucesso!');
+    } catch (err) {
+        console.error(err);
+        showToast('Erro ao fazer login');
+    }
+});
+
 
             document.getElementById('register-form').addEventListener('submit', async e => {
                 e.preventDefault();
@@ -716,3 +723,4 @@
     </script>
 </body>
 </html>
+
