@@ -678,21 +678,32 @@
                 const pass = document.getElementById('login-pass').value.trim();
                 const errDiv = document.getElementById('auth-error');
 
-                // Try to find user
-                // IMPORTANT: Plain text password comparison as requested by user.
+                // DEBUG LOG
+                console.log("Tentando login para:", email);
+
+                // Use ILIKE for query robustness against case sensitivity in DB
                 const { data, error } = await DB.client.from('usuarios')
                     .select('*')
-                    .eq('email', email)
-                    .maybeSingle(); // Prevents ' multiple rows' error
+                    .ilike('email', email)
+                    .maybeSingle();
+
+                console.log("Login Query Res:", data, error); // DEBUG
 
                 if (error) {
-                    errDiv.innerText = "Erro no servidor: " + error.message;
+                    errDiv.innerText = "Erro DB: " + (error.message || "Erro desconhecido");
                     errDiv.classList.remove('d-none');
                     return;
                 }
 
-                if (!data || data.senha !== pass) {
-                    errDiv.innerText = "Credenciais inválidas.";
+                if (!data) {
+                    errDiv.innerText = "Usuário não encontrado. Verifique o email.";
+                    errDiv.classList.remove('d-none');
+                    return;
+                }
+
+                // Password Check (Plain text per user request)
+                if (data.senha !== pass) {
+                    errDiv.innerText = "Senha incorreta.";
                     errDiv.classList.remove('d-none');
                     return;
                 }
@@ -754,16 +765,27 @@
         const Services = {
             async getGeminiResponse(prompt) {
                 const key = App.config.geminiKey;
-                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${key}`;
+                // Updated Model URL to 'gemini-1.5-flash'
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`;
                 try {
                     const res = await fetch(url, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
                     });
+
+                    if (!res.ok) {
+                        const err = await res.json();
+                        console.error("Gemini API Error:", err);
+                        return "Erro na IA: " + (err.error?.message || "Serviço indisponível");
+                    }
+
                     const json = await res.json();
-                    return json.candidates?.[0]?.content?.parts?.[0]?.text || "Desculpe, a IA está indisponível.";
-                } catch (e) { return "Erro de conexão com a IA."; }
+                    return json.candidates?.[0]?.content?.parts?.[0]?.text || "IA sem resposta.";
+                } catch (e) {
+                    console.error(e);
+                    return "Erro de conexão com a IA.";
+                }
             }
         };
 
@@ -789,8 +811,6 @@
                 }
 
                 items.forEach(p => {
-                    // Logic to detect if admin to show actions, else show 'Add'
-                    // Hiding price in grid as per previous visual, but logic exists
                     const card = `
                     <div class="col-6 col-md-4 col-lg-3">
                         <div class="card card-hover h-100">
@@ -879,6 +899,7 @@
                     App.state.cart = [];
                     this.save();
                     bootstrap.Modal.getInstance(document.getElementById('cart-modal')).hide();
+                    UI.showToast("Pedido Enviado!");
                 } else {
                     alert("Erro ao criar pedido: " + error.message);
                 }
@@ -890,10 +911,6 @@
             toggle() {
                 this.isOpen = !this.isOpen;
                 document.getElementById('chatbot').classList.toggle('chat-open', this.isOpen);
-                // First time greeting
-                if (this.isOpen && document.getElementById('chat-messages').children.length === 1) {
-                    // maybe auto-focus input
-                }
             },
             async send() {
                 const input = document.getElementById('chat-txt');
@@ -962,17 +979,15 @@
             },
 
             async approve(oId, total, uId) {
-                // Logic: 30pts < 200 > 60pts
                 const pts = total >= 200 ? 60 : 30;
 
                 await DB.client.from('pedidos').update({ status: 'aprovado' }).eq('id', oId);
 
-                // Update user points
                 const { data: u } = await DB.client.from('usuarios').select('pontos').eq('id', uId).single();
                 await DB.client.from('usuarios').update({ pontos: (u.pontos || 0) + pts }).eq('id', uId);
 
                 UI.showToast(`Aprovado! +${pts} pts para o cliente.`);
-                this.load(); // refresh
+                this.load();
             },
 
             async del(id) {
@@ -1006,8 +1021,6 @@
                 Shop.init();
                 this.updateAuth();
                 this.updateCart();
-
-                // Theme check
                 if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-bs-theme', 'dark');
             },
 
