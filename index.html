@@ -43,9 +43,18 @@
             overflow-x: hidden;
         }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 4px; }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 4px;
+        }
 
         .navbar-blur {
             background: var(--glass);
@@ -55,64 +64,180 @@
             transition: var(--transition);
         }
 
-        .nav-link { font-weight: 600; letter-spacing: 0.5px; position: relative; }
-        .nav-link::after {
-            content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px;
-            background: var(--primary); transition: var(--transition); transform: translateX(-50%);
+        .nav-link {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
         }
-        .nav-link:hover::after, .nav-link.active::after { width: 80%; }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
 
         .card-hover {
-            border: none; border-radius: 20px; background: white;
-            box-shadow: var(--card-shadow); transition: var(--transition); overflow: hidden; position: relative;
+            border: none;
+            border-radius: 20px;
+            background: white;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            overflow: hidden;
+            position: relative;
         }
-        [data-bs-theme="dark"] .card-hover { background: #1e293b; }
-        .card-hover:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12); }
+
+        [data-bs-theme="dark"] .card-hover {
+            background: #1e293b;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
 
         .btn-gradient {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border: none; color: white; border-radius: 12px; padding: 12px 24px; font-weight: 700; transition: var(--transition);
+            border: none;
+            color: white;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-weight: 700;
+            transition: var(--transition);
         }
-        .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3); }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
 
         .hero-section {
             min-height: 80vh;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            position: relative; overflow: hidden; border-radius: 0 0 50px 50px;
-            color: white; display: flex; align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 50px 50px;
+            color: white;
+            display: flex;
+            align-items: center;
         }
 
         .hero-bg-accent {
-            position: absolute; width: 600px; height: 600px;
+            position: absolute;
+            width: 600px;
+            height: 600px;
             background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, transparent 70%);
-            top: -100px; right: -100px; border-radius: 50%; animation: pulse 10s infinite;
+            top: -100px;
+            right: -100px;
+            border-radius: 50%;
+            animation: pulse 10s infinite;
         }
 
         .chat-widget {
-            position: fixed; bottom: 100px; right: 30px; width: 350px; height: 500px;
-            background: white; border-radius: 20px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-            z-index: 1000; display: flex; flex-direction: column; overflow: hidden;
-            transform: translateY(120%); transition: var(--transition);
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: translateY(120%);
+            transition: var(--transition);
         }
-        [data-bs-theme="dark"] .chat-widget { background: #1e293b; color: white; }
-        .chat-open { transform: translateY(0); }
 
-        .chat-header { background: var(--primary); color: white; padding: 15px; font-weight: bold; cursor: pointer; }
-        .chat-body { flex: 1; padding: 15px; overflow-y: auto; background: #f1f5f9; }
-        [data-bs-theme="dark"] .chat-body { background: #0f172a; }
+        [data-bs-theme="dark"] .chat-widget {
+            background: #1e293b;
+            color: white;
+        }
 
-        .chat-input { padding: 15px; border-top: 1px solid rgba(0, 0, 0, 0.1); display: flex; gap: 10px; }
+        .chat-open {
+            transform: translateY(0);
+        }
 
-        .msg { padding: 8px 12px; border-radius: 15px; margin-bottom: 10px; max-width: 80%; font-size: 0.9rem; }
-        .msg-ai { background: white; align-self: flex-start; border-bottom-left-radius: 2px; color: black; }
-        .msg-user { background: var(--primary); color: white; align-self: flex-end; margin-left: auto; border-bottom-right-radius: 2px; }
+        .chat-header {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f1f5f9;
+        }
+
+        [data-bs-theme="dark"] .chat-body {
+            background: #0f172a;
+        }
+
+        .chat-input {
+            padding: 15px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 10px;
+        }
+
+        .msg {
+            padding: 8px 12px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            max-width: 80%;
+            font-size: 0.9rem;
+        }
+
+        .msg-ai {
+            background: white;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            color: black;
+        }
+
+        .msg-user {
+            background: var(--primary);
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+            border-bottom-right-radius: 2px;
+        }
 
         @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 0.5; }
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
         }
-        .fade-in-up { animation: fadeInUp 0.8s ease-out; }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
     </style>
 </head>
 
@@ -124,9 +249,9 @@
                 supabaseUrl: 'https://ydwxljgmzoqsemwemtml.supabase.co',
                 supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlkd3hsamdtem9xc2Vtd2VtdG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwODM4ODEsImV4cCI6MjA4MDY1OTg4MX0.7elSMr11AHIhYayJgwqJQCpv0CdyiiM5XunW82Y-rAo',
                 
-                // --- CHAVE NOVA ATUALIZADA ---
-                geminiKey: 'AIzaSyAFpbvdVBQ1yI4cgfmF37QQM0YpEABuvQk', 
-                // -----------------------------
+                // --- CHAVE DO GOOGLE CLOUD CONSOLE ---
+                geminiKey: 'AIzaSyCO22vM99hmTcsUB6RwEqgDXcsO-UrO1VQ', 
+                // -------------------------------------
                 
                 whatsapp: '5585991815434',
                 pixKey: '00.000.000/0001-00'
@@ -134,6 +259,7 @@
             state: {
                 user: JSON.parse(localStorage.getItem('user')) || null,
                 cart: JSON.parse(localStorage.getItem('cart')) || [],
+                activeModel: null, // Será preenchido automaticamente
                 loading: false
             }
         };
@@ -416,48 +542,78 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        /** SERVICES **/
+        /** SUPABASE & SERVICES **/
         const DB = {
             client: supabase.createClient(App.config.supabaseUrl, App.config.supabaseKey),
             async rpc(func) { return await func(this.client); }
         };
 
         const Services = {
-            // CORREÇÃO: Sistema de Cascata (Fallback)
-            async askGemini(prompt) {
+            // --- DIAGNÓSTICO DE CHAVE (O SEGREDO DA CORREÇÃO) ---
+            // Esta função roda ao iniciar o site e pergunta ao Google: "Quais modelos eu posso usar com esta chave?"
+            async init() {
                 const key = App.config.geminiKey;
-                
-                // Lista de tentativas (Do mais recente para o mais antigo)
-                const attempts = [
-                    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`,
-                    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${key}`,
-                    `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${key}`
-                ];
-
-                for (const url of attempts) {
-                    try {
-                        const res = await fetch(url, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-                        });
-
-                        // Se funcionar (200 OK), retorna a resposta e para o loop
-                        if (res.ok) {
-                            const data = await res.json();
-                            return data.candidates?.[0]?.content?.parts?.[0]?.text || "Sem resposta.";
-                        } else {
-                            // Se der erro, loga e deixa o loop tentar o próximo
-                            const err = await res.json().catch(() => ({}));
-                            console.warn(`Tentativa falhou para modelo: ${url}. Erro:`, err);
-                        }
-
-                    } catch (e) {
-                        console.error("Erro de conexão:", e);
+                try {
+                    // Tenta listar modelos disponíveis para esta chave
+                    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${key}`);
+                    const data = await res.json();
+                    
+                    if (data.error) {
+                        console.error("ERRO CRÍTICO DE API (INIT):", data.error);
+                        UI.toast(`Erro na Chave API: ${data.error.message}`, "bg-danger");
+                        return;
                     }
+
+                    // Procura um modelo compatível (preferência por Gemini 1.5, depois outros)
+                    // Filtra apenas modelos que suportam "generateContent"
+                    const model = data.models?.find(m => 
+                        m.supportedGenerationMethods?.includes("generateContent") && 
+                        m.name.includes("gemini")
+                    );
+                    
+                    if (model) {
+                        // A API retorna algo como "models/gemini-1.5-flash", removemos o prefixo
+                        App.state.activeModel = model.name.replace("models/", "");
+                        console.log("✅ IA CONECTADA COM SUCESSO NO MODELO:", App.state.activeModel);
+                        UI.toast("IA Conectada!", "bg-success");
+                    } else {
+                        console.warn("Nenhum modelo compatível encontrado na lista.");
+                        UI.toast("Chave válida, mas sem modelos disponíveis.", "bg-warning");
+                    }
+                } catch (e) {
+                    console.error("Falha ao listar modelos (Erro de Rede):", e);
+                }
+            },
+
+            async askGemini(prompt) {
+                // Se a inicialização falhou, tenta um fallback padrão
+                if (!App.state.activeModel) {
+                    console.warn("Usando modelo fallback (init falhou).");
+                    App.state.activeModel = "gemini-1.5-flash"; 
                 }
 
-                return "⚠️ Erro na IA: Chave inválida ou modelo não disponível. Verifique sua chave.";
+                const key = App.config.geminiKey;
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/${App.state.activeModel}:generateContent?key=${key}`;
+
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                    });
+
+                    const data = await response.json();
+                    
+                    if(data.error) {
+                        console.error("ERRO NO ENVIO:", data.error);
+                        throw new Error(data.error.message);
+                    }
+
+                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "Sem resposta.";
+
+                } catch (e) {
+                    return `⚠️ Erro na IA: ${e.message}. (Verifique no Google Cloud Console se a API 'Generative Language' está ativada).`;
+                }
             }
         };
 
@@ -513,6 +669,7 @@
                 
                 const txt = await Services.askGemini(prompt);
                 
+                // Formatação simples do Markdown para HTML
                 const formatted = txt.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
                 box.innerHTML = formatted;
             },
@@ -701,25 +858,30 @@
                 this.msg(txt, 'user');
                 inp.value = '';
 
+                // Cria indicador de "digitando" com ID para remover depois
                 const tempId = 'temp-' + Date.now();
                 this.msg('<span class="spinner-grow spinner-grow-sm"></span> Digitando...', 'ai', tempId);
-                
+
+                // Chama a função robusta
                 const res = await Services.askGemini(txt);
-                
+
+                // Remove indicador e mostra resposta
                 const tempEl = document.getElementById(tempId);
-                if(tempEl) tempEl.remove();
-                
+                if (tempEl) tempEl.remove();
+
+                // Formatação simples do Markdown para HTML
                 const formatted = res.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
                 this.msg(formatted, 'ai');
             },
             msg(txt, role, id = '') {
                 const d = document.createElement('div');
-                if(id) d.id = id;
-                d.className = `msg msg-${role} animate__animated animate__fadeIn`; 
+                if (id) d.id = id;
+                d.className = `msg msg-${role} animate__animated animate__fadeIn`;
                 d.innerHTML = txt;
                 const db = document.getElementById('chat-msg-container');
-                db.appendChild(d); 
-                
+                db.appendChild(d);
+
+                // Scroll para o fim
                 const widgetBody = document.getElementById('chat-messages');
                 widgetBody.scrollTop = widgetBody.scrollHeight;
             }
@@ -732,6 +894,9 @@
                 this.updateAuth();
                 this.updateCart();
                 if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-bs-theme', 'dark');
+                
+                // INICIA A IA
+                Services.init();
             },
             updateAuth() {
                 const u = App.state.user;
@@ -784,4 +949,5 @@
 
     </script>
 </body>
+
 </html>
