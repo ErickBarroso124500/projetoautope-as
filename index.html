@@ -422,7 +422,8 @@
             // ROBUSTEZ: Uso de FETCH nativo (REST API) para evitar problemas de CORS/Módulos em arquivo local
             async askGemini(prompt) {
                 const key = App.config.geminiKey;
-                const models = ['gemini-1.5-flash', 'gemini-pro'];
+                // ATUALIZADO: Usando modelos v1.5 que são os padrões atuais
+                const models = ['gemini-1.5-flash', 'gemini-1.5-pro'];
                 let lastError = "";
 
                 // Tenta modelos diferentes em caso de sobrecarga
