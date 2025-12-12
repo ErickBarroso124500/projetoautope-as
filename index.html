@@ -784,16 +784,26 @@
                             const json = await res.json();
                             return json.candidates?.[0]?.content?.parts?.[0]?.text || "IA sem resposta.";
                         } else {
-                            const err = await res.json();
-                            console.warn(`Model ${model} failed:`, err);
-                            // If 404, we continue loop via finally/updates or just loop logic
+                            // warn but continue loop
+                            console.warn(`Model ${model} failed.. moving to next.`);
                         }
                     } catch (e) {
                         console.warn(`Connection error with ${model}`);
                     }
                 }
 
-                return "Erro: Nenhum modelo de IA disponível. Verifique sua chave API.";
+                // FALLBACK LOCAL AI (If all APIs fail)
+                return this.localFallback(prompt);
+            },
+
+            localFallback(prompt) {
+                // Heuristic to guess context
+                if (prompt.includes('Orçamento')) {
+                    const items = App.state.cart.map(i => `- ${i.nome} (R$ ${i.preco})`).join('<br>');
+                    const total = App.state.cart.reduce((a, b) => a + Number(b.preco), 0).toFixed(2);
+                    return `<strong>(Modo Offline) Orçamento Estimado:</strong><br><br>${items}<br><br><strong>Total: R$ ${total}</strong><br><small>Obs: A IA está indisponível, mas seus itens estão garantidos.</small>`;
+                }
+                return "A IA está dormindo agora 😴, mas nosso mecânico humano responde no WhatsApp!";
             }
         };
 
@@ -889,7 +899,6 @@
             async checkout() {
                 if (!App.state.user) { UI.showToast("Entre para ganhar pontos!", "bg-warning"); return; }
 
-                // Create Order
                 const total = App.state.cart.reduce((a, b) => a + Number(b.preco), 0);
                 const orderData = {
                     user_id: App.state.user.id,
@@ -899,18 +908,33 @@
                     status: 'pendente'
                 };
 
-                const { data, error } = await DB.client.from('pedidos').insert([orderData]).select().single();
+                // TRY DB SAVE (BUT DON'T BLOCK IF FAILS)
+                let orderId = 'ZAP-' + Math.floor(Math.random() * 1000);
 
-                if (!error) {
-                    const msg = `Pedido #${data.id} iniciado! Itens: ${App.state.cart.map(i => i.nome).join(', ')}. Aguardando aprovação.`;
-                    window.open(`https://wa.me/${App.config.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
-                    App.state.cart = [];
-                    this.save();
-                    bootstrap.Modal.getInstance(document.getElementById('cart-modal')).hide();
-                    UI.showToast("Pedido Enviado!");
-                } else {
-                    alert("Erro ao criar pedido: " + error.message);
+                try {
+                    const { data, error } = await DB.client.from('pedidos').insert([orderData]).select().single();
+                    if (!error && data) {
+                        orderId = '#' + data.id;
+                        UI.showToast("Pedido salvo no sistema!");
+                    } else {
+                        console.warn("DB Save Failed (Table Missing/RLS?), proceeding with WhatsApp only.");
+                        UI.showToast("Erro no Banco de Dados. Finalizando via WhatsApp...", "bg-warning");
+                    }
+                } catch (e) {
+                    console.error("DB Critical Error", e);
                 }
+
+                // ALWAYS PROCEED TO WHATSAPP
+                const msg = `Pedido ${orderId} iniciado!
+                Itens: ${App.state.cart.map(i => i.nome).join(', ')}.
+                Total Estimado: R$ ${total.toFixed(2)}
+                Cliente: ${App.state.user.nome}`;
+
+                window.open(`https://wa.me/${App.config.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
+
+                App.state.cart = [];
+                this.save();
+                bootstrap.Modal.getInstance(document.getElementById('cart-modal')).hide();
             }
         };
 
