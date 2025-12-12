@@ -25,16 +25,11 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: var(--background-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             color: var(--text-color);
             line-height: 1.7;
             margin: 0;
-            background-image: url('https://i.imgur.com/8tOLQs3.png');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-attachment: fixed;
-            background-size: 80% auto;
-            position: relative;
+            min-height: 100vh;
         }
 
         body::before {
@@ -49,22 +44,30 @@
         }
 
         .navbar {
-            background: linear-gradient(90deg, #ffffff, #f8f9fa);
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .navbar-brand {
             font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.8rem;
+            font-weight: 700;
+            font-size: 1.6rem;
             color: var(--primary-color);
+            display: flex;
+            align-items: center;
         }
 
         .nav-link {
-            font-weight: 500;
-            font-size: 1.1rem;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #555;
             transition: color var(--transition-speed);
+            margin: 0 10px;
         }
 
         .nav-link:hover {
@@ -74,83 +77,95 @@
         .hero {
             position: relative;
             height: 500px;
+            margin-bottom: 40px;
         }
 
         .carousel-item img {
             height: 500px;
             object-fit: cover;
-            filter: brightness(0.5);
+            filter: brightness(0.6);
         }
 
         .carousel-caption {
-            top: 50%;
-            transform: translateY(-50%);
+            bottom: 30%;
         }
 
         .carousel-caption h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 600;
+            font-size: 4rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
         }
 
         .carousel-caption p {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
         }
 
         .search-bar {
             max-width: 700px;
-            margin: 30px auto;
+            margin: -30px auto 40px;
+            position: relative;
+            z-index: 10;
         }
 
         .search-bar input {
-            border-radius: 25px;
-            padding: 12px 20px;
-            box-shadow: var(--card-shadow);
+            border-radius: 50px;
+            padding: 18px 30px;
+            border: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            font-size: 1.1rem;
         }
 
         .categories {
-            background: white;
-            padding: 40px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            background: transparent;
+            padding: 20px 0 60px;
         }
 
         .category-btn {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            margin: 5px;
-            transition: all var(--transition-speed);
+            background-color: white;
+            color: var(--secondary-color);
+            padding: 12px 24px;
+            border-radius: 50px;
+            margin: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
+            font-weight: 600;
         }
 
         .category-btn:hover,
         .category-btn.active {
             background-color: var(--primary-color);
-            transform: scale(1.05);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 82, 204, 0.3);
         }
 
         .product-card {
             border: none;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: var(--card-shadow);
-            transition: all var(--transition-speed);
             background: white;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
         .product-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
         .product-card img {
-            height: 220px;
+            height: 240px;
             object-fit: cover;
-            transition: transform var(--transition-speed);
+            width: 100%;
+            transition: transform 0.5s ease;
         }
 
         .product-card:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .product-card .card-body {
@@ -158,8 +173,10 @@
         }
 
         .product-card h5 {
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1a202c;
         }
 
         .product-card p {
@@ -168,20 +185,42 @@
         }
 
         .add-to-cart-btn {
-            background: linear-gradient(45deg, var(--primary-color), #3366cc);
+            background: var(--primary-color);
+            color: white;
             border: none;
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all var(--transition-speed);
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(0, 82, 204, 0.3);
         }
 
         .add-to-cart-btn:hover {
-            background: linear-gradient(45deg, #003d99, var(--primary-color));
+            background: #003d99;
+            box-shadow: 0 6px 14px rgba(0, 61, 153, 0.4);
         }
 
         .cart-icon {
             position: relative;
+        }
+
+        .cart-icon button {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: none;
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .cart-icon button:hover {
+            background: var(--primary-color);
+            color: white;
         }
 
         .cart-count {
@@ -196,14 +235,15 @@
         }
 
         .modal-content {
-            border-radius: 12px;
-            box-shadow: var(--card-shadow);
+            border-radius: 20px;
+            border: none;
+            overflow: hidden;
         }
 
         .modal-header {
-            background: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), #003d99);
             color: white;
-            border-radius: 12px 12px 0 0;
+            padding: 20px 30px;
         }
 
         #quote-result {
@@ -325,7 +365,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="https://i.imgur.com/8tOLQs3.png" alt="Logo" class="logo-img">
+                <img src="public/logo.png" alt="Logo" class="logo-img">
                 Arthur Auto Peças
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -482,6 +522,80 @@
                         <div class="accordion-body">
                             Compras abaixo de R$ 200 ganham 30 pontos. Acima de R$ 200 ganham 60 pontos. Com 1600 pontos
                             você ganha um brinde!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5" style="background: white;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 fade-in">
+                    <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Sobre Nós" class="img-fluid rounded-4 shadow">
+                </div>
+                <div class="col-md-6 fade-in">
+                    <h2 class="mb-4" style="font-weight: 700;">Sobre a Arthur Auto Peças</h2>
+                    <p class="lead text-muted">Há mais de 10 anos no mercado, somos referência em qualidade e confiança.
+                    </p>
+                    <p>Nossa missão é fornecer as melhores peças automotivas com preços justos e agilidade na entrega.
+                        Trabalhamos com as principais marcas do mercado e contamos com uma equipe de especialistas
+                        prontos para tirar suas dúvidas.</p>
+                    <ul class="list-unstyled mt-4">
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Peças 100% Originais</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Garantia de 1 ano em
+                            todos os produtos</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Entrega expressa para
+                            todo o Brasil</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-weight: 700;">Fale Conosco</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-lg fade-in" style="border-radius: 20px; overflow: hidden;">
+                        <div class="row g-0">
+                            <div
+                                class="col-md-5 d-none d-md-block bg-primary text-white p-5 d-flex flex-column justify-content-center text-center">
+                                <i class="fas fa-envelope fa-3x mb-3"></i>
+                                <h4>Atendimento</h4>
+                                <p>Estamos prontos para te ajudar!</p>
+                                <div class="mt-4">
+                                    <p class="mb-2"><i class="fas fa-phone me-2"></i> (85) 99181-5434</p>
+                                    <p><i class="fas fa-map-marker-alt me-2"></i> Centro, Sobral - CE</p>
+                                </div>
+                            </div>
+                            <div class="col-md-7 p-5 bg-white">
+                                <form onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso!');">
+                                    <div class="mb-3">
+                                        <label class="form-label text-muted">Seu Nome</label>
+                                        <input type="text" class="form-control"
+                                            style="background: #f8f9fa; border: none; padding: 12px; border-radius: 8px;">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label text-muted">Seu Email</label>
+                                        <input type="email" class="form-control"
+                                            style="background: #f8f9fa; border: none; padding: 12px; border-radius: 8px;">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label text-muted">Mensagem</label>
+                                        <textarea class="form-control" rows="4"
+                                            style="background: #f8f9fa; border: none; padding: 12px; border-radius: 8px;"></textarea>
+                                    </div>
+                                    <button type="submit"
+                                        class="btn btn-primary w-100 py-3 rounded-3 fw-bold shadow-sm">Enviar
+                                        Mensagem</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -845,7 +959,7 @@
                     list.innerHTML += `
                         <div class="col-md-4 col-lg-3 mb-4">
                             <div class="card product-card fade-in">
-                                <img src="${p.imagem_url}" class="card-img-top" alt="${p.nome}" onerror="this.src='https://via.placeholder.com/220?text=Sem+Foto'">
+                                <img src="${p.imagem_url}" class="card-img-top" alt="${p.nome}" onerror="this.src='https://placehold.co/220?text=Sem+Foto'">
                                 <div class="card-body">
                                     <h5 class="card-title">${p.nome}</h5>
                                     <p class="card-text">${p.descricao}</p>
