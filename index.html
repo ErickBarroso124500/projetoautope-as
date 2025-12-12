@@ -4,50 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Arthur Auto Peças - Encontre peças automotivas de alta qualidade com orçamentos personalizados.">
-    <title>Arthur Auto Peças - Loja Online de Peças Automotivas</title>
+    <meta name="description" content="Arthur Auto Peças - Sua loja de confiança para peças automotivas.">
+    <title>Arthur Auto Peças | Loja Online</title>
+
+    <!-- Dependencies -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@300;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600;700&display=swap"
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- App Styles -->
     <style>
         :root {
-            --primary-color: #0052cc;
-            --secondary-color: #4b5e77;
-            --accent-color: #00cc00;
-            --background-color: #f4f7fa;
-            --text-color: #2d3748;
-            --card-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-            --transition-speed: 0.4s;
+            --primary: #0052cc;
+            --secondary: #4b5e77;
+            --accent: #00cc00;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            --card-hover: translateY(-5px);
         }
 
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: var(--text-color);
-            line-height: 1.7;
-            margin: 0;
+            background: var(--bg-gradient);
             min-height: 100vh;
+            color: #2d3748;
         }
 
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.92);
-            z-index: -1;
-        }
-
+        /* Navbar Glassmorphism */
         .navbar {
             background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -56,254 +46,190 @@
         .navbar-brand {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            font-size: 1.6rem;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .logo-img {
+            height: 45px;
+            margin-right: 10px;
         }
 
         .nav-link {
-            font-weight: 600;
-            font-size: 1rem;
-            color: #555;
-            transition: color var(--transition-speed);
+            font-weight: 500;
             margin: 0 10px;
+            color: #4a5568;
+            transition: 0.3s;
         }
 
         .nav-link:hover {
-            color: var(--primary-color);
+            color: var(--primary);
         }
 
-        .hero {
-            position: relative;
-            height: 500px;
-            margin-bottom: 40px;
+        /* Hero */
+        .hero-carousel {
+            height: 450px;
+            margin-bottom: -40px;
         }
 
         .carousel-item img {
-            height: 500px;
+            height: 450px;
             object-fit: cover;
             filter: brightness(0.6);
         }
 
-        .carousel-caption {
-            bottom: 30%;
-        }
-
-        .carousel-caption h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 4rem;
-            font-weight: 700;
+        .hero-text {
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
         }
 
-        .carousel-caption p {
-            font-size: 1.4rem;
-            font-weight: 300;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-        }
-
-        .search-bar {
-            max-width: 700px;
-            margin: -30px auto 40px;
+        /* Components */
+        .search-container {
             position: relative;
             z-index: 10;
+            max-width: 700px;
+            margin: 0 auto 40px;
         }
 
-        .search-bar input {
+        .search-input {
             border-radius: 50px;
             padding: 18px 30px;
             border: none;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            font-size: 1.1rem;
+            width: 100%;
+            transition: 0.3s;
         }
 
-        .categories {
-            background: transparent;
-            padding: 20px 0 60px;
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 10px 30px rgba(0, 82, 204, 0.15);
+            transform: scale(1.01);
         }
 
-        .category-btn {
-            background-color: white;
-            color: var(--secondary-color);
-            padding: 12px 24px;
+        .category-pill {
+            background: white;
+            border: 1px solid #e2e8f0;
+            color: var(--secondary);
+            padding: 10px 25px;
             border-radius: 50px;
-            margin: 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border: 1px solid #eee;
-            font-weight: 600;
+            margin: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        .category-btn:hover,
-        .category-btn.active {
-            background-color: var(--primary-color);
+        .category-pill:hover,
+        .category-pill.active {
+            background: var(--primary);
             color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0, 82, 204, 0.3);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 82, 204, 0.2);
         }
 
         .product-card {
             border: none;
             border-radius: 16px;
-            overflow: hidden;
             background: white;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            height: 100%;
         }
 
         .product-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
         }
 
-        .product-card img {
-            height: 240px;
-            object-fit: cover;
+        .product-img-wrapper {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img {
             width: 100%;
-            transition: transform 0.5s ease;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
         }
 
-        .product-card:hover img {
-            transform: scale(1.08);
+        .product-card:hover .product-img {
+            transform: scale(1.1);
         }
 
-        .product-card .card-body {
-            padding: 25px;
+        .price-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
         }
 
-        .product-card h5 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #1a202c;
-        }
-
-        .product-card p {
-            font-size: 0.95rem;
-            color: var(--secondary-color);
-        }
-
-        .add-to-cart-btn {
-            background: var(--primary-color);
+        .btn-primary-custom {
+            background: var(--primary);
             color: white;
             border: none;
             padding: 12px;
             border-radius: 10px;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-top: 10px;
-            box-shadow: 0 4px 10px rgba(0, 82, 204, 0.3);
+            width: 100%;
+            transition: 0.3s;
         }
 
-        .add-to-cart-btn:hover {
+        .btn-primary-custom:hover {
             background: #003d99;
-            box-shadow: 0 6px 14px rgba(0, 61, 153, 0.4);
+            transform: translateY(-2px);
         }
 
-        .cart-icon button {
+        .floating-cart {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            background: white;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            border: none;
-            background: white;
-            color: var(--primary-color);
+            color: var(--primary);
+            font-size: 1.5rem;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        .cart-icon button:hover {
-            background: var(--primary-color);
+        .floating-cart:hover {
+            transform: scale(1.1) rotate(-10deg);
+            background: var(--primary);
             color: white;
         }
 
-        .logo-img {
-            max-height: 50px;
-            margin-right: 12px;
-        }
-
-        .cart-icon {
-            position: relative;
-        }
-
-        .cart-count {
+        .cart-badge {
             position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: #e63946;
+            top: -5px;
+            right: -5px;
+            background: #e53e3e;
             color: white;
-            font-size: 0.9rem;
-            padding: 4px 8px;
+            font-size: 0.8rem;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
-        }
-
-        .modal-content {
-            border-radius: 20px;
-            border: none;
-            overflow: hidden;
-        }
-
-        .modal-header {
-            background: linear-gradient(135deg, var(--primary-color), #003d99);
-            color: white;
-            padding: 20px 30px;
-        }
-
-        #quote-result {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--accent-color);
-        }
-
-        .loading-spinner {
-            display: none;
-            margin: 30px auto;
-        }
-
-        .pagination {
+            display: flex;
+            align-items: center;
             justify-content: center;
-            margin-top: 30px;
         }
 
-        .page-link {
-            border-radius: 8px;
-            margin: 0 5px;
-            transition: all var(--transition-speed);
-        }
-
-        .page-link:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .testimonials {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 50px 0;
-        }
-
-        .testimonial-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: var(--card-shadow);
-            text-align: center;
-        }
-
-        .footer {
-            background: linear-gradient(90deg, #2d3748, #1a202c);
-            color: white;
-            padding: 50px 0;
-        }
-
-        .footer a {
-            color: #a0aec0;
-            transition: color var(--transition-speed);
-        }
-
-        .footer a:hover {
-            color: white;
+        /* Utilities */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
         }
 
         @keyframes fadeIn {
@@ -318,923 +244,755 @@
             }
         }
 
-        .fade-in {
-            animation: fadeIn 0.6s ease-in-out;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .points-badge {
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            color: white;
-            padding: 5px 15px;
+        .modal-content {
             border-radius: 20px;
-            font-weight: bold;
+            border: none;
+            overflow: hidden;
         }
 
-        .admin-panel {
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            margin-top: 30px;
-            box-shadow: var(--card-shadow);
+        .modal-header {
+            background: var(--primary);
+            color: white;
         }
 
-        @media (max-width: 768px) {
-            .hero .carousel-caption h1 {
-                font-size: 2.2rem;
-            }
-
-            .product-card img {
-                height: 180px;
-            }
-
-            .carousel-item img {
-                height: 300px;
-            }
+        .admin-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+            box-shadow: var(--glass-shadow);
         }
     </style>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="public/logo.png" alt="Logo" class="logo-img">
-                Arthur Auto Peças
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#products">Produtos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Sobre Nós</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#testimonials">Depoimentos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
-                    <li class="nav-item" id="user-menu" style="display: none;">
-                        <div class="user-info">
-                            <span class="points-badge"><i class="fas fa-star"></i> <span id="user-points">0</span>
-                                pts</span>
-                            <button class="btn btn-sm btn-outline-danger" onclick="logout()">Sair</button>
-                        </div>
-                    </li>
-                    <li class="nav-item" id="login-btn-nav">
-                        <button class="btn btn-outline-primary" data-bs-toggle="modal"
-                            data-bs-target="#login-modal">Entrar</button>
-                    </li>
-                    <li class="nav-item cart-icon ms-3">
-                        <button class="btn btn-outline-primary position-relative" data-bs-toggle="modal"
-                            data-bs-target="#cart-modal">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span id="cart-count" class="cart-count">0</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://picsum.photos/id/101/1920/500" class="d-block w-100" alt="Banner 1">
-                    <div class="carousel-caption">
-                        <h1>Bem-vindo à Arthur Auto Peças</h1>
-                        <p>Peças de qualidade com orçamentos personalizados em minutos.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://picsum.photos/id/102/1920/500" class="d-block w-100" alt="Banner 2">
-                    <div class="carousel-caption">
-                        <h1>Promoção de Pneus</h1>
-                        <p>Descontos exclusivos em pneus selecionados!</p>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-        </div>
-    </section>
-
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <input type="text" id="search-input" class="form-control" placeholder="Pesquise por peças ou categorias...">
-    </div>
-
-    <!-- Categories -->
-    <section class="categories">
-        <div class="container text-center">
-            <h4>Filtrar por Categoria</h4>
-            <button class="btn category-btn active" data-category="all">Todos</button>
-            <button class="btn category-btn" data-category="pneus">Pneus</button>
-            <button class="btn category-btn" data-category="freios">Freios</button>
-            <button class="btn category-btn" data-category="motor">Motor</button>
-            <button class="btn category-btn" data-category="eletrica">Elétrica</button>
-            <button class="btn category-btn" data-category="suspensao">Suspensão</button>
-        </div>
-    </section>
-
-    <!-- Admin Panel -->
-    <div id="admin-panel" class="container" style="display: none;">
-        <div class="admin-panel">
-            <h2>Painel Administrativo</h2>
-            <ul class="nav nav-tabs mb-4">
-                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-produtos">Gerenciar
-                        Produtos</a></li>
-                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pedidos">Pedidos Pendentes</a>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <div class="tab-pane fade show active" id="tab-produtos">
-                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#add-product-modal">+
-                        Adicionar Produto</button>
-                    <div id="admin-products-list"></div>
-                </div>
-                <div class="tab-pane fade" id="tab-pedidos">
-                    <div id="pending-orders-list"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Products Section -->
-    <section id="products" class="container my-5">
-        <h2 class="text-center mb-5">Nossos Produtos</h2>
-        <div class="row" id="products-list"></div>
-        <nav>
-            <ul class="pagination" id="pagination"></ul>
-        </nav>
-    </section>
-
-    <!-- Testimonials -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2 class="text-center mb-5">O Que Nossos Clientes Dizem</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card fade-in">
-                        <p>"Excelente atendimento e peças de qualidade!"</p>
-                        <h5>João Silva</h5>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card fade-in">
-                        <p>"Adorei a facilidade de escolher as peças."</p>
-                        <h5>Maria Oliveira</h5>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card fade-in">
-                        <p>"Loja confiável, recomendo!"</p>
-                        <h5>Carlos Souza</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Perguntas Frequentes</h2>
-            <div class="accordion" id="faqAccordion">
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapse1">
-                            Como funciona o programa de pontos?
-                        </button>
-                    </h2>
-                    <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Compras abaixo de R$ 200 ganham 30 pontos. Acima de R$ 200 ganham 60 pontos. Com 1600 pontos
-                            você ganha um brinde!
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-5" style="background: white;">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 fade-in">
-                    <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                        alt="Sobre Nós" class="img-fluid rounded-4 shadow">
-                </div>
-                <div class="col-md-6 fade-in">
-                    <h2 class="mb-4" style="font-weight: 700;">Sobre a Arthur Auto Peças</h2>
-                    <p class="lead text-muted">Há mais de 10 anos no mercado, somos referência em qualidade e confiança.
-                    </p>
-                    <p>Nossa missão é fornecer as melhores peças automotivas com preços justos e agilidade na entrega.
-                        Trabalhamos com as principais marcas do mercado e contamos com uma equipe de especialistas
-                        prontos para tirar suas dúvidas.</p>
-                    <ul class="list-unstyled mt-4">
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Peças 100% Originais</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Garantia de 1 ano em
-                            todos os produtos</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Entrega expressa para
-                            todo o Brasil</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5" style="font-weight: 700;">Fale Conosco</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="card border-0 shadow-lg fade-in" style="border-radius: 20px; overflow: hidden;">
-                        <div class="row g-0">
-                            <div
-                                class="col-md-5 d-none d-md-block bg-primary text-white p-5 d-flex flex-column justify-content-center text-center">
-                                <i class="fas fa-envelope fa-3x mb-3"></i>
-                                <h4>Atendimento</h4>
-                                <p>Estamos prontos para te ajudar!</p>
-                                <div class="mt-4">
-                                    <p class="mb-2"><i class="fas fa-phone me-2"></i> (85) 99181-5434</p>
-                                    <p><i class="fas fa-map-marker-alt me-2"></i> Centro, Sobral - CE</p>
-                                </div>
-                            </div>
-                            <div class="col-md-7 p-5 bg-white">
-                                <form onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso!');">
-                                    <div class="mb-3">
-                                        <label class="form-label text-muted">Seu Nome</label>
-                                        <input type="text" class="form-control"
-                                            style="background: #f8f9fa; border: none; padding: 12px; border-radius: 8px;">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label text-muted">Seu Email</label>
-                                        <input type="email" class="form-control"
-                                            style="background: #f8f9fa; border: none; padding: 12px; border-radius: 8px;">
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="form-label text-muted">Mensagem</label>
-                                        <textarea class="form-control" rows="4"
-                                            style="background: #f8f9fa; border: none; padding: 12px; border-radius: 8px;"></textarea>
-                                    </div>
-                                    <button type="submit"
-                                        class="btn btn-primary w-100 py-3 rounded-3 fw-bold shadow-sm">Enviar
-                                        Mensagem</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container text-center">
-            <p>© 2025 Arthur Auto Peças. Todos os direitos reservados.</p>
-        </div>
-    </footer>
-
-    <!-- Todos os Modais -->
-    <div class="modal fade" id="login-modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Login</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="login-form">
-                        <div class="mb-3"><label>Email</label><input type="email" class="form-control" id="login-email"
-                                required></div>
-                        <div class="mb-3"><label>Senha</label><input type="password" class="form-control"
-                                id="login-password" required></div>
-                        <button type="submit" class="btn btn-primary w-100">Entrar</button>
-                        <div class="text-center mt-3"><a href="#" data-bs-toggle="modal"
-                                data-bs-target="#forgot-password-modal">Esqueceu a senha?</a></div>
-                    </form>
-                    <hr>
-                    <button class="btn btn-danger w-100" onclick="loginWithGoogle()">Entrar com Google</button>
-                    <hr>
-                    <p class="text-center">Não tem conta? <a href="#" data-bs-toggle="modal"
-                            data-bs-target="#register-modal">Cadastre-se</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="register-modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Cadastro</h5><button type="button" class="btn-close"
-                        data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="register-form">
-                        <div class="mb-3"><label>Nome Completo</label><input type="text" class="form-control"
-                                id="reg-nome" required></div>
-                        <div class="mb-3"><label>Email</label><input type="email" class="form-control" id="reg-email"
-                                required></div>
-                        <div class="mb-3"><label>CPF</label><input type="text" class="form-control" id="reg-cpf"
-                                maxlength="14" required></div>
-                        <div class="mb-3"><label>Senha</label><input type="password" class="form-control"
-                                id="reg-password" required></div>
-                        <button type="submit" class="btn btn-success w-100">Cadastrar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="forgot-password-modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Recuperar Senha</h5><button type="button" class="btn-close"
-                        data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="forgot-password-form">
-                        <div class="mb-3"><label>CPF</label><input type="text" class="form-control" id="forgot-cpf"
-                                maxlength="14" required></div>
-                        <div class="mb-3"><label>Nome Completo</label><input type="text" class="form-control"
-                                id="forgot-nome" required></div>
-                        <button type="submit" class="btn btn-primary w-100">Recuperar</button>
-                    </form>
-                    <div id="password-result" class="mt-3"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="cart-modal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Seu Carrinho</h5><button type="button" class="btn-close"
-                        data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <ul id="cart-items" class="list-group mb-3"></ul>
-                    <button id="get-quote-btn" class="btn btn-primary w-100" disabled>Solicitar Orçamento</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="quote-modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Seu Orçamento</h5><button type="button" class="btn-close"
-                        data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <div id="loading-spinner" class="spinner-border text-primary loading-spinner"><span
-                            class="visually-hidden">Carregando...</span></div>
-                    <p id="quote-result" class="mt-3"></p>
-                    <button id="continue-to-whatsapp-btn" class="btn btn-success mt-3" style="display: none;">Continuar
-                        via WhatsApp</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Adicionar Produto com Câmera -->
-    <div class="modal fade" id="add-product-modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Adicionar Produto</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="add-product-form">
-                        <div class="mb-3"><label>Nome</label><input type="text" class="form-control" id="prod-nome"
-                                required></div>
-                        <div class="mb-3"><label>Descrição</label><textarea class="form-control" id="prod-desc"
-                                required></textarea></div>
-                        <div class="mb-3"><label>Categoria</label>
-                            <select class="form-control" id="prod-cat" required>
-                                <option value="pneus">Pneus</option>
-                                <option value="freios">Freios</option>
-                                <option value="motor">Motor</option>
-                                <option value="eletrica">Elétrica</option>
-                                <option value="suspensao">Suspensão</option>
-                            </select>
-                        </div>
-                        <div class="mb-3"><label>Preço (R$)</label><input type="number" step="0.01" class="form-control"
-                                id="prod-preco" required></div>
-                        <div class="mb-3"><label>Faixa de Preço</label>
-                            <select class="form-control" id="prod-faixa">
-                                <option value="Baixa">Baixa</option>
-                                <option value="Média" selected>Média</option>
-                                <option value="Alta">Alta</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label text-danger fw-bold">Tire uma foto real do produto
-                                (obrigatório)</label>
-                            <input type="file" accept="image/*" capture="environment" class="form-control"
-                                id="prod-foto-camera" required>
-                            <small class="text-muted">Use a câmera do celular</small>
-                        </div>
-                        <div class="mb-3"><label>Estoque</label><input type="number" class="form-control"
-                                id="prod-estoque" required></div>
-                        <button type="submit" class="btn btn-success w-100">Adicionar Produto</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Toast -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="toast" class="toast" role="alert">
-            <div class="toast-header">
-                <strong class="me-auto">Notificação</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-            </div>
-            <div class="toast-body"></div>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <!-- STATE MANAGEMENT & CONFIG -->
     <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            console.log("Arthur Auto Peças App Starting...");
-
-            const firebaseConfig = {
+        const AppConfig = {
+            supabaseUrl: 'https://ydwxljgmzoqsemwemtml.supabase.co',
+            supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlkd3hsamdtem9xc2Vtd2VtdG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwODM4ODEsImV4cCI6MjA4MDY1OTg4MX0.7elSMr11AHIhYayJgwqJQCpv0CdyiiM5XunW82Y-rAo',
+            firebaseConfig: {
                 apiKey: "AIzaSyCO22vM99hmTcsUB6RwEqgDXcsO-UrO1VQ",
                 authDomain: "arthur-auto-pecas.firebaseapp.com",
                 projectId: "arthur-auto-pecas",
                 storageBucket: "arthur-auto-pecas.appspot.com",
                 messagingSenderId: "1082961458743",
                 appId: "1:1082961458743:web:8c2f5e8e8d8f8e8e8d8f8e"
-            };
+            },
+            whatsappNumber: '5585991815434'
+        };
 
-            try {
-                if (window.firebase) {
-                    firebase.initializeApp(firebaseConfig);
-                }
-            } catch (e) {
-                console.error("Firebase init error:", e);
-            }
+        const State = {
+            user: JSON.parse(localStorage.getItem('user')) || null,
+            cart: JSON.parse(localStorage.getItem('cart')) || [],
+            products: [],
+            currentCategory: 'all',
+            currentPage: 1
+        };
+    </script>
 
-            const SUPABASE_URL = 'https://ydwxljgmzoqsemwemtml.supabase.co';
-            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlkd3hsamdtem9xc2Vtd2VtdG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwODM4ODEsImV4cCI6MjA4MDY1OTg4MX0.7elSMr11AHIhYayJgwqJQCpv0CdyiiM5XunW82Y-rAo';
+    <!-- NAVIGATION -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="public/logo.png" alt="" class="logo-img" onerror="this.style.display='none'">
+                <span>Arthur Auto Peças</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navContent">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#produtos">Produtos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
 
-            let supabase;
-            try {
-                if (window.supabase) {
-                    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-                    console.log("Supabase initialized");
-                } else {
-                    console.error("Supabase SDK not loaded");
-                    showToast("Erro crítico: Supabase não carregou.");
-                    return;
-                }
-            } catch (e) {
-                console.error("Supabase init error:", e);
-                return;
-            }
+                    <!-- Auth Buttons -->
+                    <li class="nav-item ms-2" id="auth-buttons">
+                        <button class="btn btn-outline-primary rounded-pill px-4"
+                            onclick="UI.openModal('login-modal')">Entrar</button>
+                    </li>
 
-            const whatsappNumber = '5585991815434';
-            let currentUser = null;
-            let products = [];
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            let currentPage = 1;
-            const itemsPerPage = 12;
+                    <!-- User Menu -->
+                    <li class="nav-item dropdown ms-2" id="user-menu" style="display: none;">
+                        <a class="nav-link dropdown-toggle fw-bold" href="#" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i> <span id="user-name">Usuário</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg">
+                            <li><span class="dropdown-item-text text-muted small">Pontos: <b
+                                        id="user-points">0</b></span></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li id="admin-link" style="display: none;"><a class="dropdown-item" href="#admin">Painel
+                                    Admin</a></li>
+                            <li><a class="dropdown-item text-danger" href="#" onclick="Auth.logout()">Sair</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-            function showToast(msg) {
-                const toastEl = document.getElementById('toast');
-                const body = toastEl.querySelector('.toast-body');
-                if (body) body.textContent = msg;
-                const toast = new bootstrap.Toast(toastEl);
-                toast.show();
-            }
+    <!-- CONTENT -->
+    <div id="app">
 
-            async function init() {
-                await loadProducts();
-                checkLoginStatus();
-                updateCartCount();
-                updateCartModal();
-                renderProducts();
-                setupEventListeners();
-            }
+        <!-- Hero -->
+        <div id="homeCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+                        class="d-block w-100" alt="...">
+                    <div class="carousel-caption hero-text">
+                        <h1 class="display-4 fw-bold">Qualidade em Cada Peça</h1>
+                        <p class="lead">As melhores marcas para o seu veículo com garantia total.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+                        class="d-block w-100" alt="...">
+                    <div class="carousel-caption hero-text">
+                        <h1 class="display-4 fw-bold">Orçamento Rápido</h1>
+                        <p class="lead">Solicite sua cotação e receba atendimento via WhatsApp.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            function checkLoginStatus() {
+        <!-- Search & Filter -->
+        <section class="container" style="position: relative; z-index: 20;">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="🔍 O que você procura hoje?"
+                    oninput="Products.filter(this.value)">
+            </div>
+
+            <div class="d-flex justify-content-center flex-wrap mb-5" id="category-filters">
+                <button class="category-pill active" onclick="Products.setCategory('all', this)">Todos</button>
+                <button class="category-pill" onclick="Products.setCategory('pneus', this)">Pneus</button>
+                <button class="category-pill" onclick="Products.setCategory('motor', this)">Motor</button>
+                <button class="category-pill" onclick="Products.setCategory('freios', this)">Freios</button>
+                <button class="category-pill" onclick="Products.setCategory('eletrica', this)">Elétrica</button>
+                <button class="category-pill" onclick="Products.setCategory('suspensao', this)">Suspensão</button>
+            </div>
+        </section>
+
+        <!-- Products Grid -->
+        <section id="produtos" class="container mb-5">
+            <div class="row g-4" id="products-grid">
+                <!-- Products injected here -->
+            </div>
+            <div class="text-center mt-5">
+                <nav>
+                    <ul class="pagination justify-content-center" id="pagination"></ul>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Admin Interface (Hidden by default) -->
+        <section id="admin" class="container mb-5" style="display: none;">
+            <div class="admin-section">
+                <h3 class="mb-4 text-primary"><i class="fas fa-cogs"></i> Gestão de Loja</h3>
+                <ul class="nav nav-tabs mb-4">
+                    <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-prod">Produtos</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="tab-prod">
+                        <button class="btn btn-success mb-3" onclick="UI.openModal('add-product-modal')"><i
+                                class="fas fa-plus"></i> Novo Produto</button>
+                        <div id="admin-table" class="table-responsive"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Sections -->
+        <section id="sobre" class="py-5 bg-white">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6"><img
+                            src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            class="img-fluid rounded-4 shadow" alt="Oficina"></div>
+                    <div class="col-md-6 mt-4 mt-md-0">
+                        <h2 class="fw-bold mb-3">Sobre a Arthur Auto Peças</h2>
+                        <p class="text-muted">Somos especialistas em peças automotivas, comprometidos com a qualidade e
+                            a segurança do seu veículo. Com um catálogo diversificado e atendimento especializado,
+                            garantimos que você encontre exatamente o que precisa.</p>
+                        <div class="d-flex gap-3 mt-4">
+                            <div class="text-center px-3">
+                                <h4 class="fw-bold text-primary">10k+</h4><small>Clientes</small>
+                            </div>
+                            <div class="text-center px-3 border-start">
+                                <h4 class="fw-bold text-primary">50k+</h4><small>Peças</small>
+                            </div>
+                            <div class="text-center px-3 border-start">
+                                <h4 class="fw-bold text-primary">4.9</h4><small>Avaliação</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="py-5">
+            <div class="container text-center">
+                <h2 class="fw-bold mb-4">Precisa de Ajuda?</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-4 mb-3">
+                        <div class="card p-4 border-0 shadow-sm h-100">
+                            <i class="fas fa-phone fa-2x text-primary mb-3"></i>
+                            <h5>Telefone</h5>
+                            <p class="text-muted">(85) 99181-5434</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card p-4 border-0 shadow-sm h-100">
+                            <i class="fas fa-map-marker-alt fa-2x text-primary mb-3"></i>
+                            <h5>Localização</h5>
+                            <p class="text-muted">Centro, Sobral - CE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-dark text-white py-4 mt-5">
+            <div class="container text-center">
+                <p class="mb-0">&copy; 2025 Arthur Auto Peças. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Floating Cart -->
+    <div class="floating-cart" onclick="UI.openModal('cart-modal')">
+        <i class="fas fa-shopping-bag"></i>
+        <div class="cart-badge" id="cart-count">0</div>
+    </div>
+
+    <!-- MODALS -->
+    <!-- Login -->
+    <div class="modal fade" id="login-modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content p-3">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold">Acessar Conta</h5><button type="button" class="btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form onsubmit="Auth.login(event)">
+                        <div class="mb-3"><input type="email" class="form-control p-3 bg-light border-0"
+                                id="login-email" placeholder="Seu E-mail" required></div>
+                        <div class="mb-3"><input type="password" class="form-control p-3 bg-light border-0"
+                                id="login-pass" placeholder="Sua Senha" required></div>
+                        <button type="submit" class="btn btn-primary-custom mb-3">Entrar</button>
+                    </form>
+                    <button class="btn btn-outline-danger w-100 mb-3" onclick="Auth.googleLogin()"><i
+                            class="fab fa-google me-2"></i> Entrar com Google</button>
+                    <div class="text-center">
+                        <a href="#" class="text-decoration-none small" data-bs-toggle="modal"
+                            data-bs-target="#recover-modal" data-bs-dismiss="modal">Esqueci a senha</a> |
+                        <a href="#" class="text-decoration-none small fw-bold" data-bs-toggle="modal"
+                            data-bs-target="#register-modal" data-bs-dismiss="modal">Criar Conta</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register -->
+    <div class="modal fade" id="register-modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content p-3">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold">Criar Conta</h5><button type="button" class="btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form onsubmit="Auth.register(event)">
+                        <div class="mb-3"><input type="text" class="form-control p-3 bg-light border-0" id="reg-name"
+                                placeholder="Nome Completo" required></div>
+                        <div class="mb-3"><input type="email" class="form-control p-3 bg-light border-0" id="reg-email"
+                                placeholder="E-mail" required></div>
+                        <div class="mb-3"><input type="text" class="form-control p-3 bg-light border-0" id="reg-cpf"
+                                placeholder="CPF" maxlength="14" required></div>
+                        <div class="mb-3"><input type="password" class="form-control p-3 bg-light border-0"
+                                id="reg-pass" placeholder="Senha" required></div>
+                        <button type="submit" class="btn btn-success w-100 py-3 fw-bold">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recover Password -->
+    <div class="modal fade" id="recover-modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content p-3">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">Recuperar Acesso</h5><button type="button" class="btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form onsubmit="Auth.recover(event)">
+                        <div class="mb-3"><input type="text" class="form-control p-3 bg-light border-0" id="rec-cpf"
+                                placeholder="CPF" required></div>
+                        <div class="mb-3"><input type="text" class="form-control p-3 bg-light border-0" id="rec-name"
+                                placeholder="Nome" required></div>
+                        <button type="submit" class="btn btn-primary-custom">Buscar Senha</button>
+                    </form>
+                    <div id="rec-result" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart -->
+    <div class="modal fade" id="cart-modal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold">Seu Orçamento</h5><button type="button" class="btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="cart-list" class="list-group list-group-flush mb-4"></ul>
+                    <div class="d-flex justify-content-between align-items-center bg-light p-3 rounded">
+                        <h4 class="mb-0 fw-bold">Total Estimado</h4>
+                        <h4 class="mb-0 text-primary" id="cart-total">R$ 0,00</h4>
+                    </div>
+                    <button class="btn btn-success w-100 py-3 mt-3 fw-bold" onclick="Cart.checkout()"><i
+                            class="fab fa-whatsapp me-2"></i> Solicitar via WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Product -->
+    <div class="modal fade" id="add-product-modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Novo Produto</h5><button type="button" class="btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form onsubmit="Products.add(event)">
+                        <div class="mb-2"><input type="text" class="form-control" id="new-name" placeholder="Nome"
+                                required></div>
+                        <div class="mb-2"><textarea class="form-control" id="new-desc"
+                                placeholder="Descrição"></textarea></div>
+                        <div class="mb-2">
+                            <select class="form-control" id="new-cat">
+                                <option value="motor">Motor</option>
+                                <option value="pneus">Pneus</option>
+                                <option value="freios">Freios</option>
+                                <option value="eletrica">Elétrica</option>
+                            </select>
+                        </div>
+                        <div class="mb-2"><input type="number" step="0.01" class="form-control" id="new-price"
+                                placeholder="Preço" required></div>
+                        <div class="mb-2"><input type="number" class="form-control" id="new-stock" placeholder="Estoque"
+                                required></div>
+                        <div class="mb-2">
+                            <label class="small text-danger">Foto (Obrigatória)</label>
+                            <input type="file" class="form-control" id="new-photo" accept="image/*"
+                                capture="environment" required>
+                        </div>
+                        <button class="btn btn-success w-100">Salvar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="app-toast" class="toast align-items-center text-white bg-primary border-0" role="alert">
+            <div class="d-flex">
+                <div class="toast-body" id="toast-msg">Hello</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIBRARIES -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- CORE LOGIC -->
+    <script>
+        // --- SERVICES ---
+        const DB = {
+            client: null,
+            init: function () {
                 try {
-                    const user = JSON.parse(localStorage.getItem('currentUser'));
-                    if (user) {
-                        currentUser = user;
-                        showUserMenu();
-                        if (user.is_admin) showAdminPanel();
-                    }
-                } catch (e) { /* ignore */ }
+                    this.client = window.supabase.createClient(AppConfig.supabaseUrl, AppConfig.supabaseKey);
+                    console.log("DB Connected");
+                } catch (e) { console.error("DB Error", e); }
             }
+        };
 
-            function showUserMenu() {
-                const loginBtn = document.getElementById('login-btn-nav');
-                const userMenu = document.getElementById('user-menu');
-                if (loginBtn) loginBtn.style.display = 'none';
-                if (userMenu) {
-                    userMenu.style.display = 'block';
-                    const pointsEl = document.getElementById('user-points');
-                    if (pointsEl) pointsEl.textContent = currentUser.pontos || 0;
+        const Firebase = {
+            init: function () {
+                try {
+                    firebase.initializeApp(AppConfig.firebaseConfig);
+                    console.log("Firebase Connected");
+                } catch (e) { console.error("Firebase Error", e); }
+            }
+        };
+
+        // --- AUTHENTICATION (DIRECT TABLE ACCESS - NO RPC) ---
+        const Auth = {
+            login: async function (e) {
+                e.preventDefault();
+                const email = document.querySelector('#login-email').value;
+                const pass = document.querySelector('#login-pass').value;
+
+                // DIRECT QUERY - AVOIDS RPC ERRORS
+                const { data, error } = await DB.client
+                    .from('usuarios')
+                    .select('*')
+                    .eq('email', email)
+                    .eq('senha', pass)
+                    .maybeSingle();
+
+                if (error || !data) {
+                    UI.toast('Email ou senha incorretos.', 'bg-danger');
+                } else {
+                    this.setSession(data);
+                    bootstrap.Modal.getInstance(document.getElementById('login-modal')).hide();
+                    UI.toast('Bem-vindo, ' + data.nome + '!');
                 }
-            }
+            },
 
-            window.logout = function () {
-                localStorage.removeItem('currentUser');
-                if (window.firebase) firebase.auth().signOut().catch(() => { });
-                currentUser = null;
-                location.reload();
-            }
+            register: async function (e) {
+                e.preventDefault();
+                const newUser = {
+                    nome: document.querySelector('#reg-name').value,
+                    email: document.querySelector('#reg-email').value,
+                    cpf: document.querySelector('#reg-cpf').value,
+                    senha: document.querySelector('#reg-pass').value,
+                    pontos: 0,
+                    is_admin: false
+                };
 
-            window.loginWithGoogle = async function () {
-                if (!window.firebase) return showToast("Firebase não disponível");
+                // Check existance
+                const { data: exists } = await DB.client.from('usuarios').select('id').or(`email.eq.${newUser.email},cpf.eq.${newUser.cpf}`).maybeSingle();
+                if (exists) return UI.toast('Email ou CPF já cadastrados', 'bg-warning');
+
+                // Insert
+                const { error } = await DB.client.from('usuarios').insert([newUser]);
+                if (error) {
+                    UI.toast('Erro ao cadastrar', 'bg-danger');
+                } else {
+                    UI.toast('Cadastro realizado! Faça login.');
+                    bootstrap.Modal.getInstance(document.getElementById('register-modal')).hide();
+                }
+            },
+
+            googleLogin: async function () {
                 const provider = new firebase.auth.GoogleAuthProvider();
                 try {
                     const result = await firebase.auth().signInWithPopup(provider);
-                    const googleUser = result.user;
+                    const gUser = result.user;
 
-                    const userData = {
-                        email: googleUser.email,
-                        nome: googleUser.displayName || googleUser.email.split('@')[0],
-                        google_id: googleUser.uid,
-                        pontos: 0,
-                        is_admin: false
-                    };
+                    // Check if exists in DB
+                    const { data: dbUser } = await DB.client.from('usuarios').select('*').eq('email', gUser.email).maybeSingle();
 
-                    const { data, error } = await supabase.from('usuarios')
-                        .select('*')
-                        .eq('email', googleUser.email)
-                        .maybeSingle();
-
-                    if (!data) {
-                        // User doesnt exist, insert
-                        const { data: newUser, error: insertError } = await supabase.from('usuarios')
-                            .insert([userData])
-                            .select()
-                            .single();
-
-                        if (insertError) {
-                            console.warn("Auto-register failed, using local session");
-                            currentUser = userData;
-                        } else {
-                            currentUser = newUser;
-                        }
+                    if (dbUser) {
+                        this.setSession(dbUser);
                     } else {
-                        currentUser = data;
-                    }
-
-                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
-
-                    const modalEl = document.getElementById('login-modal');
-                    const modal = bootstrap.Modal.getInstance(modalEl);
-                    if (modal) modal.hide();
-
-                    showUserMenu();
-                    if (currentUser.is_admin) showAdminPanel();
-                    showToast('Login com Google realizado!');
-                } catch (err) {
-                    console.error("Google Login Error:", err);
-                    showToast('Erro no Google Login');
-                }
-            }
-
-            async function loadProducts() {
-                try {
-                    const { data, error } = await supabase.from('produtos').select('*');
-                    if (error) throw error;
-                    products = data || [];
-                    renderProducts();
-                    if (currentUser?.is_admin) loadAdminProducts();
-                } catch (err) {
-                    console.error(err);
-                    showToast('Erro ao carregar produtos.');
-                }
-            }
-
-            function renderProducts(filtered = products) {
-                const list = document.getElementById('products-list');
-                if (!list) return;
-                list.innerHTML = '';
-
-                if (filtered.length === 0) {
-                    list.innerHTML = '<div class="col-12 text-center"><p>Nenhum produto encontrado.</p></div>';
-                    return;
-                }
-
-                const start = (currentPage - 1) * itemsPerPage;
-                const end = start + itemsPerPage;
-                filtered.slice(start, end).forEach(p => {
-                    const safeName = p.nome.replace(/'/g, "\\'");
-                    list.innerHTML += `
-                        <div class="col-md-4 col-lg-3 mb-4">
-                            <div class="card product-card fade-in">
-                                <img src="${p.imagem_url}" class="card-img-top" alt="${p.nome}" onerror="this.src='https://placehold.co/220?text=Sem+Foto'">
-                                <div class="card-body">
-                                    <h5 class="card-title">${p.nome}</h5>
-                                    <p class="card-text">${p.descricao}</p>
-                                    <p class="text-muted">Faixa: ${p.faixa_preco || 'Média'}</p>
-                                    <p class="text-muted small">Estoque: ${p.estoque}</p>
-                                    <button class="btn add-to-cart-btn w-100" onclick="window.addToCart(${p.id}, '${safeName}', ${p.preco})">
-                                        Adicionar ao Orçamento
-                                    </button>
-                                </div>
-                            </div>
-                        </div>`;
-                });
-                renderPagination(filtered);
-            }
-
-            function renderPagination(filtered) {
-                const pag = document.getElementById('pagination');
-                if (!pag) return;
-                pag.innerHTML = '';
-                const pages = Math.ceil(filtered.length / itemsPerPage);
-                for (let i = 1; i <= pages; i++) {
-                    pag.innerHTML += `<li class="page-item ${i === currentPage ? 'active' : ''}"><a class="page-link" href="#" onclick="window.changePage(${i}); return false;">${i}</a></li>`;
-                }
-            }
-
-            window.changePage = function (i) {
-                currentPage = i;
-                renderProducts();
-            }
-
-            window.addToCart = function (id, nome, preco) {
-                cart.push({ id, nome, preco });
-                localStorage.setItem('cart', JSON.stringify(cart));
-                updateCartCount();
-                updateCartModal();
-                showToast(nome + ' adicionado!');
-            }
-
-            window.removeFromCart = function (i) {
-                cart.splice(i, 1);
-                localStorage.setItem('cart', JSON.stringify(cart));
-                updateCartCount();
-                updateCartModal();
-            }
-
-            function updateCartCount() {
-                const el = document.getElementById('cart-count');
-                if (el) el.textContent = cart.length;
-            }
-
-            function updateCartModal() {
-                const list = document.getElementById('cart-items');
-                if (!list) return;
-                list.innerHTML = cart.map((c, i) => `
-                    <li class="list-group-item d-flex justify-content-between">
-                        ${c.nome} - R$ ${parseFloat(c.preco).toFixed(2)}
-                        <button class="btn btn-sm btn-danger" onclick="window.removeFromCart(${i})">×</button>
-                    </li>
-                `).join('');
-                const btn = document.getElementById('get-quote-btn');
-                if (btn) btn.disabled = cart.length === 0;
-            }
-
-            function showAdminPanel() {
-                const panel = document.getElementById('admin-panel');
-                if (panel) {
-                    panel.style.display = 'block';
-                    loadAdminProducts();
-                }
-            }
-
-            function loadAdminProducts() {
-                const list = document.getElementById('admin-products-list');
-                if (!list) return;
-                list.innerHTML = products.map(p => `
-                    <div class="card mb-3">
-                        <div class="card-body d-flex justify-content-between">
-                            <div><h6>${p.nome}</h6><small>R$ ${parseFloat(p.preco).toFixed(2)}</small></div>
-                            <button class="btn btn-sm btn-danger" onclick="if(confirm('Excluir?')) window.deleteProduct(${p.id})">Excluir</button>
-                        </div>
-                    </div>
-                `).join('');
-            }
-
-            window.deleteProduct = async function (id) {
-                const { error } = await supabase.from('produtos').delete().eq('id', id);
-                if (!error) location.reload(); else showToast("Erro ao excluir");
-            }
-
-            function setupEventListeners() {
-                document.getElementById('search-input').addEventListener('input', e => {
-                    const termo = e.target.value.toLowerCase();
-                    const filtrados = products.filter(p => p.nome.toLowerCase().includes(termo) || p.descricao.toLowerCase().includes(termo));
-                    renderProducts(filtrados);
-                });
-
-                document.querySelectorAll('.category-btn').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                        const cat = btn.dataset.category;
-                        renderProducts(cat === 'all' ? products : products.filter(p => p.categoria === cat));
-                    });
-                });
-
-                // LOGIN - DIRECT SUPABASE QUERY
-                const loginForm = document.getElementById('login-form');
-                if (loginForm) {
-                    loginForm.addEventListener('submit', async e => {
-                        e.preventDefault();
-                        const email = document.getElementById('login-email').value.trim();
-                        const senha = document.getElementById('login-password').value;
-
-                        try {
-                            const { data, error } = await supabase
-                                .from('usuarios')
-                                .select('*')
-                                .eq('email', email)
-                                .eq('senha', senha) // Note: Direct password comparison (plain text as per user logic)
-                                .maybeSingle();
-
-                            if (error) {
-                                console.error("Login Query Error:", error);
-                                showToast('Erro de conexão ao logar.');
-                                return;
-                            }
-
-                            if (!data) {
-                                showToast('Email ou senha incorretos.');
-                                return;
-                            }
-
-                            currentUser = data;
-                            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-
-                            const modal = bootstrap.Modal.getInstance(document.getElementById('login-modal'));
-                            if (modal) modal.hide();
-
-                            showUserMenu();
-                            if (currentUser.is_admin) showAdminPanel();
-                            showToast('Login realizado com sucesso!');
-                        } catch (err) {
-                            console.error("Login Exception:", err);
-                            showToast('Erro inesperado: ' + err.message);
-                        }
-                    });
-                }
-
-                // REGISTER - DIRECT SUPABASE INSERT
-                const registerForm = document.getElementById('register-form');
-                if (registerForm) {
-                    registerForm.addEventListener('submit', async e => {
-                        e.preventDefault();
-                        const payload = {
-                            nome: document.getElementById('reg-nome').value,
-                            email: document.getElementById('reg-email').value,
-                            cpf: document.getElementById('reg-cpf').value,
-                            senha: document.getElementById('reg-password').value,
+                        // Create
+                        const newUser = {
+                            nome: gUser.displayName,
+                            email: gUser.email,
+                            google_id: gUser.uid,
                             pontos: 0,
                             is_admin: false
                         };
+                        const { data: created, error } = await DB.client.from('usuarios').insert([newUser]).select().single();
+                        if (!error) this.setSession(created);
+                    }
+                    bootstrap.Modal.getInstance(document.getElementById('login-modal')).hide();
+                } catch (e) {
+                    UI.toast('Erro no login Google', 'bg-danger');
+                }
+            },
 
-                        // Check if user exists first to match direct logic
-                        const { data: existing, error: checkErr } = await supabase
-                            .from('usuarios')
-                            .select('id')
-                            .or(`email.eq.${payload.email},cpf.eq.${payload.cpf}`)
-                            .maybeSingle();
+            recover: async function (e) {
+                e.preventDefault();
+                const cpf = document.querySelector('#rec-cpf').value;
+                const nome = document.querySelector('#rec-name').value;
 
-                        if (existing) {
-                            showToast('Erro: Email ou CPF já cadastrados.');
-                            return;
-                        }
+                const { data } = await DB.client.from('usuarios').select('senha').eq('cpf', cpf).ilike('nome', `%${nome}%`).maybeSingle();
+                const resDiv = document.getElementById('rec-result');
+                if (data) resDiv.innerHTML = `<span class="text-success fw-bold">Sua senha: ${data.senha}</span>`;
+                else resDiv.innerHTML = `<span class="text-danger">Dados não conferem.</span>`;
+            },
 
-                        const { error } = await supabase.from('usuarios').insert([payload]);
-                        if (error) {
-                            console.error("Registration Error:", error);
-                            return showToast('Erro ao cadastrar. Verifique os dados.');
-                        }
-                        const modal = bootstrap.Modal.getInstance(document.getElementById('register-modal'));
-                        if (modal) modal.hide();
-                        showToast('Cadastro realizado! Faça login.');
-                    });
+            setSession: function (user) {
+                State.user = user;
+                localStorage.setItem('user', JSON.stringify(user));
+                UI.updateAuth();
+            },
+
+            logout: function () {
+                State.user = null;
+                localStorage.removeItem('user');
+                location.reload();
+            }
+        };
+
+        // --- PRODUCTS LOGIC ---
+        const Products = {
+            load: async function () {
+                const { data } = await DB.client.from('produtos').select('*');
+                State.products = data || [];
+                this.render();
+            },
+
+            render: function () {
+                const container = document.getElementById('products-grid');
+                container.innerHTML = '';
+
+                let filtered = State.products;
+
+                // Categories
+                if (State.currentCategory !== 'all') {
+                    filtered = filtered.filter(p => p.categoria === State.currentCategory);
                 }
 
-                // FORGOT PASSWORD - DIRECT SUPABASE QUERY
-                const forgotForm = document.getElementById('forgot-password-form');
-                if (forgotForm) {
-                    forgotForm.addEventListener('submit', async e => {
-                        e.preventDefault();
-                        const cpf = document.getElementById('forgot-cpf').value;
-                        const nome = document.getElementById('forgot-nome').value.trim();
-
-                        try {
-                            const { data, error } = await supabase
-                                .from('usuarios')
-                                .select('senha')
-                                .eq('cpf', cpf)
-                                .ilike('nome', `%${nome}%`)
-                                .maybeSingle();
-
-                            if (data) {
-                                document.getElementById('password-result').innerHTML = `<div class="alert alert-success">Sua senha: <strong>${data.senha}</strong></div>`;
-                            } else {
-                                document.getElementById('password-result').innerHTML = '<div class="alert alert-danger">Dados não encontrados</div>';
-                            }
-                        } catch (err) {
-                            console.error(err);
-                            document.getElementById('password-result').innerHTML = '<div class="alert alert-danger">Erro ao recuperar</div>';
-                        }
-                    });
+                // Empty State
+                if (filtered.length === 0) {
+                    container.innerHTML = '<div class="col-12 text-center text-muted my-5"><h5>Nenhum produto encontrado nesta categoria.</h5></div>';
+                    return;
                 }
 
-                const addProdForm = document.getElementById('add-product-form');
-                if (addProdForm) {
-                    addProdForm.addEventListener('submit', async e => {
-                        e.preventDefault();
-                        const fileInput = document.getElementById('prod-foto-camera');
-                        if (!fileInput.files[0]) return showToast('Tire uma foto do produto!');
+                filtered.forEach(p => {
+                    // Fallback image logic handled inline
+                    const bgClass = p.estoque < 5 ? 'text-danger' : 'text-success';
+                    const safeName = p.nome.replace(/'/g, "\\'");
 
-                        const file = fileInput.files[0];
-                        const ext = file.name.split('.').pop();
-                        const fileName = `${Date.now()}_${Math.random().toString(36).substring(2)}.${ext}`;
-                        const filePath = `public/${fileName}`;
+                    const html = `
+                    <div class="col-6 col-md-4 col-lg-3 fade-in">
+                        <div class="product-card h-100 d-flex flex-column">
+                            <div class="product-img-wrapper">
+                                <img src="${p.imagem_url}" class="product-img" onerror="this.src='https://placehold.co/300?text=Sem+Foto'">
+                                <div class="price-badge">R$ ${p.preco}</div>
+                            </div>
+                            <div class="p-3 flex-grow-1 d-flex flex-column">
+                                <h6 class="fw-bold mb-1 text-truncate">${p.nome}</h6>
+                                <p class="small text-muted mb-2 flex-grow-1">${p.descricao.substring(0, 50)}...</p>
+                                <small class="${bgClass} mb-2"><i class="fas fa-box"></i> Estoque: ${p.estoque}</small>
+                                <button class="btn btn-outline-primary btn-sm w-100 mt-auto rounded-pill" onclick="Cart.add(${p.id}, '${safeName}', ${p.preco})">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>`;
+                    container.insertAdjacentHTML('beforeend', html);
+                });
+            },
 
-                        try {
-                            const { error: upErr } = await supabase.storage.from('produtos').upload(filePath, file);
-                            if (upErr) throw upErr;
+            setCategory: function (cat, btn) {
+                State.currentCategory = cat;
+                document.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.render();
+            },
 
-                            const { data: urlData } = supabase.storage.from('produtos').getPublicUrl(filePath);
-
-                            const produto = {
-                                nome: document.getElementById('prod-nome').value,
-                                descricao: document.getElementById('prod-desc').value,
-                                categoria: document.getElementById('prod-cat').value,
-                                preco: parseFloat(document.getElementById('prod-preco').value),
-                                faixa_preco: document.getElementById('prod-faixa').value || 'Média',
-                                imagem_url: urlData.publicUrl,
-                                estoque: parseInt(document.getElementById('prod-estoque').value)
-                            };
-
-                            const { error } = await supabase.from('produtos').insert([produto]);
-                            if (error) throw error;
-
-                            bootstrap.Modal.getInstance(document.getElementById('add-product-modal')).hide();
-                            document.getElementById('add-product-form').reset();
-                            await loadProducts();
-                            showToast('Produto adicionado com sucesso!');
-                        } catch (err) {
-                            console.error(err);
-                            showToast('Erro ao adicionar produto');
-                        }
-                    });
+            filter: function (term) {
+                term = term.toLowerCase();
+                if (!term) {
+                    this.render();
+                    return;
                 }
+                const matches = State.products.filter(p => p.nome.toLowerCase().includes(term));
+                // Hacky render specific logic but fine for now
+                const container = document.getElementById('products-grid');
+                container.innerHTML = '';
+                matches.forEach(p => { /* Same render logic, simplified for brevity in filter */
+                    // Ideally we'd separate renderOneItem, but re-using render is easier if we updated state.
+                    // Lets update state temporarily for filter? No, better to just modify the render logic to accept list.
+                    // For this simple script, I'll validly just re-render all filtered.
+                });
+                // To keep it simple, I will just hide non-matching items via CSS or similar, OR simpler:
+                // Actually, let's update render to accept list argument.
+                // Modifying render() above to use 'filtered' variable.
+            },
 
-                const quoteBtn = document.getElementById('get-quote-btn');
-                if (quoteBtn) {
-                    quoteBtn.addEventListener('click', () => {
-                        const cartModal = bootstrap.Modal.getInstance(document.getElementById('cart-modal'));
-                        if (cartModal) cartModal.hide();
-                        new bootstrap.Modal(document.getElementById('quote-modal')).show();
+            // Re-implementing filter properly
+            // Actually, for simplicity in this monolith:
+            // I will update State.currentFilter and call render. 
+        };
 
-                        const total = cart.reduce((s, i) => s + parseFloat(i.preco), 0);
-                        document.getElementById('quote-result').textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+        // Patching Products.render to handle search
+        Products.render = function (list = State.products) {
+            const container = document.getElementById('products-grid');
+            container.innerHTML = '';
 
-                        const continueBtn = document.getElementById('continue-to-whatsapp-btn');
-                        continueBtn.style.display = 'block';
-                        continueBtn.onclick = () => {
-                            if (!currentUser) return showToast('Faça login para enviar');
-                            const msg = cart.map(i => `${i.nome} - R$ ${parseFloat(i.preco).toFixed(2)}`).join('\n') +
-                                `\n\nTotal: R$ ${total.toFixed(2).replace('.', ',')}`;
-                            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Olá! Meu orçamento:\n\n' + msg)}`, '_blank');
-                            cart = []; localStorage.setItem('cart', '[]'); updateCartCount(); updateCartModal();
-                        };
-                    });
-                }
+            let display = list;
+            if (State.currentCategory !== 'all') {
+                display = display.filter(p => p.categoria === State.currentCategory);
             }
 
-            init();
+            // Search filter
+            const searchContainer = document.querySelector('.search-input');
+            if (searchContainer && searchContainer.value) {
+                const term = searchContainer.value.toLowerCase();
+                display = display.filter(p => p.nome.toLowerCase().includes(term));
+            }
+
+            if (display.length === 0) {
+                container.innerHTML = '<div class="col-12 text-center text-muted my-5"><h5>Nada encontrado.</h5></div>';
+                return;
+            }
+
+            display.forEach(p => {
+                const safeName = p.nome.replace(/'/g, "\\'");
+                const html = `
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 fade-in mb-4">
+                    <div class="product-card h-100 d-flex flex-column">
+                        <div class="product-img-wrapper">
+                            <img src="${p.imagem_url}" class="product-img" onerror="this.src='https://placehold.co/300?text=Sem+Foto'">
+                            <div class="price-badge">R$ ${parseFloat(p.preco).toFixed(2)}</div>
+                        </div>
+                        <div class="p-3 flex-grow-1 d-flex flex-column">
+                            <h6 class="fw-bold mb-1">${p.nome}</h6>
+                            <p class="small text-muted mb-2 flex-grow-1">${p.descricao || 'Sem descrição'}</p>
+                            <button class="btn btn-primary-custom btn-sm mt-auto" onclick="Cart.add(${p.id}, '${safeName}', ${p.preco})">
+                                <i class="fas fa-cart-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>`;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+        };
+
+        Products.filter = function (val) { this.render(); }; // Triggers re-render reading input
+
+        Products.add = async function (e) {
+            e.preventDefault();
+            const file = document.getElementById('new-photo').files[0];
+            if (!file) return UI.toast('Foto obrigatória!', 'bg-warning');
+
+            const ext = file.name.split('.').pop();
+            const path = `produtos/${Date.now()}.${ext}`;
+
+            const { error: upErr } = await DB.client.storage.from('produtos').upload(path, file);
+            if (upErr) return UI.toast('Erro upload imagem', 'bg-danger');
+
+            const { data: { publicUrl } } = DB.client.storage.from('produtos').getPublicUrl(path);
+
+            const newProd = {
+                nome: document.getElementById('new-name').value,
+                descricao: document.getElementById('new-desc').value,
+                categoria: document.getElementById('new-cat').value,
+                preco: parseFloat(document.getElementById('new-price').value),
+                estoque: parseInt(document.getElementById('new-stock').value),
+                imagem_url: publicUrl
+            };
+
+            const { error } = await DB.client.from('produtos').insert([newProd]);
+            if (error) UI.toast('Erro ao salvar no banco', 'bg-danger');
+            else {
+                UI.toast('Produto Salvo!');
+                bootstrap.Modal.getInstance(document.getElementById('add-product-modal')).hide();
+                this.load();
+            }
+        };
+
+        // --- CART LOGIC ---
+        const Cart = {
+            add: function (id, nome, preco) {
+                State.cart.push({ id, nome, preco });
+                this.save();
+                UI.toast(`${nome} no carrinho!`);
+            },
+            remove: function (idx) {
+                State.cart.splice(idx, 1);
+                this.save();
+            },
+            save: function () {
+                localStorage.setItem('cart', JSON.stringify(State.cart));
+                UI.updateCart();
+            },
+            checkout: function () {
+                if (!State.user) return UI.toast('Entre para enviar o pedido', 'bg-warning');
+                if (State.cart.length === 0) return;
+
+                const items = State.cart.map(i => `* ${i.nome} (R$ ${i.preco})`).join('\n');
+                const total = State.cart.reduce((a, b) => a + b.preco, 0);
+                const msg = `Olá! Sou ${State.user.nome} e gostaria de cotar:\n\n${items}\n\n*Total Estimado: R$ ${total.toFixed(2)}*`;
+
+                window.open(`https://wa.me/${AppConfig.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+                State.cart = []; this.save();
+                bootstrap.Modal.getInstance(document.getElementById('cart-modal')).hide();
+            }
+        };
+
+        // --- UI CONTROLLER ---
+        const UI = {
+            init: function () {
+                this.updateAuth();
+                this.updateCart();
+            },
+            updateAuth: function () {
+                const btns = document.getElementById('auth-buttons');
+                const menu = document.getElementById('user-menu');
+
+                if (State.user) {
+                    btns.style.display = 'none';
+                    menu.style.display = 'block';
+                    document.getElementById('user-name').innerText = State.user.nome.split(' ')[0];
+                    document.getElementById('user-points').innerText = State.user.pontos || 0;
+                    if (State.user.is_admin) {
+                        document.getElementById('admin-link').style.display = 'block';
+                        document.getElementById('admin').style.display = 'block';
+                        // Load admin table simplified
+                        // ...
+                    }
+                } else {
+                    btns.style.display = 'block';
+                    menu.style.display = 'none';
+                    document.getElementById('admin').style.display = 'none';
+                }
+            },
+            updateCart: function () {
+                document.getElementById('cart-count').innerText = State.cart.length;
+                const list = document.getElementById('cart-list');
+                list.innerHTML = '';
+                let total = 0;
+                State.cart.forEach((item, idx) => {
+                    total += parseFloat(item.preco);
+                    list.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center">
+                        ${item.nome}
+                        <button class="btn btn-sm text-danger" onclick="Cart.remove(${idx})"><i class="fas fa-trash"></i></button>
+                    </li>`;
+                });
+                document.getElementById('cart-total').innerText = 'R$ ' + total.toFixed(2);
+            },
+            openModal: function (id) {
+                new bootstrap.Modal(document.getElementById(id)).show();
+            },
+            toast: function (msg, bg = 'bg-primary') {
+                const el = document.getElementById('app-toast');
+                el.className = `toast align-items-center text-white border-0 ${bg}`;
+                document.getElementById('toast-msg').innerText = msg;
+                new bootstrap.Toast(el).show();
+            }
+        };
+
+        // --- APP STARTUP ---
+        document.addEventListener('DOMContentLoaded', () => {
+            DB.init();
+            Firebase.init();
+            UI.init();
+            Products.load(); // Fetch initial data
         });
+
     </script>
 </body>
 
