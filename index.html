@@ -671,20 +671,32 @@
                 getQuote();
             });
 
-            document.getElementById('login-form').addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const { data } = await supabase.from('usuarios').select('*').eq('email', document.getElementById('login-email').value).eq('senha', document.getElementById('login-password').value).single();
-                if (data) {
-                    currentUser = data;
-                    localStorage.setItem('currentUser', JSON.stringify(data));
-                    bootstrap.Modal.getInstance(document.getElementById('login-modal')).hide();
-                    showUserMenu();
-                    if (data.is_admin) showAdminPanel();
-                    showToast('Login realizado!');
-                } else {
-                    showToast('Email ou senha incorretos');
-                }
-            });
+          document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value.trim();
+    const senha = document.getElementById('login-password').value;
+
+    try {
+        const { data, error } = await supabase
+            .rpc('login_usuario', { email_input: email, senha_input: senha });
+
+        if (error || !data || data.length === 0) {
+            showToast('Email ou senha incorretos');
+            return;
+        }
+
+        currentUser = data[0];
+        currentUser.senha = senha; // opcional, se precisar depois
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        bootstrap.Modal.getInstance(document.getElementById('login-modal')).hide();
+        showUserMenu();
+        if (currentUser.is_admin) showAdminPanel();
+        showToast('Login realizado com sucesso!');
+    } catch (err) {
+        console.error(err);
+        showToast('Erro no login');
+    }
+});
 
             document.getElementById('register-form').addEventListener('submit', async (e) => {
                 e.preventDefault();
@@ -704,18 +716,27 @@
                 }
             });
 
-            document.getElementById('forgot-password-form').addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const cpf = document.getElementById('forgot-cpf').value;
-                const nome = document.getElementById('forgot-nome').value.trim();
-                const { data } = await supabase.from('usuarios').select('senha').eq('cpf', cpf).ilike('nome', `%${nome}%`).single();
-                if (data) {
-                    document.getElementById('password-result').innerHTML = `<div class="alert alert-success">Sua senha: <strong>${data.senha}</strong></div>`;
-                } else {
-                    document.getElementById('password-result').innerHTML = `<div class="alert alert-danger">Dados não encontrados</div>`;
-                }
-            });
+           document.getElementById('forgot-password-form').addEventListener('submit', async (e) => { 
+               e.preventDefault();
+    const cpf = document.getElementById('forgot-cpf').value;
+    const nome = document.getElementById('forgot-nome').value.trim();
+
+    try {
+        const { data, error } = await supabase
+            .rpc('recuperar_senha', { cpf_input: cpf, nome_input: nome });
+
+        if (error || !data || data.length === 0) {
+            document.getElementById('password-result').innerHTML =
+                '<div class="alert alert-danger">CPF ou nome não encontrados</div>';
+            return;
         }
+
+        document.getElementById('password-result').innerHTML =
+            `<div class="alert alert-success">Sua senha é: <strong>${data[0].senha}</strong></div>`;
+    } catch (err) {
+        showToast('Erro ao recuperar senha');
+    }
+});
 
         function showToast(message) {
             const toast = new bootstrap.Toast(document.getElementById('toast'));
@@ -727,3 +748,4 @@
     </script>
 </body>
 </html>
+
