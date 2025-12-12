@@ -123,7 +123,8 @@
             config: {
                 supabaseUrl: 'https://ydwxljgmzoqsemwemtml.supabase.co',
                 supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlkd3hsamdtem9xc2Vtd2VtdG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwODM4ODEsImV4cCI6MjA4MDY1OTg4MX0.7elSMr11AHIhYayJgwqJQCpv0CdyiiM5XunW82Y-rAo',
-                geminiKey: 'AIzaSyCO22vM99hmTcsUB6RwEqgDXcsO-UrO1VQ', // CUIDADO: Em produção, esconda isso no backend
+                // ⚠️ ATENÇÃO: Se esta chave estiver revogada/inválida, você deve gerar uma nova no Google AI Studio.
+                geminiKey: 'AIzaSyCO22vM99hmTcsUB6RwEqgDXcsO-UrO1VQ', 
                 whatsapp: '5585991815434',
                 pixKey: '00.000.000/0001-00'
             },
@@ -419,41 +420,33 @@
         };
 
         const Services = {
-            // ROBUSTEZ: Uso de FETCH nativo (REST API) para evitar problemas de CORS/Módulos em arquivo local
             async askGemini(prompt) {
                 const key = App.config.geminiKey;
-                // ATUALIZADO: Usando modelos v1.5 que são os padrões atuais
-                const models = ['gemini-1.5-flash', 'gemini-1.5-pro'];
-                let lastError = "";
+                // CORREÇÃO DEFINITIVA: Usando APENAS o modelo 'gemini-1.5-flash'
+                // Este modelo é rápido e tem cotas gratuitas generosas.
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`;
 
-                // Tenta modelos diferentes em caso de sobrecarga
-                for (let m of models) {
-                    try {
-                        const url = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${key}`;
-                        const response = await fetch(url, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-                        });
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                    });
 
-                        if (!response.ok) {
-                            const errData = await response.json();
-                            console.error(`Erro Gemini (${m}):`, errData);
-                            lastError = errData.error?.message || "Erro desconhecido";
-                            continue; // Tenta o próximo modelo
-                        }
+                    const data = await response.json();
 
-                        const data = await response.json();
-                        return data.candidates?.[0]?.content?.parts?.[0]?.text || "Não consegui formular uma resposta.";
-
-                    } catch (e) {
-                        console.warn(`Falha na conexão com ${m}:`, e);
-                        lastError = "Erro de rede (Verifique sua internet)";
+                    // Se a API retornar erro, mostramos o erro exato no console e no chat
+                    if (data.error) {
+                        console.error("ERRO DA API GOOGLE:", data.error);
+                        return `⚠️ Erro na API: ${data.error.message || "Motivo desconhecido"}. Verifique sua Chave API.`;
                     }
-                }
 
-                // Se tudo falhar
-                return `⚠️ Erro na IA: ${lastError}. Mas não se preocupe, nosso time humano responde no WhatsApp!`;
+                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "A IA não conseguiu gerar uma resposta.";
+
+                } catch (e) {
+                    console.error("ERRO DE REDE/CÓDIGO:", e);
+                    return "⚠️ Erro de conexão. Verifique sua internet ou se a Chave API é válida.";
+                }
             }
         };
 
@@ -509,7 +502,6 @@
                 
                 const txt = await Services.askGemini(prompt);
                 
-                // Formatação simples do Markdown para HTML
                 const formatted = txt.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
                 box.innerHTML = formatted;
             },
@@ -698,18 +690,14 @@
                 this.msg(txt, 'user');
                 inp.value = '';
 
-                // Cria indicador de "digitando" com ID para remover depois
                 const tempId = 'temp-' + Date.now();
                 this.msg('<span class="spinner-grow spinner-grow-sm"></span> Digitando...', 'ai', tempId);
                 
-                // Chama a função robusta
                 const res = await Services.askGemini(txt);
                 
-                // Remove indicador e mostra resposta
                 const tempEl = document.getElementById(tempId);
                 if(tempEl) tempEl.remove();
                 
-                // Formatação simples do Markdown para HTML
                 const formatted = res.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
                 this.msg(formatted, 'ai');
             },
@@ -721,7 +709,6 @@
                 const db = document.getElementById('chat-msg-container');
                 db.appendChild(d); 
                 
-                // Scroll para o fim
                 const widgetBody = document.getElementById('chat-messages');
                 widgetBody.scrollTop = widgetBody.scrollHeight;
             }
