@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Arthur Auto Peças - A evolução da sua experiência automotiva.">
-    <title>Arthur Auto Peças | Ultimate Edition</title>
+    <title>Arthur Auto Peças | Secure Edition</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -43,18 +43,9 @@
             overflow-x: hidden;
         }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--secondary);
-            border-radius: 4px;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 4px; }
 
         .navbar-blur {
             background: var(--glass);
@@ -64,180 +55,64 @@
             transition: var(--transition);
         }
 
-        .nav-link {
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            position: relative;
-        }
-
+        .nav-link { font-weight: 600; letter-spacing: 0.5px; position: relative; }
         .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: var(--transition);
-            transform: translateX(-50%);
+            content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px;
+            background: var(--primary); transition: var(--transition); transform: translateX(-50%);
         }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 80%;
-        }
+        .nav-link:hover::after, .nav-link.active::after { width: 80%; }
 
         .card-hover {
-            border: none;
-            border-radius: 20px;
-            background: white;
-            box-shadow: var(--card-shadow);
-            transition: var(--transition);
-            overflow: hidden;
-            position: relative;
+            border: none; border-radius: 20px; background: white;
+            box-shadow: var(--card-shadow); transition: var(--transition);
+            overflow: hidden; position: relative;
         }
-
-        [data-bs-theme="dark"] .card-hover {
-            background: #1e293b;
-        }
-
-        .card-hover:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
+        [data-bs-theme="dark"] .card-hover { background: #1e293b; }
+        .card-hover:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12); }
 
         .btn-gradient {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border: none;
-            color: white;
-            border-radius: 12px;
-            padding: 12px 24px;
-            font-weight: 700;
-            transition: var(--transition);
+            border: none; color: white; border-radius: 12px; padding: 12px 24px;
+            font-weight: 700; transition: var(--transition);
         }
-
-        .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
-        }
+        .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3); }
 
         .hero-section {
             min-height: 80vh;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            position: relative;
-            overflow: hidden;
-            border-radius: 0 0 50px 50px;
-            color: white;
-            display: flex;
-            align-items: center;
+            position: relative; overflow: hidden; border-radius: 0 0 50px 50px;
+            color: white; display: flex; align-items: center;
         }
-
         .hero-bg-accent {
-            position: absolute;
-            width: 600px;
-            height: 600px;
+            position: absolute; width: 600px; height: 600px;
             background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, transparent 70%);
-            top: -100px;
-            right: -100px;
-            border-radius: 50%;
-            animation: pulse 10s infinite;
+            top: -100px; right: -100px; border-radius: 50%; animation: pulse 10s infinite;
         }
 
         .chat-widget {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 350px;
-            height: 500px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            transform: translateY(120%);
-            transition: var(--transition);
+            position: fixed; bottom: 100px; right: 30px; width: 350px; height: 500px;
+            background: white; border-radius: 20px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            z-index: 1000; display: flex; flex-direction: column; overflow: hidden;
+            transform: translateY(120%); transition: var(--transition);
         }
-
-        [data-bs-theme="dark"] .chat-widget {
-            background: #1e293b;
-            color: white;
-        }
-
-        .chat-open {
-            transform: translateY(0);
-        }
-
-        .chat-header {
-            background: var(--primary);
-            color: white;
-            padding: 15px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .chat-body {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            background: #f1f5f9;
-        }
-
-        [data-bs-theme="dark"] .chat-body {
-            background: #0f172a;
-        }
-
-        .chat-input {
-            padding: 15px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            display: flex;
-            gap: 10px;
-        }
-
-        .msg {
-            padding: 8px 12px;
-            border-radius: 15px;
-            margin-bottom: 10px;
-            max-width: 80%;
-            font-size: 0.9rem;
-        }
-
-        .msg-ai {
-            background: white;
-            align-self: flex-start;
-            border-bottom-left-radius: 2px;
-            color: black;
-        }
-
-        .msg-user {
-            background: var(--primary);
-            color: white;
-            align-self: flex-end;
-            margin-left: auto;
-            border-bottom-right-radius: 2px;
-        }
+        [data-bs-theme="dark"] .chat-widget { background: #1e293b; color: white; }
+        .chat-open { transform: translateY(0); }
+        .chat-header { background: var(--primary); color: white; padding: 15px; font-weight: bold; cursor: pointer; }
+        .chat-body { flex: 1; padding: 15px; overflow-y: auto; background: #f1f5f9; }
+        [data-bs-theme="dark"] .chat-body { background: #0f172a; }
+        .chat-input { padding: 15px; border-top: 1px solid rgba(0, 0, 0, 0.1); display: flex; gap: 10px; }
+        .msg { padding: 8px 12px; border-radius: 15px; margin-bottom: 10px; max-width: 80%; font-size: 0.9rem; }
+        .msg-ai { background: white; align-self: flex-start; border-bottom-left-radius: 2px; color: black; }
+        .msg-user { background: var(--primary); color: white; align-self: flex-end; margin-left: auto; border-bottom-right-radius: 2px; }
 
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.5;
-            }
-
-            50% {
-                transform: scale(1.2);
-                opacity: 0.8;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 0.5;
-            }
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.5; }
         }
-
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out;
-        }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out; }
+        
+        .blur-price { filter: blur(4px); user-select: none; }
     </style>
 </head>
 
@@ -248,18 +123,16 @@
             config: {
                 supabaseUrl: 'https://ydwxljgmzoqsemwemtml.supabase.co',
                 supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlkd3hsamdtem9xc2Vtd2VtdG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwODM4ODEsImV4cCI6MjA4MDY1OTg4MX0.7elSMr11AHIhYayJgwqJQCpv0CdyiiM5XunW82Y-rAo',
-                
                 // --- CHAVE DO GOOGLE CLOUD CONSOLE ---
                 geminiKey: 'AIzaSyAFpbvdVBQ1yI4cgfmF37QQM0YpEABuvQk', 
                 // -------------------------------------
-                
                 whatsapp: '5585991815434',
                 pixKey: '00.000.000/0001-00'
             },
             state: {
                 user: JSON.parse(localStorage.getItem('user')) || null,
                 cart: JSON.parse(localStorage.getItem('cart')) || [],
-                activeModel: null, // Será preenchido automaticamente
+                activeModel: null,
                 loading: false
             }
         };
@@ -282,7 +155,7 @@
             <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-center">
                     <li class="nav-item"><a class="nav-link active" href="#" onclick="UI.showHome()">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#shop" onclick="UI.showHome()">Loja</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#shop" onclick="UI.showHome()">Catálogo</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" onclick="Chatbot.toggle()">IA Mechanic</a></li>
                     <li class="nav-item d-none" id="nav-admin-link">
                         <a class="nav-link text-warning fw-bold" href="#" onclick="UI.showAdmin()"><i class="bi bi-shield-lock-fill"></i> Admin</a>
@@ -295,7 +168,7 @@
                     </button>
 
                     <button class="btn btn-outline-primary rounded-circle position-relative border-0" onclick="Cart.open()">
-                        <i class="bi bi-bag-fill fs-5"></i>
+                        <i class="bi bi-file-text-fill fs-5"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-badge">0</span>
                     </button>
 
@@ -311,13 +184,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-5 mb-lg-0 animate__animated animate__fadeInLeft">
                     <span class="badge bg-white text-primary mb-3 px-3 py-2 rounded-pill fw-bold shadow-sm">
-                        <i class="bi bi-award-fill me-1"></i> A Melhor da Região
+                        <i class="bi bi-shield-check me-1"></i> Segurança & Qualidade
                     </span>
                     <h1 class="display-3 fw-bolder mb-3">Sua Oficina <br><span class="text-primary">Inteligente</span></h1>
-                    <p class="lead mb-4 text-white-50">Peças originais, consultoria com IA e atendimento premium.</p>
+                    <p class="lead mb-4 text-white-50">Solicite orçamentos online. A IA analisa, nós entregamos. Preços exclusivos para cadastrados.</p>
                     <div class="d-flex gap-3">
-                        <a href="#shop" class="btn btn-gradient btn-lg">Explorar Catálogo</a>
-                        <button onclick="Chatbot.toggle()" class="btn btn-outline-light btn-lg border-2 fw-bold">Mecânico Virtual</button>
+                        <a href="#shop" class="btn btn-gradient btn-lg">Ver Peças</a>
+                        <button onclick="Chatbot.toggle()" class="btn btn-outline-light btn-lg border-2 fw-bold">Tirar Dúvida</button>
                     </div>
                 </div>
                 <div class="col-lg-6 position-relative animate__animated animate__fadeInRight">
@@ -330,11 +203,14 @@
     <section id="shop" class="py-5">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-                <h2 class="fw-bold mb-0">Catálogo <span class="text-primary">Premium</span></h2>
+                <h2 class="fw-bold mb-0">Catálogo <span class="text-primary">de Peças</span></h2>
                 <div class="input-group" style="max-width: 300px;">
                     <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
                     <input type="text" class="form-control border-start-0 ps-0" placeholder="Buscar peça..." oninput="Shop.search(this.value)">
                 </div>
+            </div>
+            <div class="alert alert-info border-0 shadow-sm">
+                <i class="bi bi-info-circle-fill me-2"></i> <strong>Nota:</strong> Adicione itens ao orçamento para consultar valores atualizados.
             </div>
             <div id="product-grid" class="row g-4"></div>
         </div>
@@ -364,7 +240,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Cliente</th>
-                                            <th>Total</th>
+                                            <th>Total (Visível)</th>
                                             <th>Status</th>
                                             <th>Pagamento</th>
                                             <th>Ação</th>
@@ -380,7 +256,7 @@
                 <div class="col-12">
                     <div class="card border-0 shadow-sm">
                         <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0 fw-bold">Produtos</h5>
+                            <h5 class="mb-0 fw-bold">Produtos (Tabela de Preços)</h5>
                             <button class="btn btn-sm btn-success" onclick="UI.modal('prod-modal')">+ Novo</button>
                         </div>
                         <div class="card-body p-0">
@@ -388,7 +264,7 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th>Produto</th>
-                                        <th>Preço</th>
+                                        <th>Preço (Admin)</th>
                                         <th>Ação</th>
                                     </tr>
                                 </thead>
@@ -408,7 +284,7 @@
         </div>
         <div class="chat-body" id="chat-messages">
             <div class="d-flex flex-column" id="chat-msg-container">
-                <div class="msg msg-ai">Olá! Sou a IA da Arthur Auto Peças. Posso ajudar com orçamentos e dúvidas técnicas.</div>
+                <div class="msg msg-ai">Olá! Sou a IA da Arthur Auto Peças. Posso ajudar a montar seu orçamento técnico.</div>
             </div>
         </div>
         <div class="chat-input bg-white">
@@ -422,8 +298,9 @@
             <div class="modal-content border-0 overflow-hidden">
                 <div class="modal-body p-0 d-flex">
                     <div class="d-none d-md-block bg-primary text-white p-5 col-5 d-flex flex-column justify-content-center">
-                        <h4>Bem-vindo!</h4>
-                        <p class="small opacity-75">Sua oficina online 24h.</p>
+                        <h4>Área Segura</h4>
+                        <p class="small opacity-75">Seus dados e orçamentos protegidos.</p>
+                        <i class="bi bi-lock-fill fs-1 opacity-50 mt-3"></i>
                     </div>
                     <div class="p-4 col-12 col-md-7">
                         <div class="text-end"><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
@@ -436,16 +313,17 @@
                                 <form onsubmit="Auth.login(event)">
                                     <div class="form-floating mb-3"><input type="email" class="form-control" id="login-email" required><label>Email</label></div>
                                     <div class="form-floating mb-3"><input type="password" class="form-control" id="login-pass" required><label>Senha</label></div>
-                                    <button class="btn btn-primary w-100 py-2 fw-bold">Entrar</button>
+                                    <button class="btn btn-primary w-100 py-2 fw-bold">Acessar Orçamentos</button>
                                 </form>
                             </div>
                             <div class="tab-pane fade" id="tab-register">
                                 <form onsubmit="Auth.register(event)">
-                                    <input class="form-control mb-2" id="reg-name" placeholder="Nome" required>
-                                    <input class="form-control mb-2" id="reg-email" placeholder="Email" required>
+                                    <input class="form-control mb-2" id="reg-name" placeholder="Nome Completo" required>
+                                    <input class="form-control mb-2" id="reg-email" placeholder="Email" type="email" required>
                                     <input class="form-control mb-2" id="reg-cpf" placeholder="CPF" required>
-                                    <input class="form-control mb-3" id="reg-pass" placeholder="Senha" type="password" required>
-                                    <button class="btn btn-success w-100 py-2 fw-bold">Criar Conta</button>
+                                    <input class="form-control mb-3" id="reg-pass" placeholder="Senha Forte" type="password" required>
+                                    <div class="form-text mb-3 small">Sua senha será criptografada antes do envio.</div>
+                                    <button class="btn btn-success w-100 py-2 fw-bold">Criar Conta Segura</button>
                                 </form>
                             </div>
                         </div>
@@ -460,18 +338,17 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content border-0">
                 <div class="modal-header border-0 pb-0">
-                    <h5 class="fw-bold">Seu Carrinho</h5><button class="btn-close" data-bs-dismiss="modal"></button>
+                    <h5 class="fw-bold">Lista de Orçamento</h5><button class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="alert alert-secondary small"><i class="bi bi-eye-slash"></i> Os preços serão revelados na etapa de aprovação.</div>
                     <div id="cart-items-container"></div>
-                    <div class="bg-light p-3 rounded mt-3 d-flex justify-content-between">
-                        <span>Total:</span><span class="fw-bold fs-5" id="cart-total">R$ 0,00</span>
-                    </div>
+                    
                     <div id="ai-quote-box" class="p-3 border rounded bg-white mt-3 d-none font-monospace small"></div>
                 </div>
                 <div class="modal-footer border-0">
-                    <button class="btn btn-outline-primary" onclick="Cart.aiQuote()">💡 Gerar Orçamento IA</button>
-                    <button class="btn btn-success fw-bold px-4" onclick="Cart.startCheckout()">Finalizar Compra</button>
+                    <button class="btn btn-outline-primary" onclick="Cart.aiQuote()">💡 Análise Técnica IA</button>
+                    <button class="btn btn-success fw-bold px-4" onclick="Cart.startCheckout()">Ver Preços & Finalizar</button>
                 </div>
             </div>
         </div>
@@ -480,25 +357,33 @@
     <div class="modal fade" id="checkout-modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="fw-bold">Finalizar Pedido</h5><button class="btn-close" data-bs-dismiss="modal"></button>
+                <div class="modal-header bg-success text-white">
+                    <h5 class="fw-bold"><i class="bi bi-cash-coin"></i> Orçamento Final</h5><button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="text-muted">Escolha como deseja pagar. Pedidos não pagos em 48h são cancelados.</p>
+                    <div class="card mb-3">
+                        <div class="card-header fw-bold">Resumo Financeiro</div>
+                        <ul class="list-group list-group-flush" id="checkout-summary">
+                            </ul>
+                        <div class="card-footer d-flex justify-content-between fw-bold fs-5">
+                            <span>Total:</span>
+                            <span class="text-success" id="checkout-total-display">R$ 0,00</span>
+                        </div>
+                    </div>
+
+                    <p class="text-muted small">Escolha como deseja pagar este orçamento:</p>
                     <div class="d-grid gap-2">
                         <button class="btn btn-outline-success p-3 text-start" onclick="Cart.setPayment('pix')">
                             <div class="fw-bold"><i class="bi bi-qr-code"></i> PIX</div>
-                            <small>Aprovação rápida. Envio de comprovante.</small>
                         </button>
                         <button class="btn btn-outline-dark p-3 text-start" onclick="Cart.setPayment('loja')">
                             <div class="fw-bold"><i class="bi bi-shop"></i> Pagar na Loja</div>
-                            <small>Dinheiro ou Cartão na retirada.</small>
                         </button>
                     </div>
                     <div id="pix-detalhes" class="d-none mt-3 p-3 bg-light border rounded text-center">
                         <small>Chave PIX (CNPJ):</small>
                         <h4 class="font-monospace">00.000.000/0001-00</h4>
-                        <p class="small text-danger mb-0">Envie o comprovante no WhatsApp após confirmar.</p>
+                        <p class="small text-danger mb-0">Envie o comprovante no WhatsApp.</p>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -542,56 +427,46 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        /** SEGURANÇA: UTILS DE CRIPTOGRAFIA (SHA-256) **/
+        const Security = {
+            async hashPassword(message) {
+                const msgBuffer = new TextEncoder().encode(message);
+                const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            }
+        };
+
         /** SUPABASE & SERVICES **/
         const DB = {
             client: supabase.createClient(App.config.supabaseUrl, App.config.supabaseKey),
-            async rpc(func) { return await func(this.client); }
         };
 
         const Services = {
-            // --- DIAGNÓSTICO DE CHAVE (O SEGREDO DA CORREÇÃO) ---
-            // Esta função roda ao iniciar o site e pergunta ao Google: "Quais modelos eu posso usar com esta chave?"
             async init() {
                 const key = App.config.geminiKey;
                 try {
-                    // Tenta listar modelos disponíveis para esta chave
                     const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${key}`);
                     const data = await res.json();
-                    
                     if (data.error) {
-                        console.error("ERRO CRÍTICO DE API (INIT):", data.error);
-                        UI.toast(`Erro na Chave API: ${data.error.message}`, "bg-danger");
+                        console.error("ERRO API:", data.error);
                         return;
                     }
-
-                    // Procura um modelo compatível (preferência por Gemini 1.5, depois outros)
-                    // Filtra apenas modelos que suportam "generateContent"
                     const model = data.models?.find(m => 
                         m.supportedGenerationMethods?.includes("generateContent") && 
                         m.name.includes("gemini")
                     );
-                    
                     if (model) {
-                        // A API retorna algo como "models/gemini-1.5-flash", removemos o prefixo
                         App.state.activeModel = model.name.replace("models/", "");
-                        console.log("✅ IA CONECTADA COM SUCESSO NO MODELO:", App.state.activeModel);
-                        UI.toast("IA Conectada!", "bg-success");
+                        console.log("✅ IA CONECTADA:", App.state.activeModel);
                     } else {
-                        console.warn("Nenhum modelo compatível encontrado na lista.");
-                        UI.toast("Chave válida, mas sem modelos disponíveis.", "bg-warning");
+                        App.state.activeModel = "gemini-1.5-flash"; 
                     }
-                } catch (e) {
-                    console.error("Falha ao listar modelos (Erro de Rede):", e);
-                }
+                } catch (e) { console.error("Falha ao listar modelos:", e); }
             },
 
             async askGemini(prompt) {
-                // Se a inicialização falhou, tenta um fallback padrão
-                if (!App.state.activeModel) {
-                    console.warn("Usando modelo fallback (init falhou).");
-                    App.state.activeModel = "gemini-1.5-flash"; 
-                }
-
+                if (!App.state.activeModel) App.state.activeModel = "gemini-1.5-flash";
                 const key = App.config.geminiKey;
                 const url = `https://generativelanguage.googleapis.com/v1beta/models/${App.state.activeModel}:generateContent?key=${key}`;
 
@@ -601,23 +476,16 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
                     });
-
                     const data = await response.json();
-                    
-                    if(data.error) {
-                        console.error("ERRO NO ENVIO:", data.error);
-                        throw new Error(data.error.message);
-                    }
-
+                    if(data.error) throw new Error(data.error.message);
                     return data.candidates?.[0]?.content?.parts?.[0]?.text || "Sem resposta.";
-
                 } catch (e) {
-                    return `⚠️ Erro na IA: ${e.message}. (Verifique no Google Cloud Console se a API 'Generative Language' está ativada).`;
+                    return `⚠️ IA Indisponível temporariamente.`;
                 }
             }
         };
 
-        /** SHOP **/
+        /** SHOP (PREÇOS OCULTOS) **/
         const Shop = {
             list: [],
             async init() {
@@ -627,19 +495,23 @@
             },
             render(items = this.list) {
                 const grid = document.getElementById('product-grid');
-                if (!items.length) { grid.innerHTML = '<div class="col-12 text-center text-muted">Carregando ou nenhum produto...</div>'; return; }
+                if (!items.length) { grid.innerHTML = '<div class="col-12 text-center text-muted">Carregando...</div>'; return; }
 
                 grid.innerHTML = items.map(p => `
                     <div class="col-6 col-md-4 col-lg-3">
                         <div class="card card-hover h-100">
                             <div style="height:180px; overflow:hidden">
-                                <img src="${p.imagem_url}" class="w-100 h-100 object-fit-cover" onerror="this.src='https://placehold.co/300'">
+                                <img src="${p.imagem_url}" class="w-100 h-100 object-fit-cover" onerror="this.src='https://placehold.co/300?text=AutoPeca'">
                             </div>
                             <div class="card-body d-flex flex-column">
                                 <h6 class="fw-bold text-truncate">${p.nome}</h6>
                                 <div class="mt-auto">
-                                    <p class="mb-2 text-primary fw-bold">R$ ${p.preco}</p>
-                                    <button class="btn btn-outline-primary btn-sm w-100 rounded-pill" onclick="Cart.add(${p.id})">Comprar</button>
+                                    <span class="badge bg-light text-secondary border mb-2 w-100 py-2">
+                                        <i class="bi bi-lock-fill"></i> Preço sob consulta
+                                    </span>
+                                    <button class="btn btn-outline-primary btn-sm w-100 rounded-pill" onclick="Cart.add(${p.id})">
+                                        + Orçamento
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -654,7 +526,7 @@
             paymentMethod: null,
             add(id) {
                 const p = Shop.list.find(x => x.id === id);
-                if (p) { App.state.cart.push(p); this.save(); UI.toast("Item adicionado!"); }
+                if (p) { App.state.cart.push(p); this.save(); UI.toast("Adicionado ao orçamento!"); }
             },
             remove(i) { App.state.cart.splice(i, 1); this.save(); },
             save() { localStorage.setItem('cart', JSON.stringify(App.state.cart)); UI.updateCart(); },
@@ -663,20 +535,27 @@
             async aiQuote() {
                 const box = document.getElementById('ai-quote-box');
                 box.classList.remove('d-none');
-                box.innerHTML = "🤖 <em>Analisando peças e criando orçamento...</em>";
-                
-                const prompt = `Atue como um mecânico especialista. Crie um orçamento técnico e persuasivo para estas peças: ${App.state.cart.map(i => i.nome).join(', ')}. Explique brevemente a importância da qualidade. Use tom profissional e curto.`;
-                
+                box.innerHTML = "🤖 <em>A IA está analisando a compatibilidade e qualidade...</em>";
+                const prompt = `Atue como um mecânico sênior. O cliente escolheu: ${App.state.cart.map(i => i.nome).join(', ')}. Faça um comentário técnico breve sobre a qualidade dessas peças e por que vale a pena investir nelas. Não invente preços.`;
                 const txt = await Services.askGemini(prompt);
-                
-                // Formatação simples do Markdown para HTML
-                const formatted = txt.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
-                box.innerHTML = formatted;
+                box.innerHTML = txt.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
             },
 
             startCheckout() {
-                if (!App.state.user) return UI.toast("Faça login para finalizar.", "bg-warning");
+                if (!App.state.user) return UI.toast("Faça login para ver preços.", "bg-warning");
                 if (App.state.cart.length === 0) return;
+
+                // Prepara modal de checkout com preços visíveis
+                const list = document.getElementById('checkout-summary');
+                let total = 0;
+                list.innerHTML = App.state.cart.map(i => {
+                    total += Number(i.preco);
+                    return `<li class="list-group-item d-flex justify-content-between">
+                        <span>${i.nome}</span>
+                        <span>R$ ${i.preco}</span>
+                    </li>`;
+                }).join('');
+                document.getElementById('checkout-total-display').innerText = `R$ ${total.toFixed(2)}`;
 
                 bootstrap.Modal.getInstance(document.getElementById('cart-modal')).hide();
                 UI.modal('checkout-modal');
@@ -707,27 +586,26 @@
 
                 if (error) {
                     console.error(error);
-                    alert("Erro ao salvar pedido (Verifique se criou a tabela 'pedidos' no Supabase).");
+                    alert("Erro ao salvar pedido.");
                     return;
                 }
 
                 const orderId = data.id;
                 bootstrap.Modal.getInstance(document.getElementById('checkout-modal')).hide();
 
-                let msg = `Olá! Realizei o Pedido #${orderId} no site.\n`;
-                msg += `Itens: ${App.state.cart.length} unid.\nValor: R$ ${total.toFixed(2)}\n`;
+                let msg = `Olá! Realizei o Orçamento #${orderId}.\n`;
+                msg += `Itens: ${App.state.cart.length} unid.\nValor Total: R$ ${total.toFixed(2)}\n`;
                 msg += `Pagamento: ${this.paymentMethod.toUpperCase()}\n`;
-                if (this.paymentMethod === 'pix') msg += `(Segue comprovante em anexo)`;
-
+                
                 window.open(`https://wa.me/${App.config.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
 
                 App.state.cart = [];
                 this.save();
-                UI.toast("Pedido Realizado! Finalize no WhatsApp.", "bg-success");
+                UI.toast("Orçamento enviado!", "bg-success");
             }
         };
 
-        /** ADMIN **/
+        /** ADMIN (COM PREÇOS) **/
         const Admin = {
             editId: null,
             tempItems: [],
@@ -739,8 +617,7 @@
 
                 const { data } = await q;
                 const body = document.getElementById('admin-order-list');
-
-                if (!data?.length) { body.innerHTML = '<tr><td colspan="6" class="text-center">Nenhum pedido.</td></tr>'; return; }
+                if (!data?.length) { body.innerHTML = '<tr><td colspan="6" class="text-center">Vazio.</td></tr>'; return; }
 
                 body.innerHTML = data.map(o => `
                     <tr>
@@ -749,26 +626,21 @@
                         <td>R$ ${o.total}</td>
                         <td><span class="badge bg-${o.status === 'pendente' ? 'warning' : 'success'}">${o.status}</span></td>
                         <td>${o.pagamento_metodo}</td>
-                        <td>
-                            <button class="btn btn-sm btn-primary" onclick="Admin.openEdit(${o.id})">Editar/Aprovar</button>
-                        </td>
+                        <td><button class="btn btn-sm btn-primary" onclick="Admin.openEdit(${o.id})">Ver</button></td>
                     </tr>
                 `).join('');
 
                 const pList = document.getElementById('admin-prod-list');
-                pList.innerHTML = Shop.list.map(p => `<tr><td>${p.nome}</td><td>R$ ${p.preco}</td><td><button class="btn btn-sm btn-danger">X</button></td></tr>`).join('');
+                pList.innerHTML = Shop.list.map(p => `<tr><td>${p.nome}</td><td>R$ ${p.preco}</td><td><button class="btn btn-sm btn-danger">Excluir</button></td></tr>`).join('');
             },
 
             async openEdit(id) {
                 this.editId = id;
                 const { data } = await DB.client.from('pedidos').select('*').eq('id', id).single();
                 this.tempItems = data.items;
-
                 this.renderEditList();
-
                 const sel = document.getElementById('ae-add-select');
                 sel.innerHTML = Shop.list.map(p => `<option value="${p.id}">${p.nome} (R$${p.preco})</option>`).join('');
-
                 document.getElementById('ae-id').innerText = id;
                 UI.modal('admin-edit-modal');
             },
@@ -784,28 +656,21 @@
             },
 
             removeItem(idx) { this.tempItems.splice(idx, 1); this.renderEditList(); },
-
             addItem() {
                 const id = document.getElementById('ae-add-select').value;
                 const p = Shop.list.find(x => x.id == id);
                 if (p) { this.tempItems.push(p); this.renderEditList(); }
             },
-
             async saveChanges() {
                 const total = this.tempItems.reduce((a, b) => a + Number(b.preco), 0);
-                await DB.client.from('pedidos').update({
-                    items: this.tempItems,
-                    total: total,
-                    status: 'aprovado'
-                }).eq('id', this.editId);
-
+                await DB.client.from('pedidos').update({ items: this.tempItems, total: total, status: 'aprovado' }).eq('id', this.editId);
                 bootstrap.Modal.getInstance(document.getElementById('admin-edit-modal')).hide();
                 this.load();
-                UI.toast("Pedido atualizado e aprovado!");
+                UI.toast("Atualizado!");
             }
         };
 
-        /** AUTH **/
+        /** AUTH (COM HASHING DE SENHA) **/
         const Auth = {
             async login(e) {
                 e.preventDefault();
@@ -813,34 +678,48 @@
                 const pass = document.getElementById('login-pass').value.trim();
                 const err = document.getElementById('auth-error');
 
+                // Hash da senha inserida para comparar com o banco
+                const hashedPassword = await Security.hashPassword(pass);
+
                 const { data, error } = await DB.client.from('usuarios').select('*').ilike('email', email).maybeSingle();
 
                 if (!data) {
-                    err.classList.remove('d-none');
-                    err.innerHTML = "Usuário não encontrado. Verifique o banco de dados.";
-                    return;
+                    err.classList.remove('d-none'); err.innerText = "Usuário não encontrado."; return;
                 }
-                if (data.senha !== pass) {
-                    err.classList.remove('d-none'); err.innerText = "Senha incorreta."; return;
+                
+                // Compara o hash gerado agora com o hash salvo no banco
+                if (data.senha !== hashedPassword) {
+                    // Fallback: Se a senha no banco não for hash (usuário antigo), tenta comparar texto puro
+                    if (data.senha !== pass) {
+                        err.classList.remove('d-none'); err.innerText = "Senha incorreta."; return;
+                    }
                 }
 
                 this.setSession(data);
                 bootstrap.Modal.getInstance(document.getElementById('auth-modal')).hide();
-                UI.toast(`Olá, ${data.nome}!`);
+                UI.toast(`Bem-vindo, ${data.nome}!`);
             },
+
             async register(e) {
                 e.preventDefault();
+                const pass = document.getElementById('reg-pass').value;
+                
+                // CRIPTOGRAFA A SENHA ANTES DE ENVIAR
+                const hashedPassword = await Security.hashPassword(pass);
+
                 const u = {
                     nome: document.getElementById('reg-name').value,
                     email: document.getElementById('reg-email').value.toLowerCase(),
                     cpf: document.getElementById('reg-cpf').value,
-                    senha: document.getElementById('reg-pass').value,
+                    senha: hashedPassword, // Salva o hash, não a senha real
                     pontos: 0, is_admin: false
                 };
+                
                 const { error } = await DB.client.from('usuarios').insert([u]);
                 if (error) alert("Erro: " + error.message);
-                else { alert("Sucesso! Faça login."); location.reload(); }
+                else { alert("Conta Segura Criada! Faça login."); location.reload(); }
             },
+
             setSession(u) {
                 App.state.user = u; localStorage.setItem('user', JSON.stringify(u)); UI.updateAuth();
             },
@@ -858,18 +737,13 @@
                 this.msg(txt, 'user');
                 inp.value = '';
 
-                // Cria indicador de "digitando" com ID para remover depois
                 const tempId = 'temp-' + Date.now();
-                this.msg('<span class="spinner-grow spinner-grow-sm"></span> Digitando...', 'ai', tempId);
+                this.msg('<span class="spinner-grow spinner-grow-sm"></span> Analisando...', 'ai', tempId);
 
-                // Chama a função robusta
                 const res = await Services.askGemini(txt);
-
-                // Remove indicador e mostra resposta
                 const tempEl = document.getElementById(tempId);
                 if (tempEl) tempEl.remove();
 
-                // Formatação simples do Markdown para HTML
                 const formatted = res.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
                 this.msg(formatted, 'ai');
             },
@@ -880,8 +754,6 @@
                 d.innerHTML = txt;
                 const db = document.getElementById('chat-msg-container');
                 db.appendChild(d);
-
-                // Scroll para o fim
                 const widgetBody = document.getElementById('chat-messages');
                 widgetBody.scrollTop = widgetBody.scrollHeight;
             }
@@ -894,8 +766,6 @@
                 this.updateAuth();
                 this.updateCart();
                 if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-bs-theme', 'dark');
-                
-                // INICIA A IA
                 Services.init();
             },
             updateAuth() {
@@ -910,15 +780,13 @@
             },
             updateCart() {
                 document.getElementById('cart-badge').innerText = App.state.cart.length;
-                const t = App.state.cart.reduce((a, b) => a + Number(b.preco), 0);
-                document.getElementById('cart-total').innerText = 'R$ ' + t.toFixed(2);
-
+                // No modal do carrinho, não mostramos o total em dinheiro, apenas quantidade de itens
                 const cList = document.getElementById('cart-items-container');
                 cList.innerHTML = App.state.cart.map((i, idx) => `
                     <div class="d-flex justify-content-between border-bottom py-2">
-                        <small>${i.nome}</small>
-                        <button class="btn btn-link text-danger p-0" onclick="Cart.remove(${idx})">x</button>
-                    </div>`).join('') || '<p class="text-center text-muted small">Carrinho vazio</p>';
+                        <div><small class="fw-bold">${i.nome}</small><br><span class="badge bg-light text-muted border">Preço oculto</span></div>
+                        <button class="btn btn-link text-danger p-0 align-self-center" onclick="Cart.remove(${idx})"><i class="bi bi-trash"></i></button>
+                    </div>`).join('') || '<p class="text-center text-muted small">Nenhuma peça no orçamento.</p>';
             },
             showHome() {
                 document.getElementById('home').classList.remove('d-none');
@@ -951,4 +819,3 @@
 </body>
 
 </html>
-
